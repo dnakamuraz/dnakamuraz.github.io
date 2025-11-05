@@ -3,11 +3,11 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: Teng
-last_name: Gao
-email: tgaoteng@gmail.com
+first_name: Sakib
+last_name: Ibne Salam
+email: sakib.sbi@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Computational biologist focused on genomic data science and translational applications.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
 keywords:
@@ -15,7 +15,7 @@ keywords:
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
-url: https://teng-gao.github.io # the base hostname & protocol for your site
+url: https://sakibsalam.github.io # the base hostname & protocol for your site
 baseurl: 
 last_updated: true # set to true if you want to display last updated in the footer
 impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
@@ -64,11 +64,11 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # Social integration
 # -----------------------------------------------------------------------------
 
-github_username: teng-gao
+github_username: sakibsalam
 gitlab_username: # your GitLab user name
-twitter_username: tGaoTeng
-linkedin_username: teng-gao-8731b689
-scholar_userid: z9G8NzEAAAAJ&hl
+twitter_username: 
+linkedin_username: 
+scholar_userid: 
 semanticscholar_id: # your Semantic Scholar ID
 whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
 # orcid_id: 0000-0002-0196-689X
@@ -84,7 +84,7 @@ dblp_url: # your DBLP profile url
 stackoverflow_id: # your stackoverflow id
 kaggle_id: # your kaggle id
 lastfm_id: # your lastfm id
-spotify_id: 22silwavew52yhv5bjxz2f63i
+spotify_id: 
 pinterest_id: # your pinterest id
 unsplash_id: # your unsplash id
 instagram_id: # your instagram id
