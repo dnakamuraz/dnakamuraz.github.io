@@ -226,7 +226,7 @@ display_tags: ['genomics', 'machine-learning', 'statistics', 'reflections'] # th
 scholar:
 
   last_name: [Salam]
-  first_name: [Sakib]
+  first_name: [Sakib, "Md Sakib Ibne"]
 
   style: apa
   locale: en

@@ -1,18 +1,14 @@
 ---
 layout: page
 permalink: /publications/
-title: Publications
+title: Research
 description: Peer-reviewed publications and invited commentaries
-years: 
 nav: true
 nav_order: 1
 ---
 <!-- _pages/publications.md -->
 <div class="publications">
 
-{%- for y in page.years %}
-  <h2 class="year">{{y}}</h2>
-  {% bibliography -f papers -q @*[year={{y}}]* %}
-{% endfor %}
+{% bibliography -f papers --group_by year --group_order descending %}
 
 </div>
