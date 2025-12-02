@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: Research
-description: Peer-reviewed publications and invited commentaries
+description: Selected publications
 nav: true
 nav_order: 1
 ---
