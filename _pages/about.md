@@ -1,12 +1,12 @@
 ---
 layout: about
-title: About
+title: about
 permalink: /
 subtitle: <a href='https://www.mcw.edu/departments/biostatistics/'>Division of Biostatistics</a>, <a href='https://www.mcw.edu/'>Medical College of Wisconsin</a> 
 
 profile:
   align: right
-  image: sakib_photo.jpeg
+  image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
 
 news: false  # includes a list of news items
@@ -14,8 +14,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a PhD student and Graduate Research Assistant in the [Division of Biostatistics](https://www.mcw.edu/departments/biostatistics) at the [Medical College of Wisconsin](https://www.mcw.edu/). I obtained my MS in Mathematics (Statistics emphasis) from [Boise State University](https://www.boisestate.edu/) and my BS in Statistics from the [University of Dhaka](https://www.du.ac.bd/).
+Hello! My name is Daniel and I am a PhD candidate in [Bioinformatics](https://www.iq.usp.br/portaliqusp/?q=en/postgraduate-bioinformatics) at the [Taran Grant's Lab](https://grant.ib.usp.br/anfibios/homePage.html), University of São Paulo, Brazil (2022--ongoing). During my PhD research, I was intern at [Ward Wheeler's Lab](https://wardwheeler.wordpress.com/), American Museum of Natural History, New York, U.S (2024--2025). Before starting graduate school, I obtained a BSc and Teacher's degree in Biology at University of São Paulo (2017--2022).
 
-My research focuses on developing and applying Bayesian methods for variable selection, external data borrowing, and genomics. I am particularly interested in advancing statistical methodologies that integrate multi-source biomedical data to improve inference and decision-making in clinical and genomic research.
+I am interested in Zoology and Genetics. Specifically, the goal of my research is providing methodological advances and empirical applications of ancient DNA, phylogenetic systematics, and macroevolution of amphibians. Previously, I developed softwares to facilitate preprocessing of sequences for dynamic homology ([prepDyn](https://github.com/dnakamuraz/prepDyn)) and tree comparisons ([RNODE](https://github.com/dnakamuraz/RNODE)). I also applied museomics to resolve problems in systematics of extinct amphibians ([Nakamura et al. 2025a](https://doi.org/10.25225/jvb.24112), [b](https://doi.org/10.1655/Herpetologica-D-24-00036)). My ultimate goal is to address methodological problems in bioinformatics (high-throughput DNA assembly, alignment, and phylogenetics) and resolve empirical problems related with systematics and conservation of lost amphibians. 
 
-Outside of research, I enjoy watching movies, trivia nights, traveling, reading, and spending time with my two kitties. I love exploring new places, learning about different cultures, and finding creative inspiration both in science and in everyday life. If you would like to connect, please feel free to reach out via email at msalam[at]mcw[dot]edu or provided socials.
