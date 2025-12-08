@@ -13,7 +13,7 @@ footer_text: >
 keywords:
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: 🧬 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: 𓆏 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://dnakamuraz.github.io # the base hostname & protocol for your site
 baseurl: 
@@ -64,11 +64,11 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # Social integration
 # -----------------------------------------------------------------------------
 
-github_username: sakibsalam
+github_username: dnakamuraz
 gitlab_username: # your GitLab user name
-twitter_username: sakib_salam
-linkedin_username: sakibsalam
-scholar_userid: sgqqYnEAAAAJ&hl=en  # your Google Scholar user ID (the part after "user=" in the profile URL)
+twitter_username: # tt
+linkedin_username: daniel-n-84999a1b2
+scholar_userid: c0W8Cm8AAAAJ&hl
 semanticscholar_id: # your Semantic Scholar ID
 whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
 # orcid_id: 0000-0002-0196-689X
@@ -225,8 +225,8 @@ display_tags: ['genomics', 'machine-learning', 'statistics', 'reflections'] # th
 
 scholar:
 
-  last_name: [Salam]
-  first_name: [Sakib, "Md Sakib Ibne"]
+  last_name: [Nakamura]
+  first_name: [Daniel Y M]
 
   style: apa
   locale: en
