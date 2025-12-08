@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://www.mcw.edu/departments/biostatistics/'>Division of Biostatistics</a>, <a href='https://www.mcw.edu/'>Medical College of Wisconsin</a> 
+subtitle: <a href='https://www5.usp.br/'>Universidade de São Paulo</a>.
 
 profile:
   align: right
