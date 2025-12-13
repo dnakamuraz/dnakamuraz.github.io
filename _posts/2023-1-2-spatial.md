@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Allele-specific CNV analysis from spatial transcriptomics
-date: 2023-01-02 17:39:00
-description: Numbat for spatial transcriptomics
-tags: tutorial genomics
-redirect: https://kharchenkolab.github.io/numbat/articles/spatial-rna.html
+title: First release of prepDyn: Python scripts for preprocessing dynamig characters
+date: 2025-12-13 14:57:00
+description: Scripts designed to automatically fetch sequences from GenBank, delete trivial nucleotides, identify missing data, and partition
+tags: phylogenetics
+redirect: https://github.com/dnakamuraz/prepDyn
 ---
