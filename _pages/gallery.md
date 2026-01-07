@@ -51,7 +51,7 @@ nav_order: 5
           <img class="img-fluid rounded"
                src="/assets/img/2023-vitreorana_parvula.jpg"
                alt="Vitreorana parvula">
-          <div class="caption">Vitreorana parvula — 2023</div>
+          <div class="caption">Vitreorana parvula (BR: SP: Boraceia, 2023)</div>
         </div>
       </a>
     </div>
@@ -63,7 +63,7 @@ nav_order: 5
           <img class="img-fluid rounded"
                src="/assets/img/2023-brachycephalus_margaritatus.jpg"
                alt="Brachycephalus margaritatus">
-          <div class="caption">Brachycephalus margaritatus — 2023</div>
+          <div class="caption">Brachycephalus margaritatus (BR: RJ: Petrópolis, 2023)</div>
         </div>
       </a>
     </div>
