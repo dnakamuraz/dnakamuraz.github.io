@@ -14,6 +14,8 @@ nav_order: 5
 
 .gallery-item img {
   width: 100%;
+  height: auto;
+  display: block;
   border-radius: 8px;
   transition: transform .3s ease;
   cursor: zoom-in;
@@ -23,10 +25,12 @@ nav_order: 5
   transform: scale(1.03);
 }
 
+/* caption always sticks to bottom */
 .gallery-item .caption {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   padding: 8px 10px;
   text-align: center;
   background: rgba(0,0,0,0.65);
@@ -36,10 +40,12 @@ nav_order: 5
   font-size: 0.9rem;
 }
 
+/* show only on hover */
 .gallery-item:hover .caption {
   opacity: 1;
 }
 </style>
+
 
 <div class="container">
   <div class="row">
