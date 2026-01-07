@@ -46,7 +46,7 @@ nav_order: 5
 
     <!-- image 1 -->
     <div class="col-md-4 col-sm-6 mb-4">
-      <a data-bs-toggle="modal" data-bs-target="#imgModal">
+      <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
           <img class="img-fluid rounded"
                src="/assets/img/2023-vitreorana_parvula.jpg"
@@ -58,7 +58,7 @@ nav_order: 5
 
     <!-- image 2 -->
     <div class="col-md-4 col-sm-6 mb-4">
-      <a data-bs-toggle="modal" data-bs-target="#imgModal">
+      <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
           <img class="img-fluid rounded"
                src="/assets/img/2023-brachycephalus_margaritatus.jpg"
@@ -71,7 +71,7 @@ nav_order: 5
   </div>
 </div>
 
-<!-- modal for zoom -->
+<!-- Bootstrap 4 modal -->
 <div class="modal fade" id="imgModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content bg-transparent border-0">
