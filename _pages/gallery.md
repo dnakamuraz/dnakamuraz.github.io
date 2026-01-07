@@ -2,8 +2,8 @@
 layout: page
 title: gallery
 permalink: /gallery/
-nav_bar: TRUE
-nav_order: 4
+nav: true
+nav_order: 5
 ---
 
 <div class="container">
