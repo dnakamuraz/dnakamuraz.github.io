@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: Introduction to Linux for bioinformatics
-date: 2025-06-01
+date: 2026-01-06
 description: Part 1 of the Museomics Workshop
 tags: workshop museomics tutorial
 
