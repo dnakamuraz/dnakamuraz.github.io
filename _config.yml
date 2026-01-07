@@ -235,7 +235,8 @@ scholar:
   style: apa
   locale: en
   
-  highlight_author: "Nakamura, DYM"
+  highlight_author: "DYM Nakamura"
+  
   source: /_bibliography/
   bibliography: papers.bib
   bibliography_template: bib
