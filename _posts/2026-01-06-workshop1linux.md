@@ -11,7 +11,7 @@ authors:
       name: University of São Paulo
 
 toc:
-  - name: A brief history of Linux
+  - name: What is Linux?
   - name: Using Linux on Windows
   - name: Basic commands
     subsections:
@@ -25,4 +25,10 @@ toc:
   - name: Installing software
 ---
 
-Linux is a 
+Linux is a kernel that controls CPU, manages memory, handles files, and communicates with hardware. However, people often talk about Linux as a operating system (just like Windows and macOS). The Linux systems can be distributed in different packages (distros):
+- Ubuntu
+- Debian
+- Fedora
+- Arch
+- SteamOS 
+- Mint
