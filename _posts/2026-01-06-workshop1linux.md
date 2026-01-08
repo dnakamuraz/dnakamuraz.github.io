@@ -29,7 +29,11 @@ This tutorial is Part 1 of the Museomics Workshop (CVZoo XIV 2025, University of
 
 ## What is Linux?
 
-Linux was created in 1991 by Linus Torvalds as a free and open-source kernel that controls CPU, manages memory, handles files, and communicates with hardware. However, kernels are not operating systems (i.e. Linux is not like Windows and macOS). In parallel with Linux, the GNU Project was iniciated by Richard Stallman in 1983 to include command-line tools, compilers, libraries, and shells. As such, most systems commonly referred to as "Linux" should be better called as "GNU/Linux". 
+<center>
+<img src="/assets/img/post_2026-01-06_fig1.jpg" alt="drawing" style="width:700px;"/>
+</center>
+
+Linux was created in 1991 by Linus Torvalds (1969, Finland) as a free and open-source kernel that controls CPU, manages memory, handles files, and communicates with hardware. However, kernels are not operating systems (i.e. Linux is not like Windows and macOS). In parallel with Linux, the GNU Project was iniciated by Richard Stallman in 1983 to include command-line tools, compilers, libraries, and shells. As such, most systems commonly referred to as "Linux" should be better called as "GNU/Linux". 
 
 The Linux systems can be distributed in different packages (distros). Some popular distros are:
 
@@ -42,4 +46,8 @@ The Linux systems can be distributed in different packages (distros). Some popul
 | **Zorin OS** | Very beginner-friendly; Windows/macOS-like interface; Ubuntu-based with good software support | Smaller community; limited flexibility; rarely used in research or servers |
 | **Linux Mint** | User-friendly and stable; traditional desktop layout; lightweight; based on Ubuntu or Debian | Slower adoption of new technologies; desktop-focused; uncommon in servers or HPC |
 
+When mobile distributions are taken into account, Android is the most popular Linux-based system. As such, most people are Linux users, even if they are unaware of it.
+
 ## Using Linux on Windows
+
+
