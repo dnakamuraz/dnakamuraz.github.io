@@ -68,3 +68,6 @@ To install WSL 2, Windows 10 or 11 are required:
 sudo apt update
 sudo apt upgrade
 ```
+
+## Basic commands
+
