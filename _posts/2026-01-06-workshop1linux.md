@@ -71,3 +71,19 @@ sudo apt upgrade
 
 ## Basic commands
 
+<div style="border:2px solid #4CAF50; padding:12px; border-radius:8px; background:#f9fff9">
+
+**Exercise 3 – File manipulation**
+
+1. Create an empty file called `test.txt`
+2. Copy it to `test_copy.txt`
+3. Rename the copy to `final.txt`
+
+</div>
+
+
+> 🧪 **Exercise 1 – Listing files**
+>
+> 1. Open a terminal.
+> 2. Navigate to your home directory.
+> 3. List all files, including hidden ones.
