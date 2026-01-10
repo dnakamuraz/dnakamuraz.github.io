@@ -140,13 +140,13 @@ du -sh  # size of current directory
 >
 > Which single-line command prints the current directory, lists all files in the current directory, identifies the type `fastq`, shows the total disk usage of the directory.
 >  
-> A) pwd; ls; file sample1.fastq; du -sh ..
+> A) `pwd; ls; file sample1.fastq; du -sh ..`
 >
-> B) pwd; ls -a; file ../sample1.fastq; du -sh data
+> B) `pwd; ls -a; file ../sample1.fastq; du -sh data`
 >
-> C) pwd | ls | file sample1.fastq | du -sh ..
+> C) `pwd | ls | file sample1.fastq | du -sh ..`
 >
-> D) pwd; ls; file raw/sample1.fastq; du -sh .
+> D) `pwd; ls; file raw/sample1.fastq; du -sh .`
 >
 > <details>
 > <summary>See the answer</summary>
