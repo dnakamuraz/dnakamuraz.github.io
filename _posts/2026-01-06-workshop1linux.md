@@ -6,7 +6,7 @@ description: Part 1 of the Museomics Workshop
 tags: workshop museomics tutorial
 
 authors:
-  - name: Daniel Nakamura
+  - name: Daniel Y. M. Nakamura
     affiliations:
       name: University of São Paulo
 
@@ -15,14 +15,18 @@ toc:
   - name: Using Linux on Windows
   - name: Basic commands
     subsections:
-      - name: Navegating
-      - name: Reading
-      - name: Writing
+      - name: Navigating the filesystem
+      - name: Managing files and directories
+      - name: Reading and writing text
+      - name: Manipulating text
   - name: Advanced commands
     subsections:
-      - name: Scripts
-      - name: Changing mode
+      - name: Scripts and permissions
+      - name: Loops, conditions, variables
   - name: Installing software
+    subsections:
+      - name: Binaries
+      - name: Environments
 ---
 
 This tutorial is Part 1 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). Because most programs used to assemble historical DNA in museomics and to perform downstream phylogenetic analyses do not provide a graphical user interface (GUI), the goal of this tutorial is to introduce students to the Linux command line.
@@ -73,11 +77,13 @@ sudo apt upgrade
 
 To run Linux in the command line, the user must open the shell, a program that sends the commands from the user to the system. In GNU/Linux, the shell is called Bash (Bourne Again Shell). In Bash, a standard input (*std_in* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*std_out* e.g. assembled contigs or phylogenetic trees).
 
-<div style="border:2px solid rgba(130, 76, 175, 0.8); padding:12px; border-radius:8px; background:#f9fff9">
+<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; border-radius:8px; background:#E7F0FE">
 
 Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, `turing` is the name of the machine, `~` is the current directory, and `\$` indicates the type of user (`$` = normal user, `#` = root/admin).
 
 </div>
+
+The commands are case sensitive (e.g. `echo` is a function, whereas `Echo` or `ECHO` are not). Moreover, pressing "Tab" attempts to complete commands (helpful for lazy users). If the user wants to type multiple commands in a single line, a `;` must be provided between commands
 
 ### Navigating the filesystem
 
@@ -85,23 +91,36 @@ Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, 
 pwd    # show current directory
 ls     # list files
 ls -lh # list files with sizes
+ls -a  # list all files (including hidden files)
 cd ..  # go up one directory
 cd ~   # go to home directory
 ```
 
 > **Exercise 1**
 >
-> Which command list files in the parent directory?
+> In a single line, which commands (1) list files with sizes in the current directory, (2) list all files in the parent directory, (3) go to the parent directory, and (4) show current directory?
 > 
-> A) `ls -lh .`
+> A) `ls -lh .; ls -a ..; cd ..; pwd`
 > 
-> B) `ls -lh ..`
+> B) `ls -lh ..; ls -a .; cd ..; pwd ..`
 > 
-> C) `ls -lh *fas`
+> C) `ls -lh . ls -a .. cd .. pwd`
 > 
-> D) `ls -lh`
+> D) `ls -lh .| ls -a .. | cd .. | pwd`
 > 
 > <details>
 > <summary>See the answer</summary>
-> B) `ls -lh ..`
+> A)
 > </details>
+
+### Managing files and directories
+### Reading and writing text
+### Manipulating text
+
+## Advanced commands
+### Scripts and permissions
+### Loops, conditions, variables
+
+## Installing software
+### Binaries
+### Environments
