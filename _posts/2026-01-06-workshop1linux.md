@@ -125,6 +125,7 @@ du -sh  # size of current directory
 > **Exercise 2**
 > Consider that you are in project/data/raw:
 >
+> ```text
 > project/
 > ├── data/
 > │   ├── raw/
@@ -135,6 +136,7 @@ du -sh  # size of current directory
 > │       └── genes.fasta
 > └── results/
 >     └── tree.nwk
+>```
 >
 > Which single-line command prints the current directory, lists all files in the current directory, identifies the type `fastq`, shows the total disk usage of the directory.
 >  
