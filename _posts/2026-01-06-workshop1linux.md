@@ -63,7 +63,7 @@ Given that servers are unavailable, Dual Boot requires splitting the disk, and v
 
 To install WSL 2, Windows 10 or 11 are required:
 1. Open PowerShell as Administrator.
-2. Run the command "wsl --install".
+2. Run the command `wsl --install`
 3. Restart your computer.
 4. Open Ubuntu, create a Linux username and password.
 5. Inside Ubuntu, run:
@@ -82,6 +82,7 @@ To run Linux from the command line, the user must open a **shell**, a program th
 Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, `turing` is the name of the machine, `~` is the current directory, and `\$` indicates the type of user (`$` = normal user, `#` = root/admin).
 
 </div>
+
 
 In Bash, a standard input (*std_in* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*std_out* e.g. assembled contigs or phylogenetic trees). In addition to standard input and output, programs also produce a standard error (*stderr*), which is typically used for warnings and error messages.
 
