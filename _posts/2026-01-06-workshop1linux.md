@@ -71,10 +71,12 @@ sudo apt upgrade
 
 ## Basic commands
 
-To run Linux in the command line, the user must open the shell, a program that sends the commands from the user to the system. In GNU/Linux, the shell is called Bash (Bourne Again Shell). In shell, a standard input (*std_in* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*std_out* e.g. assembled contigs or phylogenetic trees).
+To run Linux in the command line, the user must open the shell, a program that sends the commands from the user to the system. In GNU/Linux, the shell is called Bash (Bourne Again Shell). In Bash, a standard input (*std_in* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*std_out* e.g. assembled contigs or phylogenetic trees).
 
-<div style="border:2px solidrgb(76, 145, 175); padding:12px; border-radius:8px; background:#f9fff9">
-If the Bash prompt starts with "alan@turing:~$", "alan" is the user name, "turing" is the name of the machine, "~" is the current directory, and "$" indicates the type of user ($ are normal users, whereas # are root/admin users)
+<div style="border:2px solid rgba(130, 76, 175, 0.8); padding:12px; border-radius:8px; background:#f9fff9">
+
+Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, `turing` is the name of the machine, `~` is the current directory, and `\$` indicates the type of user (`$` = normal user, `#` = root/admin).
+
 </div>
 
 ### Navigating the filesystem
