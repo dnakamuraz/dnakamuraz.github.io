@@ -75,9 +75,9 @@ sudo apt upgrade
 
 ## Basic commands
 
-To run Linux from the command line, the user must open a **shell**, a program that sends the commands from the user to the operating system. In GNU/Linux, the most common shell is called Bash (Bourne Again Shell). 
+To run Linux from the command line, the user must open a **shell**, a program that sends the commands from the user to the operating system. In GNU/Linux, the most common shell is called **Bash** (Bourne Again Shell). 
 
-<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin: 16px 0; border-radius:8px; background:#E7F0FE">
+<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
 Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, `turing` is the name of the machine, `~` is the current directory, and `\$` indicates the type of user (`$` = normal user, `#` = root/admin).
 
