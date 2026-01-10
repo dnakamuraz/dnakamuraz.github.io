@@ -123,6 +123,35 @@ du -sh  # size of current directory
 > A)
 > </details>
 
+> **Exercise 2**
+> Consider that you are in project/data/raw:
+>
+> project/
+> ├── data/
+> │   ├── raw/
+> │   │   ├── sample1.fastq
+> │   │   ├── sample2.fastq
+> │   │   └── README
+> │   └── aligned/
+> │       └── genes.fasta
+> └── results/
+>     └── tree.nwk
+>
+> Which single-line command prints the current directory, lists all files in the current directory, identifies the type `fastq`, shows the total disk usage of the directory.
+>  
+> A) pwd; ls; file sample1.fastq; du -sh ..
+>
+> B) pwd; ls -a; file ../sample1.fastq; du -sh data
+>
+> C) pwd | ls | file sample1.fastq | du -sh ..
+>
+> D) pwd; ls; file raw/sample1.fastq; du -sh .
+>
+> <details>
+> <summary>See the answer</summary>
+> A)
+> </details>
+
 ### Managing files and directories
 ### Reading and writing text
 ### Manipulating text
