@@ -77,14 +77,22 @@ To run Linux in the command line, the user must open the shell, a program that s
 If the Bash prompt starts with "alan@turing:~$", "alan" is the user name, "turing" is the name of the machine, "~" is the current directory, and "$" indicates the type of user ($ are normal users, whereas # are root/admin users)
 </div>
 
-### 
+### Navigating the filesystem
+
+```bash
+pwd # show current directory
+```
 
 > **Exercise 1**
 >
 > Which command copies files?
+> 
 > A) `mv`
+> 
 > B) `rm`
+> 
 > C) `cp`
+> 
 > D) `ls`
 > <details>
 > <summary>See the answer</summary>
