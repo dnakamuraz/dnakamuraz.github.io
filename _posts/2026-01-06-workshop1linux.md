@@ -77,12 +77,11 @@ sudo apt upgrade
 
 To run Linux from the command line, the user must open a **shell**, a program that sends the commands from the user to the operating system. In GNU/Linux, the most common shell is called Bash (Bourne Again Shell). 
 
-<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; border-radius:8px; background:#E7F0FE">
+<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin: 16px 0; border-radius:8px; background:#E7F0FE">
 
 Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, `turing` is the name of the machine, `~` is the current directory, and `\$` indicates the type of user (`$` = normal user, `#` = root/admin).
 
 </div>
-
 
 In Bash, a standard input (*std_in* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*std_out* e.g. assembled contigs or phylogenetic trees). In addition to standard input and output, programs also produce a standard error (*stderr*), which is typically used for warnings and error messages.
 
