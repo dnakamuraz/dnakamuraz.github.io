@@ -82,21 +82,26 @@ Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, 
 ### Navigating the filesystem
 
 ```bash
-pwd # show current directory
+pwd    # show current directory
+ls     # list files
+ls -lh # list files with sizes
+cd ..  # go up one directory
+cd ~   # go to home directory
 ```
 
 > **Exercise 1**
 >
-> Which command copies files?
+> Which command list files in the parent directory?
 > 
-> A) `mv`
+> A) `ls -lh .`
 > 
-> B) `rm`
+> B) `ls -lh ..`
 > 
-> C) `cp`
+> C) `ls -lh *fas`
 > 
-> D) `ls`
+> D) `ls -lh`
+> 
 > <details>
 > <summary>See the answer</summary>
-> C) `cp`
+> B) `ls -lh ..`
 > </details>
