@@ -16,7 +16,7 @@ toc:
   - name: Basic commands
     subsections:
       - name: Navigating the filesystem
-      - name: Managing files and directories
+      - name: Managing files and using wildcards
       - name: Reading and writing text
       - name: Manipulating text
   - name: Advanced commands
@@ -79,15 +79,17 @@ To run Linux from the command line, the user must open a **shell**, a program th
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
-Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, `turing` is the name of the machine, `~` is the current directory, and `\$` indicates the type of user (`$` = normal user, `#` = root/admin).
+Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, `turing` is the name of the machine (hostname), `~` is the current directory, and `\$` indicates the type of user (`$` = normal user, `#` = root/admin).
 
 </div>
 
-In Bash, a standard input (*std_in* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*std_out* e.g. assembled contigs or phylogenetic trees). In addition to standard input and output, programs also produce a standard error (*stderr*), which is typically used for warnings and error messages.
+In Bash, a standard input (*stdin* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*stdout* e.g. assembled contigs or phylogenetic trees). In addition to standard input and output, programs also produce a standard error (*stderr*), which is typically used for warnings and error messages.
 
-In Bash, the commands are case sensitive (e.g. `echo` is a valid function, whereas `Echo` or `ECHO` are not). Moreover, pressing the "Tab" key attempts to auto-complete commands and file names (helpful for lazy users). If the user wants to type multiple commands in a single line, a `;` must be provided between commands. Alternatively, the pipe operator (`|`) allows the output of one command to be used directly as the input of another command, enabling the construction of pipelines.
+In Bash, the commands are case sensitive (e.g. `echo` is a valid command, whereas `Echo` or `ECHO` are not). Moreover, pressing the "Tab" key attempts to auto-complete commands and file names (helpful for lazy users). The semicolon `;` executes commands sequentially and independently, whereas the pipe `|` connects the output of one command directly to the input of the next.
 
 ### Navigating the filesystem
+
+When working in Linux, especially in bioinformatics projects, analyses are organized into directories containing raw data, intermediate files, and results. Efficient navigation of the filesystem is therefore essential.
 
 ```bash
 pwd      # show current directory
@@ -102,12 +104,12 @@ cd ~     # go to home directory
 cd /     # go to the root directory
 cd -     # return to the previous directory
 file     # classify a file
-du -sh  # size of current directory
+du -sh   # size of current directory
 ```
 
 > **Exercise 1**
 >
-> In a single line, which commands (1) list files with sizes in the current directory, (2) list all files in the parent directory, (3) go to the parent directory, and (4) show current directory?
+> In a single line, which command sequentially (1) list files with sizes in the current directory, (2) list all files in the parent directory, (3) go to the parent directory, and (4) show current directory?
 > 
 > A) `ls -lh .; ls -a ..; cd ..; pwd`
 > 
@@ -138,9 +140,9 @@ du -sh  # size of current directory
 >     └── tree.nwk
 >```
 >
-> Which single-line command prints the current directory, lists all files in the current directory, identifies the type `fastq`, shows the total disk usage of the directory.
+> Which single-line command prints the current directory, lists all files in the current directory, identifies the file type of sample1.fastq, shows the total disk usage of the directory.
 >  
-> A) `pwd; ls; file sample1.fastq; du -sh ..`
+> A) `pwd; ls -a; file sample1.fastq; du -sh`
 >
 > B) `pwd; ls -a; file ../sample1.fastq; du -sh data`
 >
@@ -153,7 +155,22 @@ du -sh  # size of current directory
 > A)
 > </details>
 
-### Managing files and directories
+### Managing files and using wildcards
+
+Once you can navigate the filesystem, the next essential skill is creating, copying, moving, renaming, and deleting files and directories. These operations are fundamental in bioinformatics, where workflows typically involve organizing raw data, intermediate files, and results into structured directories.
+
+```bash
+cp       # duplicate files
+cp -r    # copy directories
+mkdir    # make a directory
+mkdir -p # create parent directories if necessary
+mv       # move files
+rm       # remove files
+rm -r    # remove directories
+```
+
+In the shell, wildcards and regular-expression–like patterns are used to match groups of files or text efficiently. The asterisk `*` matches any number of characters (including none) and is commonly used to select multiple files at once (e.g., `*.fastq` matches all FASTQ files, and `sample*` matches all files starting with “sample”). The question mark `?` matches exactly one character (e.g., `sample?.fasta` matches sample1.fasta but not sample10.fasta). Square brackets `[]` define character classes, matching one character from a set or range (e.g., `sample[1-3].fastq` matches sample1.fastq, sample2.fastq, and sample3.fastq). Curly braces `{}` enable brace expansion, generating multiple strings rather than matching patterns (e.g., `sample{A,B}.fasta` expands to sampleA.fasta and sampleB.fasta). 
+
 ### Reading and writing text
 ### Manipulating text
 
