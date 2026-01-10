@@ -75,7 +75,7 @@ sudo apt upgrade
 
 ## Basic commands
 
-To run Linux in the command line, the user must open the shell, a program that sends the commands from the user to the system. In GNU/Linux, the shell is called Bash (Bourne Again Shell). In Bash, a standard input (*std_in* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*std_out* e.g. assembled contigs or phylogenetic trees).
+To run Linux from the command line, the user must open a **shell**, a program that sends the commands from the user to the operating system. In GNU/Linux, the most common shell is called Bash (Bourne Again Shell). 
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; border-radius:8px; background:#E7F0FE">
 
@@ -83,17 +83,26 @@ Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, 
 
 </div>
 
-The commands are case sensitive (e.g. `echo` is a function, whereas `Echo` or `ECHO` are not). Moreover, pressing "Tab" attempts to complete commands (helpful for lazy users). If the user wants to type multiple commands in a single line, a `;` must be provided between commands
+In Bash, a standard input (*std_in* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*std_out* e.g. assembled contigs or phylogenetic trees). In addition to standard input and output, programs also produce a standard error (*stderr*), which is typically used for warnings and error messages.
+
+In Bash, the commands are case sensitive (e.g. `echo` is a valid function, whereas `Echo` or `ECHO` are not). Moreover, pressing the "Tab" key attempts to auto-complete commands and file names (helpful for lazy users). If the user wants to type multiple commands in a single line, a `;` must be provided between commands. Alternatively, the pipe operator (`|`) allows the output of one command to be used directly as the input of another command, enabling the construction of pipelines.
 
 ### Navigating the filesystem
 
 ```bash
-pwd    # show current directory
-ls     # list files
-ls -lh # list files with sizes
-ls -a  # list all files (including hidden files)
-cd ..  # go up one directory
-cd ~   # go to home directory
+pwd      # show current directory
+ls       # list files
+ls -lh   # list files with sizes
+ls -a    # list all files (including hidden files)
+ls -lhS  # list files sorted by size
+ls -ltr  # list files sorted by modification time
+cd ..    # go up one directory
+cd ../.. # go up two directories
+cd ~     # go to home directory
+cd /     # go to the root directory
+cd -     # return to the previous directory
+file     # classify a file
+du -sh  # size of current directory
 ```
 
 > **Exercise 1**
