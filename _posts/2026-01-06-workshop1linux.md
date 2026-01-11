@@ -125,12 +125,12 @@ du -sh   # size of current directory
 > </details>
 
 > **Exercise 2**
-> Consider that you are in project/data/raw:
+> Consider that you are in project/data/ex2:
 >
 > ```text
 > project/
 > ├── data/
-> │   ├── raw/
+> │   ├── ex2/
 > │   │   ├── sample1.fastq
 > │   │   ├── sample2.fastq
 > │   │   └── README
@@ -186,6 +186,26 @@ In the shell, wildcards and regular-expression–like patterns are used to match
 > <details>
 > <summary>See the answer</summary>
 > mkdir raw; mv *.fastq raw/
+> </details>
+
+> **Exercise 4**
+> You are working in the directory project/data/ex3, which contains the following files: 
+> 
+>```text
+> sample1_R1.fastq
+> sample1_R2.fastq
+> sample2_R1.fastq
+> sample2_R2.fastq
+> control_R1.fastq
+> control_R2.fastq
+> notes.txt
+>```
+>
+> In a single command, (1) create the directory analysis/reads if it does not exist, (2) copy the FASTQ files from samples 1 and 2 (both R1 and R2) into analysis/reads.
+>
+> <details>
+> <summary>See the answer</summary>
+> mkdir -p analysis/reads; cp sample[1-2]_R*.fastq analysis/reads/
 > </details>
 
 ### Reading and writing text
