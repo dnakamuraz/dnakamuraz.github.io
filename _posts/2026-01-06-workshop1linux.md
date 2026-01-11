@@ -107,8 +107,6 @@ file     # classify a file
 du -sh   # size of current directory
 ```
 
-<div style="font-size: 0.9em;">
-
 > **Exercise 1**
 >
 > In a single line, which command sequentially (1) list files with sizes in the current directory, (2) list all files in the parent directory, (3) go to the parent directory, and (4) show current directory?
@@ -125,10 +123,6 @@ du -sh   # size of current directory
 > <summary>See the answer</summary>
 > A)
 > </details>
-
-</div>
-
-<div style="font-size: 0.9em;">
 
 > **Exercise 2**
 > Consider that you are in project/data/raw:
@@ -161,8 +155,6 @@ du -sh   # size of current directory
 > A)
 > </details>
 
-</div>
-
 ### Managing files and using wildcards
 
 Once you can navigate the filesystem, the next essential skill is creating, copying, moving, renaming, and deleting files and directories. These operations are fundamental in bioinformatics, where workflows typically involve organizing raw data, intermediate files, and results into structured directories.
@@ -180,8 +172,6 @@ rm -ri   # remove directory asking for confirmation
 
 In the shell, wildcards and regular-expression–like patterns are used to match groups of files or text efficiently. The asterisk `*` matches any number of characters (including none) and is commonly used to select multiple files at once (e.g., `*.fastq` matches all FASTQ files, and `sample*` matches all files starting with “sample”). The question mark `?` matches exactly one character (e.g., `sample?.fasta` matches sample1.fasta but not sample10.fasta). Square brackets `[]` define character classes, matching one character from a set or range (e.g., `sample[1-3].fastq` matches sample1.fastq, sample2.fastq, and sample3.fastq). Curly braces `{}` enable brace expansion, generating multiple strings rather than matching patterns (e.g., `sample{A,B}.fasta` expands to sampleA.fasta and sampleB.fasta). 
 
-<div style="font-size: 0.9em;">
-
 > **Exercise 3**
 > You are in a directory containing:
 >
@@ -197,8 +187,6 @@ In the shell, wildcards and regular-expression–like patterns are used to match
 > <summary>See the answer</summary>
 > mkdir raw; mv *.fastq raw/
 > </details>
-
-</div>
 
 ### Reading and writing text
 ### Manipulating text
