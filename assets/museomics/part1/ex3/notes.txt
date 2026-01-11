@@ -1,0 +1,3 @@
+the fastq reads were simulated with art_illumina. thus, they are not hDNA reads
+
+turtles are nice

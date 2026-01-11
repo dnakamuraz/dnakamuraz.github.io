@@ -125,28 +125,25 @@ du -sh   # size of current directory
 > </details>
 
 > **Exercise 2**
-> Consider that you are in project/data/ex2:
+> Consider that you are in museomics/part1/ex2:
 >
 > ```text
-> project/
-> ├── data/
-> │   ├── ex2/
-> │   │   ├── sample1.fastq
-> │   │   ├── sample2.fastq
-> │   │   └── README
-> │   └── aligned/
-> │       └── genes.fasta
-> └── results/
->     └── tree.nwk
+> museomics/
+> └── part1/
+>     ├── ex2/
+>     │   ├── sample1.fq
+>     │   ├── sample2.fq
+>     │   └── consensus.fas
+>     └── ex3/       
 >```
 >
-> Which single-line command prints the current directory, lists all files in the current directory, identifies the file type of sample1.fastq, shows the total disk usage of the directory.
+> Which single-line command prints the current directory, lists all files in the current directory, identifies the file type of sample1.fq, shows the total disk usage of the directory.
 >  
-> A) `pwd; ls -a; file sample1.fastq; du -sh`
+> A) `pwd; ls -a; file sample1.fq; du -sh`
 >
-> B) `pwd; ls -a; file ../sample1.fastq; du -sh data`
+> B) `pwd; ls -a; file ../sample1.fq; du -sh data`
 >
-> C) `pwd | ls | file sample1.fastq | du -sh ..`
+> C) `pwd | ls | file sample1.fq | du -sh ..`
 >
 > D) `pwd; ls; file raw/sample1.fastq; du -sh .`
 >
@@ -169,43 +166,50 @@ rm       # remove files
 rm -r    # remove directories
 rm -ri   # remove directory asking for confirmation
 ```
+<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
-In the shell, wildcards and regular-expression–like patterns are used to match groups of files or text efficiently. The asterisk `*` matches any number of characters (including none) and is commonly used to select multiple files at once (e.g., `*.fastq` matches all FASTQ files, and `sample*` matches all files starting with “sample”). The question mark `?` matches exactly one character (e.g., `sample?.fasta` matches sample1.fasta but not sample10.fasta). Square brackets `[]` define character classes, matching one character from a set or range (e.g., `sample[1-3].fastq` matches sample1.fastq, sample2.fastq, and sample3.fastq). Curly braces `{}` enable brace expansion, generating multiple strings rather than matching patterns (e.g., `sample{A,B}.fasta` expands to sampleA.fasta and sampleB.fasta). 
+Tip: Wildcards are used to match groups of files or text efficiently. The asterisk `*` matches any number of characters (including none; e.g. `*.fastq` matches all FASTQ files, and `sample*` matches all files starting with “sample”). The question mark `?` matches exactly one character (e.g. `sample?.fasta` matches sample1.fasta but not sample10.fasta). Square brackets `[]` define character classes, matching one character from a set or range (e.g., `sample[1-3].fastq` matches sample1.fastq, sample2.fastq, and sample3.fastq). Curly braces `{}` enable brace expansion, generating multiple strings rather than matching patterns (e.g., `sample{A,B}.fasta` expands to sampleA.fasta and sampleB.fasta). 
+
+</div>
 
 > **Exercise 3**
-> You are in a directory containing:
+> You are in museomics/part1/ex3, a directory containing:
 >
 > ```text
-> sample1.fastq
-> sample2.fastq
+> consensus.fas
+> sample1.fq
+> sample2.fq
 > notes.txt
 >```
 >
-> Write a single command line that: (1) Creates a directory called `raw`, (2) moves all fastq files into `raw`. 
+> Write a single command line that: (1) Creates a directory called `raw`, (2) moves all FASTQ (= fq) files into `raw`. 
 >
 > <details>
 > <summary>See the answer</summary>
-> mkdir raw; mv *.fastq raw/
+> mkdir raw; mv *.fq raw/
 > </details>
 
 > **Exercise 4**
-> You are working in the directory project/data/ex3, which contains the following files: 
+> You are working in the directory museomics/part1/ex4, which contains the following files: 
 > 
 >```text
-> sample1_R1.fastq
-> sample1_R2.fastq
-> sample2_R1.fastq
-> sample2_R2.fastq
-> control_R1.fastq
-> control_R2.fastq
+> consensus.fas
+> sample1_R1.fq
+> sample1_R2.fq
+> sample2_R1.fq
+> sample2_R2.fq
+> sample3_R1.fq
+> sample3_R2.fq
+> control_R1.fq
+> control_R2.fq
 > notes.txt
 >```
 >
-> In a single command, (1) create the directory analysis/reads if it does not exist, (2) copy the FASTQ files from samples 1 and 2 (both R1 and R2) into analysis/reads.
+> In a single command, (1) create the directories analysis/reads and analysis/reads2 if it does not exist, (2) copy the FASTQ files from samples 1 and 2 (both R1 and R2) into analysis/reads, and (3) copy all files R2 into analysis/reads2.
 >
 > <details>
 > <summary>See the answer</summary>
-> mkdir -p analysis/reads; cp sample[1-2]_R*.fastq analysis/reads/
+> mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[12]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
 > </details>
 
 ### Reading and writing text
