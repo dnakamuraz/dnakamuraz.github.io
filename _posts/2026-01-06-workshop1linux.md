@@ -17,8 +17,7 @@ toc:
     subsections:
       - name: Navigating the filesystem
       - name: Managing files and using wildcards
-      - name: Reading and writing text
-      - name: Manipulating text
+      - name: Reading, writing, and selecting text
   - name: Advanced commands
     subsections:
       - name: Scripts and permissions
@@ -205,15 +204,47 @@ Tip: Wildcards are used to match groups of files or text efficiently. The asteri
 > notes.txt
 >```
 >
-> In a single command, (1) create the directories analysis/reads and analysis/reads2 if it does not exist, (2) copy the FASTQ files from samples 1 and 2 (both R1 and R2) into analysis/reads, and (3) copy all files R2 into analysis/reads2.
+> In a single command, (1) create the directories analysis/reads and analysis/reads2 if it does not exist, (2) copy the FASTQ files from samples 1 and 3 (both R1 and R2) into analysis/reads, and (3) copy all files R2 into analysis/reads2.
 >
 > <details>
 > <summary>See the answer</summary>
-> mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[12]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
+> mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
 > </details>
 
-### Reading and writing text
-### Manipulating text
+### Reading, writing, and selecting text
+
+Bioinformatics workflows rely on text files, including FASTA, FASTQ, SAM/BAM (text/binary), VCF, and comma- and tab-delimited tables. Linux provides powerful command-line tools to view these large text files.
+
+```bash
+cat        # print the file
+echo       # print strings
+less       # view files safely
+head       # print the first 10 lines
+head -n 20 # print the first 20 lines
+tail       # print the last 10 lines
+tail -n 20 # print the last 20 lines
+wc         # count lines, words, and characters
+wc -l      # count lines
+wc -w      # count words
+wc -c      # count bytes
+wc -m      # count characters
+zcat       # print zipped files
+```
+
+<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
+
+Tip: Avoid using `cat` and `zcat` for large files due to memory limitation. Instead, use `less` or `zcat | head`.
+
+</div>
+
+```bash
+grep
+cut
+sort
+uniq
+nano
+vi
+```
 
 ## Advanced commands
 ### Scripts and permissions
