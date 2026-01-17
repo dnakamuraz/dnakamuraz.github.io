@@ -219,6 +219,7 @@ Bioinformatics workflows rely on text files, including FASTA, FASTQ, SAM/BAM (te
 cat        # print the file
 echo       # print strings
 less       # view files safely
+less -N    # view files with line numbers
 head       # print the first 10 lines
 head -n 20 # print the first 20 lines
 tail       # print the last 10 lines
@@ -237,14 +238,32 @@ Tip: Avoid using `cat` and `zcat` for large files due to memory limitation. Inst
 
 </div>
 
+In addition to text visualization, Linux presents commands to manipulate files.
+
 ```bash
-grep
-cut
-sort
-uniq
-nano
-vi
+grep     # search for patterns
+grep -i  # search for patterns ignoring case
+grep -v  # inverted search (excluding patterns)
+grep "ˆ" # match beggining of line 
+grep "$" # match end of line
+cut      # extract specific columns from tables
+cut -d   # specify delimiter (default: TAB)
+sort     # sort lines alphabetically or numerically
+sort -r  # sort using reverse order
+sort -k  # sort by column
+sort -t  # specify delimiter
+sort -u  # unique lines
+uniq     # deduplicate lines (requires sorted input)
+nano     # beginner-friendly text editor
+vi       # advanced text editor
 ```
+
+> **Exercise 5**
+> 
+> <details>
+> <summary>See the answer</summary>
+> AAA
+> </details>
 
 ## Advanced commands
 ### Scripts and permissions
