@@ -263,12 +263,12 @@ vi       # advanced text editor
 > **Exercise 5**
 > You are working in the directory museomics/part1/ex5, which contains the FASTA file called `genes.fasta`. 
 >```text
->COI_Homo_sapiens
->ATGCTAGCTAGCTAGC
->COI_Mus_musculus
->ATGCTAGCTAGCTAGC
->cytb_Homo_sapiens
->ATGCGGATCGATCGTA
+> > COI_Homo_sapiens
+> ATGCTAGCTAGCTAGC
+> > COI_Mus_musculus
+> ATGCTAGCTAGCTAGC
+> > cytb_Homo_sapiens
+> ATGCGGATCGATCGTA
 > ```
 > Which commands should we use to (1) list only the FASTA headers, (2) count how many sequences are in the file, and (3) show only the headers that contain the word Homo, ignoring case. 
 > 
