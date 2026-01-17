@@ -119,11 +119,22 @@ du -sh   # size of current directory
 > C) `ls -lh . ls -a .. cd .. pwd`
 > 
 > D) `ls -lh .| ls -a .. | cd .. | pwd`
-> 
-> <details>
-> <summary>See the answer</summary>
-> A)
-> </details>
+
+<button onclick="check()">Show answer</button>
+<div id="answer" style="display:none;">
+A
+</div>
+
+<script>
+function check() {
+  const pwd = prompt("Password:");
+  if (pwd === "radagast") {
+    document.getElementById("answer").style.display = "block";
+  } else {
+    alert("Wrong password");
+  }
+}
+</script>
 
 > **Exercise 2**
 > Consider that you are in museomics/part1/ex2:
@@ -147,11 +158,22 @@ du -sh   # size of current directory
 > C) `pwd | ls | file sample1.fq | du -sh ..`
 >
 > D) `pwd; ls; file raw/sample1.fastq; du -sh .`
->
-> <details>
-> <summary>See the answer</summary>
-> A)
-> </details>
+
+<button onclick="check()">Show answer</button>
+<div id="answer" style="display:none;">
+A
+</div>
+
+<script>
+function check() {
+  const pwd = prompt("Password:");
+  if (pwd === "radagast") {
+    document.getElementById("answer").style.display = "block";
+  } else {
+    alert("Wrong password");
+  }
+}
+</script>
 
 ### Managing files and using wildcards
 
@@ -185,10 +207,22 @@ Tip: Wildcards are used to match groups of files or text efficiently. The asteri
 >
 > Write a single command line that: (1) Creates a directory called `raw`, (2) moves all FASTQ (= fq) files into `raw`. 
 >
-> <details>
-> <summary>See the answer</summary>
-> mkdir raw; mv *.fq raw/
-> </details>
+
+<button onclick="check()">Show answer</button>
+<div id="answer" style="display:none;">
+mkdir raw; mv *.fq raw/
+</div>
+
+<script>
+function check() {
+  const pwd = prompt("Password:");
+  if (pwd === "radagast") {
+    document.getElementById("answer").style.display = "block";
+  } else {
+    alert("Wrong password");
+  }
+}
+</script>
 
 > **Exercise 4**
 > You are working in the directory museomics/part1/ex4, which contains the following files: 
@@ -208,10 +242,21 @@ Tip: Wildcards are used to match groups of files or text efficiently. The asteri
 >
 > In a single command, (1) create the directories analysis/reads and analysis/reads2 if it does not exist, (2) copy the FASTQ files from samples 1 and 3 (both R1 and R2) into analysis/reads, and (3) copy all files R2 into analysis/reads2.
 >
-> <details>
-> <summary>See the answer</summary>
-> mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
-> </details>
+<button onclick="check()">Show answer</button>
+<div id="answer" style="display:none;">
+mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
+</div>
+
+<script>
+function check() {
+  const pwd = prompt("Password:");
+  if (pwd === "radagast") {
+    document.getElementById("answer").style.display = "block";
+  } else {
+    alert("Wrong password");
+  }
+}
+</script>
 
 ### Reading, writing, and selecting text
 
@@ -273,11 +318,6 @@ vi            # advanced text editor
 > ATGCGGATCGATCGTA
 > ```
 > Which commands should we use to (1) list only the FASTA headers, (2) count how many sequences are in the file, and (3) show only the headers that contain the word Homo, ignoring case. 
-> 
-> <details>
-> <summary>See the answer</summary>
-> grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta
-> </details>
 
 <button onclick="check()">Show answer</button>
 <div id="answer" style="display:none;">
@@ -287,7 +327,7 @@ grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta
 <script>
 function check() {
   const pwd = prompt("Password:");
-  if (pwd === "bio123") {
+  if (pwd === "radagast") {
     document.getElementById("answer").style.display = "block";
   } else {
     alert("Wrong password");
