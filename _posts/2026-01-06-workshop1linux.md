@@ -18,10 +18,6 @@ toc:
       - name: Navigating the filesystem
       - name: Managing files and using wildcards
       - name: Reading, writing, and selecting text
-  - name: Advanced commands
-    subsections:
-      - name: Scripts and permissions
-      - name: Loops, conditions, variables
   - name: Installing software
     subsections:
       - name: Binaries
@@ -242,6 +238,7 @@ function check() {
 >
 > In a single command, (1) create the directories analysis/reads and analysis/reads2 if it does not exist, (2) copy the FASTQ files from samples 1 and 3 (both R1 and R2) into analysis/reads, and (3) copy all files R2 into analysis/reads2.
 >
+
 <button onclick="check()">Show answer</button>
 <div id="answer" style="display:none;">
 mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
@@ -308,7 +305,7 @@ vi            # advanced text editor
 ```
 
 > **Exercise 5**
-> You are working in the directory museomics/part1/ex5, which contains the FASTA file called `genes.fasta`. 
+> You are working in the directory museomics/part1/ex5, which contains the FASTA file called `genes.fasta`. The first three sequences are:
 >```text
 > > COI_Homo_sapiens
 > ATGCTAGCTAGCTAGC
@@ -317,11 +314,11 @@ vi            # advanced text editor
 > > cytb_homo_sapiens
 > ATGCGGATCGATCGTA
 > ```
-> Which commands should we use to (1) list only the FASTA headers, (2) count how many sequences are in the file, and (3) show only the headers that contain the word Homo, ignoring case. 
+> There are dozens of sequences, so counting or manipulating them manually is too laborious. Which commands should we use to (1) list only the FASTA headers, (2) count how many sequences are in the file, and (3) count how many sequences contain the word Homo, ignoring case. 
 
 <button onclick="check()">Show answer</button>
 <div id="answer" style="display:none;">
-grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta
+grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta | wc -l
 </div>
 
 <script>
@@ -335,17 +332,44 @@ function check() {
 }
 </script>
 
-
 > **Exercise 6**
-> 
-> <details>
-> <summary>See the answer</summary>
-> AAA
-> </details>
+> You are working in the directory museomics/part1/ex6, which contains the FASTQ file called `reads.fq`. The first four reads are:
+> ```text
+> @read003
+> atGCTAGCtAGC
+> +
+> IIIIIIIIIIII
+> @read002_LOWQUAL
+> atgctagnnnn
+> +
+> !!!!!IIIII!!
+> @read003
+> atGCTAGCtAGC
+> +
+> IIIIIIIIIIII
+> @read004_LOWQUAL
+> ATGCGTAGCTAG
+> +
+> !!!!!!!IIIII
+> ```
+> (1) Remove all reads marked as LOWQUAL (remove the entire read, not only the header), (2) deduplicate sequences, and (3) convert all nucleotides to uppercase.
+>
 
-## Advanced commands
-### Scripts and permissions
-### Loops, conditions, variables
+<button onclick="check()">Show answer</button>
+<div id="answer" style="display:none;">
+AA
+</div>
+
+<script>
+function check() {
+  const pwd = prompt("Password:");
+  if (pwd === "radagast") {
+    document.getElementById("answer").style.display = "block";
+  } else {
+    alert("Wrong password");
+  }
+}
+</script>
 
 ## Installing software
 ### Binaries
