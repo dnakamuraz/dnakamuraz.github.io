@@ -30,6 +30,8 @@ toc:
 
 This tutorial is Part 1 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). Because most programs used to assemble historical DNA in museomics and to perform downstream phylogenetic analyses do not provide a graphical user interface (GUI), the goal of this tutorial is to introduce students to the Linux command line.
 
+Resources for this tutorial can be found **here**.
+
 ## What is Linux? 
 
 Linux was created in 1991 by Linus Torvalds (1969, Finland) as a free and open-source kernel that controls CPU, manages memory, handles files, and communicates with hardware. However, kernels are not operating systems (i.e. Linux is not like Windows and macOS). In parallel with Linux, the GNU Project was iniciated by Richard Stallman in 1983 to include command-line tools, compilers, libraries, and shells. As such, most systems commonly referred to as "Linux" should be better called as "GNU/Linux". 
@@ -259,6 +261,23 @@ vi       # advanced text editor
 ```
 
 > **Exercise 5**
+> You are working in the directory museomics/part1/ex5, which contains the FASTA file called `genes.fasta`. 
+>```text
+>COI_Homo_sapiens
+>ATGCTAGCTAGCTAGC
+>COI_Mus_musculus
+>ATGCTAGCTAGCTAGC
+>cytb_Homo_sapiens
+>ATGCGGATCGATCGTA
+> ```
+> Which commands should we use to (1) list only the FASTA headers, (2) count how many sequences are in the file, and (3) show only the headers that contain the word Homo, ignoring case. 
+> 
+> <details>
+> <summary>See the answer</summary>
+> grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta
+> </details>
+
+> **Exercise 6**
 > 
 > <details>
 > <summary>See the answer</summary>
