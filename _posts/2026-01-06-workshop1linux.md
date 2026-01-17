@@ -243,21 +243,23 @@ Tip: Avoid using `cat` and `zcat` for large files due to memory limitation. Inst
 In addition to text visualization, Linux presents commands to manipulate files.
 
 ```bash
-grep     # search for patterns
-grep -i  # search for patterns ignoring case
-grep -v  # inverted search (excluding patterns)
-grep "ˆ" # match beggining of line 
-grep "$" # match end of line
-cut      # extract specific columns from tables
-cut -d   # specify delimiter (default: TAB)
-sort     # sort lines alphabetically or numerically
-sort -r  # sort using reverse order
-sort -k  # sort by column
-sort -t  # specify delimiter
-sort -u  # unique lines
-uniq     # deduplicate lines (requires sorted input)
-nano     # beginner-friendly text editor
-vi       # advanced text editor
+grep          # search for patterns
+grep -i       # search for patterns ignoring case
+grep -v       # inverted search (excluding patterns)
+grep "ˆ"      # match beggining of line 
+grep "$"      # match end of line
+cut           # extract specific columns from tables
+cut -d        # specify delimiter (default: TAB)
+sed 's//g'    # substitute 's/pattern/new_pattern/g'
+sed -i 's//g' # substitute within the file (irreversible)
+sort          # sort lines alphabetically or numerically
+sort -r       # sort using reverse order
+sort -k       # sort by column
+sort -t       # specify delimiter
+sort -u       # unique lines
+uniq          # deduplicate lines (requires sorted input)
+nano          # beginner-friendly text editor
+vi            # advanced text editor
 ```
 
 > **Exercise 5**
@@ -267,7 +269,7 @@ vi       # advanced text editor
 > ATGCTAGCTAGCTAGC
 > > COI_Mus_musculus
 > ATGCTAGCTAGCTAGC
-> > cytb_Homo_sapiens
+> > cytb_homo_sapiens
 > ATGCGGATCGATCGTA
 > ```
 > Which commands should we use to (1) list only the FASTA headers, (2) count how many sequences are in the file, and (3) show only the headers that contain the word Homo, ignoring case. 
@@ -276,6 +278,23 @@ vi       # advanced text editor
 > <summary>See the answer</summary>
 > grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta
 > </details>
+
+<button onclick="check()">Show answer</button>
+<div id="answer" style="display:none;">
+grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta
+</div>
+
+<script>
+function check() {
+  const pwd = prompt("Password:");
+  if (pwd === "bio123") {
+    document.getElementById("answer").style.display = "block";
+  } else {
+    alert("Wrong password");
+  }
+}
+</script>
+
 
 > **Exercise 6**
 > 
