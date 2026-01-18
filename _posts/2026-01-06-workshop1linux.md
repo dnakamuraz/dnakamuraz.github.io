@@ -411,10 +411,14 @@ In addition to binaries, most programs in bioinformatics are available in Conda,
 Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 3 Gb containing hundreds of packages for data science) and Miniconda (a cleaner Conda distribution of ca. 70 Mb containing only Python and a few libraries). Bioconda is not a Conda distribution, but a repository hosting most bioinformatics software.
 
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh # install conda
-bash ~/Miniconda3-latest-Linux-x86_64.sh # run the installer
-source ~/.bashrc # re-start shell
+# install conda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh 
+source ~/.bashrc 
 conda --version
+# install possible dependencies of java for fastqc
+sudo apt update
+sudo apt install -y libxtst libxrender1 libxi6 libxrandr2 libxinerama1 libxcursor1
 ```
 
 TNT and PhyG are not available in Bioconda. In contrast, FASTQC v.0.12.1, Cutadapt v.2.6, Tally (from Reaper v.16.098), samtools v.1.23, and bamtools v.2.5.3 are available. These packages will be installed in the conda environment called `museomics`. 
