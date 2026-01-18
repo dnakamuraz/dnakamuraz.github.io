@@ -154,13 +154,13 @@ Tip: The current directory is indicated by a single dot `.`, whereas the parent 
 > C) `pwd | ls | file sample1.fq | du -sh ..`
 >
 > D) `pwd; ls; file raw/sample1.fastq; du -sh .`
-
-<details>
-<summary>See the answer</summary>
-
-A
-
-</details>
+>
+><details>
+><summary>See the answer</summary>
+>
+>A
+>
+></details>
 
 ### Managing files and using wildcards
 
@@ -195,13 +195,12 @@ Tip: Wildcards are used to match groups of files or text efficiently. The asteri
 >
 > Write a single command line that: (1) Creates a directory called `raw`, (2) moves all FASTQ (= fq) files into `raw`. 
 >
-
-<details>
-<summary>See the answer</summary>
-
-mkdir raw; mv *.fq raw/
-
-</details>
+><details>
+><summary>See the answer</summary>
+>
+>mkdir raw; mv *.fq raw/
+>
+></details>
 
 >
 > **Exercise 4**
@@ -222,13 +221,12 @@ mkdir raw; mv *.fq raw/
 >
 > In a single command, (1) create the directories analysis/reads and analysis/reads2 if it does not exist, (2) copy the FASTQ files from samples 1 and 3 (both R1 and R2) into analysis/reads, and (3) copy all files R2 into analysis/reads2.
 >
-
-<details>
-<summary>See the answer</summary>
-
-mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
-
-</details>
+><details>
+><summary>See the answer</summary>
+>
+>mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
+>
+></details>
 
 ### Reading, writing, and selecting text
 
@@ -296,15 +294,15 @@ vi                     # advanced text editor
 > ATGCGGATCGATCGTA
 > ```
 > There are dozens of sequences, so counting or manipulating them manually is too laborious. Which commands should we use to (1) list only the FASTA headers, (2) count how many sequences are in the file, and (3) count how many sequences contain the word Homo, ignoring case. 
-
-<details>
-<summary>Show answer</summary>
-
-grep "^>" genes.fasta <br>
-grep "^>" genes.fasta | wc -l <br>
-grep -i "homo" genes.fasta | wc -l
-
-</details>
+>
+><details>
+><summary>Show answer</summary>
+>
+>grep "^>" genes.fasta <br>
+>grep "^>" genes.fasta | wc -l <br>
+>grep -i "homo" genes.fasta | wc -l
+>
+></details>
 
 >
 > **Exercise 6**
@@ -329,19 +327,18 @@ grep -i "homo" genes.fasta | wc -l
 > ```
 > (1) Remove all reads marked as LOWQUAL (remove the entire read, not only the header), (2) deduplicate sequences, and (3) convert all nucleotides to uppercase.
 >
-
-<details>
-<summary>Show answer</summary>
-
-(1) cat reads.fq | paste - - - - | grep -v "LOWQUAL" <br>
-(2) cat reads.fq | paste - - - - | sort -u <br>
-(3) cat reads.fq | tr actgn ACTGN 
-
-Given that solution for the third task also replaces actg in the headers, a better solution (only works in Linux) is: <br>
-
-(3) cat reads.fq | sed '2~4 y/actgn/ACTGN/'
-
-</details>
+><details>
+><summary>Show answer</summary>
+>
+>(1) cat reads.fq | paste - - - - | grep -v "LOWQUAL" <br>
+>(2) cat reads.fq | paste - - - - | sort -u <br>
+>(3) cat reads.fq | tr actgn ACTGN 
+>
+>Given that solution for the third task also replaces actg in the headers, a better solution (only works in Linux) is: <br>
+>
+>(3) cat reads.fq | sed '2~4 y/actgn/ACTGN/'
+>
+></details>
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
