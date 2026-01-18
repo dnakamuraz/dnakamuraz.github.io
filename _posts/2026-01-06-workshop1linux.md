@@ -22,6 +22,7 @@ toc:
     subsections:
       - name: Binaries
       - name: Environments
+      - name: Other methods
 ---
 
 This tutorial is Part 1 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). Because most programs used to assemble historical DNA in museomics and to perform downstream phylogenetic analyses do not provide a graphical user interface (GUI), the goal of this tutorial is to introduce students to the Linux command line.
@@ -86,11 +87,11 @@ In Bash, the commands are case sensitive (e.g. `echo` is a valid command, wherea
 
 ### Navigating the filesystem
 
-When working in Linux, especially in bioinformatics projects, analyses are organized into directories containing raw data, intermediate files, and results. Efficient navigation of the filesystem is therefore essential.
+When working in Linux, especially in bioinformatics projects, analyses are organized into directories containing raw data, intermediate files, and results. Efficient navigation of the filesystem is therefore essential. 
 
 ```bash
 pwd      # show current directory
-ls       # list files
+ls .     # list files in the current directory
 ls -lh   # list files with sizes
 ls -a    # list all files (including hidden files)
 ls -lhS  # list files sorted by size
@@ -103,6 +104,12 @@ cd -     # return to the previous directory
 file     # classify a file
 du -sh   # size of current directory
 ```
+
+<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
+
+Tip: The current directory is indicated by a single dot `.`, whereas the parent directory is indicated by two dots `..`. The home directory is indicated by `~` and the root by `/`.
+
+</div>
 
 > **Exercise 1**
 >
@@ -176,14 +183,14 @@ function check() {
 Once you can navigate the filesystem, the next essential skill is creating, copying, moving, renaming, and deleting files and directories. These operations are fundamental in bioinformatics, where workflows typically involve organizing raw data, intermediate files, and results into structured directories.
 
 ```bash
-cp       # duplicate files
-cp -r    # copy directories
-mkdir    # make a directory
-mkdir -p # create parent directories if necessary
-mv       # move files
-rm       # remove files
-rm -r    # remove directories
-rm -ri   # remove directory asking for confirmation
+cp file .         # duplicate files to the current directory
+cp -r directory . # copy a directory to the current directory
+mkdir new_dir     # make a new directory called new_dir
+mkdir -p new/dir  # create parent directories if necessary
+mv ../file .      # move files
+rm file           # remove files
+rm -r directory   # remove directories
+rm -ri directory  # remove directory asking for confirmation
 ```
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
@@ -260,20 +267,23 @@ function check() {
 Bioinformatics workflows rely on text files, including FASTA, FASTQ, SAM/BAM (text/binary), VCF, and comma- and tab-delimited tables. Linux provides powerful command-line tools to view these large text files.
 
 ```bash
-cat        # print the file
-echo       # print strings
-less       # view files safely
-less -N    # view files with line numbers
-head       # print the first 10 lines
-head -n 20 # print the first 20 lines
-tail       # print the last 10 lines
-tail -n 20 # print the last 20 lines
-wc         # count lines, words, and characters
-wc -l      # count lines
-wc -w      # count words
-wc -c      # count bytes
-wc -m      # count characters
-zcat       # print zipped files
+cat file              # print the file
+echo hello            # print strings
+less file             # view files safely
+less -N file          # view files with line numbers
+head file             # print the first 10 lines
+head -n 20 file       # print the first 20 lines
+paste file1 file2     # merge two files
+paste - -             # merge each two lines from stdin
+tail file             # print the last 10 lines
+tail -n 20 file       # print the last 20 lines
+wc file               # count lines, words, and characters
+wc -l file            # count lines
+wc -w file            # count words
+wc -c file            # count bytes
+wc -m file            # count characters
+zcat file             # print gzipped files in linux
+gzcat file            # print gzipped files in macOS
 ```
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
@@ -285,23 +295,25 @@ Tip: Avoid using `cat` and `zcat` for large files due to memory limitation. Inst
 In addition to text visualization, Linux presents commands to manipulate files.
 
 ```bash
-grep          # search for patterns
-grep -i       # search for patterns ignoring case
-grep -v       # inverted search (excluding patterns)
-grep "ˆ"      # match beggining of line 
-grep "$"      # match end of line
-cut           # extract specific columns from tables
-cut -d        # specify delimiter (default: TAB)
-sed 's//g'    # substitute 's/pattern/new_pattern/g'
-sed -i 's//g' # substitute within the file (irreversible)
-sort          # sort lines alphabetically or numerically
-sort -r       # sort using reverse order
-sort -k       # sort by column
-sort -t       # specify delimiter
-sort -u       # unique lines
-uniq          # deduplicate lines (requires sorted input)
-nano          # beginner-friendly text editor
-vi            # advanced text editor
+grep                   # search for patterns
+grep -i                # search for patterns ignoring case
+grep -v                # inverted search (excluding patterns)
+grep "ˆ"               # match beggining of line 
+grep "$"               # match end of line
+cut                    # extract specific columns from tables
+cut -d                 # specify delimiter (default: TAB)
+sed 's//g'             # substitute 's/pattern/new_pattern/g'
+sed -i 's//g'          # substitute within the file (irreversible)
+sed '1~3 y/actg/ACTG/' # substitute actg by ACTG in lines 1 + every 3 lines (only works in GNU/Linux, not macOS)
+sort                   # sort lines alphabetically or numerically
+sort -r                # sort using reverse order
+sort -k                # sort by column
+sort -t                # specify delimiter
+sort -u                # unique lines
+tr acgt ACGT           # translate each character in set1 to each character in set2
+uniq                   # deduplicate lines (requires sorted input)
+nano                   # beginner-friendly text editor
+vi                     # advanced text editor
 ```
 
 > **Exercise 5**
@@ -318,7 +330,9 @@ vi            # advanced text editor
 
 <button onclick="check()">Show answer</button>
 <div id="answer" style="display:none;">
-grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta | wc -l
+(1) grep "^>" genes.fasta
+(2) grep "^>" genes.fasta | wc -l
+(3) grep -i "homo" genes.fasta | wc -l
 </div>
 
 <script>
@@ -333,7 +347,7 @@ function check() {
 </script>
 
 > **Exercise 6**
-> You are working in the directory museomics/part1/ex6, which contains the FASTQ file called `reads.fq`. The first four reads are:
+> You are working in the directory museomics/part1/ex6, which contains the FASTQ file called `reads.fq.zip`. The first four reads are:
 > ```text
 > @read003
 > atGCTAGCtAGC
@@ -357,7 +371,13 @@ function check() {
 
 <button onclick="check()">Show answer</button>
 <div id="answer" style="display:none;">
-AA
+(1) cat reads.fq | paste - - - - | grep -v "LOWQUAL"
+(2) cat reads.fq | paste - - - - | sort -u
+(3a) cat reads.fq | tr actg ACTG 
+
+Given that solution 3a also replaces actg in the headers, a better solution is:
+(3b) cat reads.fq | sed '2~4 y/actg/ACTG/'
+This solution only works in GNU/Linux, not macOS.
 </div>
 
 <script>
@@ -371,6 +391,20 @@ function check() {
 }
 </script>
 
+<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
+
+Tip: Each read comprises four lines. To merge the four lines into a single line (so that each line is located in a single line), use `cat reads.fq | paste - - - -`
+
+</div>
+
 ## Installing software
+
+In bioinformatics, most software is developed for Linux. Installing tools efficiently is key to running analyses reproducibly. This tutorial covers the main ways to install and manage software in Linux.
+
 ### Binaries
+
+Some software comes as a ready-to-use binary, meaning you don’t need to compile it.
+
 ### Environments
+
+### Other methods
