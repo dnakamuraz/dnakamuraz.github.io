@@ -416,21 +416,24 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh 
 source ~/.bashrc 
 conda --version
-# install possible dependencies of java for fastqc
-sudo apt update
-sudo apt install -y libxtst libxrender1 libxi6 libxrandr2 libxinerama1 libxcursor1
 ```
 
 TNT and PhyG are not available in Bioconda. In contrast, FASTQC v.0.12.1, Cutadapt v.2.6, Tally (from Reaper v.16.098), samtools v.1.23, and bamtools v.2.5.3 are available. These packages will be installed in the conda environment called `museomics`. 
 
 ```bash
-conda create -n museomics # create an environment called museomics
-conda env list # check the list of environments
-conda activate museomics # activate the environment 
-conda install bioconda::fastqc
+# install possible dependencies of java for fastqc
+sudo apt update
+sudo apt install -y libxtst libxrender1 libxi6 libxrandr2 libxinerama1 libxcursor1
+# create an environment
+conda create -n fastqc bioconda::fastqc
+conda activate fastqc
+conda deactivate
+```
+
+```bash
+conda create -n cuta_tally python=3.7
 conda install bioconda::cutadapt=2.6
 conda install bioconda::reaper
-conda deactivate
 ```
 
 In a second environment called `museomics2`, we will install FastqScreen v.0.15.3. This software may not work in macOS. Recent versions can also perform poorly in Linux.
