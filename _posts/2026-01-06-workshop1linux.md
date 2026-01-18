@@ -414,6 +414,7 @@ Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 
 # install conda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh 
+# re-start shell
 source ~/.bashrc 
 conda --version
 ```
@@ -457,38 +458,43 @@ conda deactivate
 
 #### FastqScreen
 
-FastqScreen v.0.15.3 will be installed in the environment `fastqscreen`. In my experience, recent versions can perform poorly in Linux, so use this specific version.
+FastqScreen v.0.15.3 will be installed in the environment `fastqscreen`. In my experience, recent versions can perform poorly in Linux, so use this specific version. 
 
 ```bash
 conda create -n fastqscreen bioconda::fastq-screen=0.15.3
+conda activate fastqscreen
+fastq-screen -h
+conda deactivate
 ```
+
+Note that the environment is called `fastqscreen`, whereas the command is `fastq-screen`.
 
 #### BWA
 
-BWA v.0.7.17
-
-
-
-
-
-
-MITObim v.1.9.1.
+BWA v.0.7.17 will be installed in the environment `bwa`.
 
 ```bash
-conda create -n museomics3 
-conda activate museomics3
-conda install bioconda::bwa
+conda create -n bwa bioconda::bwa
+conda activate bwa
+bwa -h
 conda deactivate
 ```
 
+#### MITObim
+
+MITObim v.1.9.1. will be installed in the environment `mitobim`.
+
 ```bash
-conda create -n museomics4 
-conda activate museomics4
-conda install bioconda::mitobim
+conda create -n mitobim bioconda::mitobim
+conda activate mitobim
+mitobim -h
+conda deactivate
+```
+
 conda install bioconda::samtools=1.23
 conda install bioconda::bamtools=2.5.3
-conda deactivate
-```
+
+
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
