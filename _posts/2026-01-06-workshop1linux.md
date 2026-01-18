@@ -301,9 +301,7 @@ vi                     # advanced text editor
 <details>
 <summary>Show answer</summary>
 
-(1) grep "^>" genes.fasta
-(2) grep "^>" genes.fasta | wc -l
-(3) grep -i "homo" genes.fasta | wc -l
+grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta | wc -l
 
 </details>
 
@@ -334,17 +332,11 @@ vi                     # advanced text editor
 <details>
 <summary>Show answer</summary>
 
-(1) cat reads.fq | paste - - - - | grep -v "LOWQUAL"
+cat reads.fq | paste - - - - | grep -v "LOWQUAL"; cat reads.fq | paste - - - - | sort -u; cat reads.fq | tr actg ACTG 
 
-(2) cat reads.fq | paste - - - - | sort -u
 
-(3a) cat reads.fq | tr actg ACTG 
-
-Given that solution 3a also replaces actg in the headers, a better solution is:
-
-(3b) cat reads.fq | sed '2~4 y/actg/ACTG/'
-
-This solution only works in GNU/Linux, not macOS.
+Given that solution 3a also replaces actg in the headers, a better solution is (only works in Linux):
+cat reads.fq | sed '2~4 y/actg/ACTG/'
 
 </details>
 
