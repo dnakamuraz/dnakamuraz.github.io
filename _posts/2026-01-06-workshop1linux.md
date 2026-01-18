@@ -122,6 +122,7 @@ Tip: The current directory is indicated by a single dot `.`, whereas the parent 
 > C) `ls -lh . ls -a .. cd .. pwd`
 > 
 > D) `ls -lh .| ls -a .. | cd .. | pwd`
+>
 
 <button onclick="check()">Show answer</button>
 <div id="answer1" style="display:none;">
@@ -372,7 +373,9 @@ function check() {
 <button onclick="check()">Show answer</button>
 <div id="answer6" style="display:none;">
 (1) cat reads.fq | paste - - - - | grep -v "LOWQUAL"
+
 (2) cat reads.fq | paste - - - - | sort -u
+
 (3a) cat reads.fq | tr actg ACTG 
 
 Given that solution 3a also replaces actg in the headers, a better solution is:
