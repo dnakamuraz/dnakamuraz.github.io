@@ -300,7 +300,9 @@ vi                     # advanced text editor
 <details>
 <summary>Show answer</summary>
 
-grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta | wc -l
+grep "^>" genes.fasta <br>
+grep "^>" genes.fasta | wc -l <br>
+grep -i "homo" genes.fasta | wc -l
 
 </details>
 
