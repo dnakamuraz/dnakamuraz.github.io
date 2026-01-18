@@ -21,6 +21,9 @@ toc:
   - name: Installing software
     subsections:
       - name: Binaries
+        subsections:
+        - name: TNT
+        - name: PhyG
       - name: Environments
       - name: Other methods
 ---
@@ -385,7 +388,7 @@ TNT is the most popular program in phylogenetic analyses under parsimony and sta
 
 #### TNT
 
-1. Download TNT v. 1.6 for Linux: https://www.lillo.org.ar/phylogeny/tnt/tnt-linux.zip
+1. Download TNT v. 1.6 for Linux [here](https://www.lillo.org.ar/phylogeny/tnt/tnt-linux.zip)
 2. Unzip the directory, change the mode of the binary, and move it to the PATH: 
 ```bash
 unzip tnt-linux.zip
@@ -396,7 +399,7 @@ mv tnt /usr/local/bin/
 
 #### PhyG
 
-1. Download PhyG v. 1.3 for Linux: https://github.com/amnh/PhyG/releases/download/v1.3.0/phyg-linux-x86
+1. Download PhyG v. 1.3 for Linux [here](https://github.com/amnh/PhyG/releases/download/v1.3.0/phyg-linux-x86)
 2. Change the mode of the binary and move it to the PATH: 
 ```bash
 chmod +x phyg-linux-x86
