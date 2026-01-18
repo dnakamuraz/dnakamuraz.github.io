@@ -381,7 +381,7 @@ The user `alice` owns the file `analysis.sh` of 2345 bytes, last modified on Jan
 > mv analysis.sh /usr/local/bin/ # move the program to one of the PATH directories
 ```
 
-TNT and PhyG are two programs used in phylogenetic analyses for static and dynamic homology that can be installed via binaries. Let's install them.
+TNT is the most popular program in phylogenetic analyses under parsimony and static homology (nucleotides aligned via a similarity function from MSA, assumes homologies a priori based on phenetics). In contrast, PhyG performs phylogenetic analyses using dynamic homology (nucleotides aligned via tree-alignment, assumes that the best homologies schemes are implied from the optimal tree). Both programs can be installed via binaries. 
 
 #### TNT
 
@@ -418,7 +418,9 @@ source ~/.bashrc
 conda --version
 ```
 
-TNT and PhyG are not available in Bioconda. In contrast, FASTQC v.0.12.1, Cutadapt v.2.6, Tally (from Reaper v.16.098), samtools v.1.23, and bamtools v.2.5.3 are available. These packages will be installed in the conda environment called `museomics`. 
+#### FASTQC 
+
+TNT and PhyG are not available in Bioconda. In contrast, FASTQC v.0.12.1 is available and will be installed in the conda environment called `fastqc`. 
 
 ```bash
 # install possible dependencies of java for fastqc
@@ -427,24 +429,51 @@ sudo apt install -y libxtst libxrender1 libxi6 libxrandr2 libxinerama1 libxcurso
 # create an environment
 conda create -n fastqc bioconda::fastqc
 conda activate fastqc
+fastqc -h
 conda deactivate
-# if you wanna delete an environment
-conda remove --name NAME -all
 ```
 
+#### Cutadapt
+
+Cutadapt v.2.6 will be installed in the environment `cutadapt` with Python v.3.7.
+
 ```bash
-conda create -n cuta_tally python=3.7
+conda create -n cutadapt python=3.7
+conda activate cutadapt
 conda install bioconda::cutadapt=2.6
-conda install bioconda::reaper
+cutadapt -h
+conda deactivate cutadapt
 ```
 
-In a second environment called `museomics2`, we will install FastqScreen v.0.15.3. This software may not work in macOS. Recent versions can also perform poorly in Linux.
+#### Tally
+
+Tally (from Reaper v.16.098) will be installed in the environment `tally`.
 
 ```bash
-conda create -n museomics2 bioconda::fastq-screen=0.15.3
+conda create -n tally bioconda::reaper
+conda activate tally
+tally -h
+conda deactivate
 ```
 
-Finally, in a third environment called `museomics3`, we will install BWA v.0.7.17, MITObim v.1.9.1.
+#### FastqScreen
+
+FastqScreen v.0.15.3 will be installed in the environment `fastqscreen`. In my experience, recent versions can perform poorly in Linux, so use this specific version.
+
+```bash
+conda create -n fastqscreen bioconda::fastq-screen=0.15.3
+```
+
+#### BWA
+
+BWA v.0.7.17
+
+
+
+
+
+
+MITObim v.1.9.1.
 
 ```bash
 conda create -n museomics3 
@@ -461,6 +490,12 @@ conda install bioconda::samtools=1.23
 conda install bioconda::bamtools=2.5.3
 conda deactivate
 ```
+
+<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
+
+Tip: If you wanna delete an environment, type `conda remove --name NAME --all`. If you wanna list all environments, type `conda env list`. 
+
+</div>
 
 ### Other methods
 
