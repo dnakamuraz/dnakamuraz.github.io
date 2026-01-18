@@ -408,3 +408,12 @@ Some software comes as a ready-to-use binary, meaning you don’t need to compil
 ### Environments
 
 ### Other methods
+
+| Method | When to use | Pros | Cons |
+|--------|------------|------|------|
+| Precompiled binaries | Single tool, simple | Fast, no compilation | Manual updates, dependency issues |
+| Conda / Bioconda | Multiple tools, environments | Dependency management, reproducible | Disk space, environment conflicts |
+| Compilation | Latest version, HPC optimization | System optimized | Error-prone, requires build tools |
+| Docker | Reproducibility, pipelines | Isolated, cross-platform | Requires Docker, may be slow |
+| Modules | HPC / cluster | Easy switching, no installation | Only on supported systems |
+| Snap / AppImage | Quick install | Portable, easy | Less control, fewer bioinformatics tools |
