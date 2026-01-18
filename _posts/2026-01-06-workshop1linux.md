@@ -438,9 +438,8 @@ conda deactivate
 Cutadapt v.2.6 will be installed in the environment `cutadapt` with Python v.3.7.
 
 ```bash
-conda create -n cutadapt python=3.7
+conda create -n cutadapt python=3.7 bioconda::cutadapt=2.6
 conda activate cutadapt
-conda install bioconda::cutadapt=2.6
 cutadapt -h
 conda deactivate cutadapt
 ```
