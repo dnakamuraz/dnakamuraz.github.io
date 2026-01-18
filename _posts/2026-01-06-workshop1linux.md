@@ -124,21 +124,12 @@ Tip: The current directory is indicated by a single dot `.`, whereas the parent 
 > D) `ls -lh .| ls -a .. | cd .. | pwd`
 >
 
-<button onclick="check()">Show answer</button>
-<div id="answer1" style="display:none;">
-A
-</div>
+<details>
+<summary>See the answer</summary>
 
-<script>
-function check() {
-  const pwd = prompt("Password:");
-  if (pwd === "radagast") {
-    document.getElementById("answer1").style.display = "block";
-  } else {
-    alert("Wrong password");
-  }
-}
-</script>
+A
+
+</details>
 
 > **Exercise 2**
 > Consider that you are in museomics/part1/ex2:
@@ -163,21 +154,12 @@ function check() {
 >
 > D) `pwd; ls; file raw/sample1.fastq; du -sh .`
 
-<button onclick="check()">Show answer</button>
-<div id="answer2" style="display:none;">
-A
-</div>
+<details>
+<summary>See the answer</summary>
 
-<script>
-function check() {
-  const pwd = prompt("Password:");
-  if (pwd === "radagast") {
-    document.getElementById("answer2").style.display = "block";
-  } else {
-    alert("Wrong password");
-  }
-}
-</script>
+A
+
+</details>
 
 ### Managing files and using wildcards
 
@@ -212,21 +194,12 @@ Tip: Wildcards are used to match groups of files or text efficiently. The asteri
 > Write a single command line that: (1) Creates a directory called `raw`, (2) moves all FASTQ (= fq) files into `raw`. 
 >
 
-<button onclick="check()">Show answer</button>
-<div id="answer3" style="display:none;">
-mkdir raw; mv *.fq raw/
-</div>
+<details>
+<summary>See the answer</summary>
 
-<script>
-function check() {
-  const pwd = prompt("Password:");
-  if (pwd === "radagast") {
-    document.getElementById("answer3").style.display = "block";
-  } else {
-    alert("Wrong password");
-  }
-}
-</script>
+mkdir raw; mv *.fq raw/
+
+</details>
 
 > **Exercise 4**
 > You are working in the directory museomics/part1/ex4, which contains the following files: 
@@ -247,21 +220,12 @@ function check() {
 > In a single command, (1) create the directories analysis/reads and analysis/reads2 if it does not exist, (2) copy the FASTQ files from samples 1 and 3 (both R1 and R2) into analysis/reads, and (3) copy all files R2 into analysis/reads2.
 >
 
-<button onclick="check()">Show answer</button>
-<div id="answer4" style="display:none;">
-mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
-</div>
+<details>
+<summary>See the answer</summary>
 
-<script>
-function check() {
-  const pwd = prompt("Password:");
-  if (pwd === "radagast") {
-    document.getElementById("answer4").style.display = "block";
-  } else {
-    alert("Wrong password");
-  }
-}
-</script>
+mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
+
+</details>
 
 ### Reading, writing, and selecting text
 
@@ -329,23 +293,15 @@ vi                     # advanced text editor
 > ```
 > There are dozens of sequences, so counting or manipulating them manually is too laborious. Which commands should we use to (1) list only the FASTA headers, (2) count how many sequences are in the file, and (3) count how many sequences contain the word Homo, ignoring case. 
 
-<button onclick="check()">Show answer</button>
-<div id="answer5" style="display:none;">
+<details>
+<summary>Show answer</summary>
+
 (1) grep "^>" genes.fasta
 (2) grep "^>" genes.fasta | wc -l
 (3) grep -i "homo" genes.fasta | wc -l
-</div>
 
-<script>
-function check() {
-  const pwd = prompt("Password:");
-  if (pwd === "radagast") {
-    document.getElementById("answer5").style.display = "block";
-  } else {
-    alert("Wrong password");
-  }
-}
-</script>
+</details>
+
 
 > **Exercise 6**
 > You are working in the directory museomics/part1/ex6, which contains the FASTQ file called `reads.fq.zip`. The first four reads are:
@@ -370,8 +326,9 @@ function check() {
 > (1) Remove all reads marked as LOWQUAL (remove the entire read, not only the header), (2) deduplicate sequences, and (3) convert all nucleotides to uppercase.
 >
 
-<button onclick="check()">Show answer</button>
-<div id="answer6" style="display:none;">
+<details>
+<summary>Show answer</summary>
+
 (1) cat reads.fq | paste - - - - | grep -v "LOWQUAL"
 
 (2) cat reads.fq | paste - - - - | sort -u
@@ -379,20 +336,12 @@ function check() {
 (3a) cat reads.fq | tr actg ACTG 
 
 Given that solution 3a also replaces actg in the headers, a better solution is:
-(3b) cat reads.fq | sed '2~4 y/actg/ACTG/'
-This solution only works in GNU/Linux, not macOS.
-</div>
 
-<script>
-function check() {
-  const pwd = prompt("Password:");
-  if (pwd === "radagast") {
-    document.getElementById("answer6").style.display = "block";
-  } else {
-    alert("Wrong password");
-  }
-}
-</script>
+(3b) cat reads.fq | sed '2~4 y/actg/ACTG/'
+
+This solution only works in GNU/Linux, not macOS.
+
+</details>
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
