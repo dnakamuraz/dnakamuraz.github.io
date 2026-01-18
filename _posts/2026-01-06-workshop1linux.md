@@ -430,10 +430,48 @@ The user `alice` owns the file `analysis.sh` of 2345 bytes, last modified on Jan
 > mv analysis.sh /usr/local/bin/ # move the program to one of the PATH directories
 ```
 
-TNT and PhyG are two programs used in phylogenetic analyses for static and dynamic homology that can be installed via binaries. Let's install them:
+TNT and PhyG are two programs used in phylogenetic analyses for static and dynamic homology that can be installed via binaries. Let's install them.
 
+#### TNT
+
+1. Download TNT v. 1.6 for Linux: https://www.lillo.org.ar/phylogeny/tnt/tnt-linux.zip
+2. Unzip the directory, change the mode of the binary, and move it to the PATH: 
+```bash
+unzip tnt-linux.zip
+chmod +x tnt
+echo $PATH
+mv tnt /usr/local/bin/
+```
+
+#### PhyG
+
+1. Download PhyG v. 1.3 for Linux: https://github.com/amnh/PhyG/releases/download/v1.3.0/phyg-linux-x86
+2. Change the mode of the binary and move it to the PATH: 
+```bash
+chmod +x phyg-linux-x86
+echo $PATH
+mv phyg-linux-x86 /usr/local/bin/
+```
 
 ### Environments
+
+In addition to binaries, most programs in bioinformatics are available in Conda, which is an environment manager widely used in scientific computing to install software and manage dependencies in isolated environments. This is useful to avoid dependency conflicts. 
+
+```bash
+conda create -n museomics python 3.11 # create an environment called museomics
+conda activate museomics # activate the environment 
+```
+
+Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 3 Gb containing hundreds of packages for data science) and Miniconda (a cleaner Conda distribution of ca. 70 Mb containing only Python and a few libraries). Bioconda is not a Conda distribution, but a repository hosting most bioinformatics software.
+
+TNT and PhyG are not available in Bioconda. FASTQC, Cutadapt, Tally (from Reaper), FastqScreen, BWA, MITObim, samtools, and bamtools are available, though.
+
+```bash
+conda install bioconda::fastqc
+conda install bioconda::cutadapt
+conda install bioconda::reaper
+
+```
 
 ### Other methods
 
@@ -444,4 +482,3 @@ TNT and PhyG are two programs used in phylogenetic analyses for static and dynam
 | Compilation | Latest version, HPC optimization | System optimized | Error-prone, requires build tools |
 | Docker | Reproducibility, pipelines | Isolated, cross-platform | Requires Docker, may be slow |
 | Modules | HPC / cluster | Easy switching, no installation | Only on supported systems |
-| Snap / AppImage | Quick install | Portable, easy | Less control, fewer bioinformatics tools |
