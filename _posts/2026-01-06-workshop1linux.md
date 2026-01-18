@@ -333,9 +333,13 @@ grep -i "homo" genes.fasta | wc -l
 <details>
 <summary>Show answer</summary>
 
-cat reads.fq | paste - - - - | grep -v "LOWQUAL"; cat reads.fq | paste - - - - | sort -u; cat reads.fq | tr actgn ACTGN 
+(1) cat reads.fq | paste - - - - | grep -v "LOWQUAL" <br>
+(2) cat reads.fq | paste - - - - | sort -u <br>
+(3) cat reads.fq | tr actgn ACTGN 
 
-Given that solution for the third task also replaces actg in the headers, a better solution (only works in Linux) is: cat reads.fq | sed '2~4 y/actgn/ACTGN/'
+Given that solution for the third task also replaces actg in the headers, a better solution (only works in Linux) is: <br>
+
+(3) cat reads.fq | sed '2~4 y/actgn/ACTGN/'
 
 </details>
 
