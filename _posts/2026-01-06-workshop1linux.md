@@ -31,7 +31,7 @@ Before starting the tutorial, download the resources [here](https://github.com/d
 
 ## What is Linux? 
 
-Linux was created in 1991 by Linus Torvalds (1969, Finland) as a free and open-source kernel that controls CPU, manages memory, handles files, and communicates with hardware. However, kernels are not operating systems (i.e. Linux is not like Windows and macOS). In parallel with Linux, the GNU Project was iniciated by Richard Stallman in 1983 to include command-line tools, compilers, libraries, and shells. As such, most systems commonly referred to as "Linux" should be better called as "GNU/Linux". 
+Linux was created in 1991 by Linus Torvalds (1969, Finland) as a free and open-source kernel that controls CPU, manages memory, handles files, and communicates with hardware. However, kernels are not operating systems (i.e. Linux is not like Windows and macOS). In parallel with Linux, the GNU Project was iniciated by Richard Stallman (1953, USA) in 1983 to include command-line tools, compilers, libraries, and shells. As such, most systems commonly referred to as "Linux" should be better called as "GNU/Linux".
 
 The Linux systems can be distributed in different packages (distros). Some popular distros are:
 
@@ -399,11 +399,39 @@ Tip: Each read comprises four lines. To merge the four lines into a single line 
 
 ## Installing software
 
-In bioinformatics, most software is developed for Linux. Installing tools efficiently is key to running analyses reproducibly. This tutorial covers the main ways to install and manage software in Linux.
+Installing tools efficiently is key to running analyses reproducibly. This tutorial covers the main ways to install and manage software in Linux. The examples are the programs required in the Part 2 of the Museomics Workshop: FASTQC, Cutadapt, Tally, FastqScreen, BWA, MITObim, samtools, bamtools, TNT, and PhyG.
 
 ### Binaries
 
-Some software comes as a ready-to-use binary, meaning you don’t need to compile it.
+Some software comes as a ready-to-use binary, meaning you don’t need to compile it. You only need to change the permissions of the binary and move it to the PATH.
+
+Every file and directory in Linux has three types of permissions:
+- (1) read (r), permission to view the file contents or list a directory;
+- (2) write (w), permission to modify the file or directory;
+- (3) execute (x), permission to run a program or enter a directory.
+
+Every file has permissions specified for three types of users:
+- Owner (u), the user who owns the file;
+- Group (g), the users in the same group as the file;
+- Others (o), everyone else.
+
+When you type `ls -l` in Bash, the first string in each line indicates the permissions. For instance:
+
+```bash
+> ls -l
+-rwxr-xr-- 1 alice bioinfo 2345 Jan 18 12:00 analysis.sh
+``` 
+
+The user `alice` owns the file `analysis.sh` of 2345 bytes, last modified on January 18th. The permissions of this file for the owner, group, and others are `rwx` (reading, writing and executing), `r-x` (only reading and executing), and `r--` (only reading), respectively. That is, users in the same group can only read and execute the file, whereas users that are not part of the group can only read it. If Alice wants to make this file executable to all users, she can use the command `chmod +x analysis.sh`. However, the program `analysis.sh` can only be used if the user is in the same directory where it is located (e.g. typing `./analysis.sh`) or if the user specify the path to it. This is not convenient, so moving the file `analysis.sh` to the PATH (a list of directories that Linux searches when you type a command) will allow Linux to easily execute `analysis.sh`. 
+
+```bash
+> echo $PATH # list PATH directories
+/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin
+> mv analysis.sh /usr/local/bin/ # move the program to one of the PATH directories
+```
+
+TNT and PhyG are two programs used in phylogenetic analyses for static and dynamic homology that can be installed via binaries. Let's install them:
+
 
 ### Environments
 
