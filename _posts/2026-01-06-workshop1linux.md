@@ -124,15 +124,14 @@ Tip: The current directory is indicated by a single dot `.`, whereas the parent 
 > 
 > D) `ls -lh .| ls -a .. | cd .. | pwd`
 >
-
-<details>
-<summary>See the answer</summary>
-
-A
-
-</details>
-
+><details>
+><summary>See the answer</summary>
 >
+>A
+>
+></details>
+>
+
 > **Exercise 2**
 > Consider that you are in museomics/part1/ex2:
 >
@@ -332,11 +331,9 @@ grep "^>" genes.fasta; grep "^>" genes.fasta | wc -l; grep -i "homo" genes.fasta
 <details>
 <summary>Show answer</summary>
 
-cat reads.fq | paste - - - - | grep -v "LOWQUAL"; cat reads.fq | paste - - - - | sort -u; cat reads.fq | tr actg ACTG 
+cat reads.fq | paste - - - - | grep -v "LOWQUAL"; cat reads.fq | paste - - - - | sort -u; cat reads.fq | tr actgn ACTGN 
 
-
-Given that solution 3a also replaces actg in the headers, a better solution is (only works in Linux):
-cat reads.fq | sed '2~4 y/actg/ACTG/'
+Given that solution for the third task also replaces actg in the headers, a better solution (only works in Linux) is: cat reads.fq | sed '2~4 y/actgn/ACTGN/'
 
 </details>
 
@@ -407,6 +404,10 @@ mv phyg-linux-x86 /usr/local/bin/
 In addition to binaries, most programs in bioinformatics are available in Conda, which is an environment manager widely used in scientific computing to install software and manage dependencies in isolated environments. This is useful to avoid dependency conflicts. 
 
 Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 3 Gb containing hundreds of packages for data science) and Miniconda (a cleaner Conda distribution of ca. 70 Mb containing only Python and a few libraries). Bioconda is not a Conda distribution, but a repository hosting most bioinformatics software.
+
+```bash
+# install conda
+```
 
 TNT and PhyG are not available in Bioconda. In contrast, FASTQC v.0.12.1, Cutadapt v.2.6, Tally (from Reaper v.16.098), samtools v.1.23, and bamtools v.2.5.3 are available. These packages will be installed in the conda environment called `museomics`. 
 
