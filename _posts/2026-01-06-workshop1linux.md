@@ -113,7 +113,7 @@ Tip: The current directory is indicated by a single dot `.`, whereas the parent 
 
 > **Exercise 1**
 >
-> In a single line, which command sequentially (1) list files with sizes in the current directory, (2) list all files in the parent directory, (3) go to the parent directory, and (4) show current directory?
+> In a single line, which command sequentially (1) list files with sizes in the current directory, (2) list all files in the parent directory, (3) go to the parent directory, and (4) show the path to the current directory?
 > 
 > A) `ls -lh .; ls -a ..; cd ..; pwd`
 > 
@@ -124,7 +124,7 @@ Tip: The current directory is indicated by a single dot `.`, whereas the parent 
 > D) `ls -lh .| ls -a .. | cd .. | pwd`
 
 <button onclick="check()">Show answer</button>
-<div id="answer" style="display:none;">
+<div id="answer1" style="display:none;">
 A
 </div>
 
@@ -132,7 +132,7 @@ A
 function check() {
   const pwd = prompt("Password:");
   if (pwd === "radagast") {
-    document.getElementById("answer").style.display = "block";
+    document.getElementById("answer1").style.display = "block";
   } else {
     alert("Wrong password");
   }
@@ -163,7 +163,7 @@ function check() {
 > D) `pwd; ls; file raw/sample1.fastq; du -sh .`
 
 <button onclick="check()">Show answer</button>
-<div id="answer" style="display:none;">
+<div id="answer2" style="display:none;">
 A
 </div>
 
@@ -171,7 +171,7 @@ A
 function check() {
   const pwd = prompt("Password:");
   if (pwd === "radagast") {
-    document.getElementById("answer").style.display = "block";
+    document.getElementById("answer2").style.display = "block";
   } else {
     alert("Wrong password");
   }
@@ -212,7 +212,7 @@ Tip: Wildcards are used to match groups of files or text efficiently. The asteri
 >
 
 <button onclick="check()">Show answer</button>
-<div id="answer" style="display:none;">
+<div id="answer3" style="display:none;">
 mkdir raw; mv *.fq raw/
 </div>
 
@@ -220,7 +220,7 @@ mkdir raw; mv *.fq raw/
 function check() {
   const pwd = prompt("Password:");
   if (pwd === "radagast") {
-    document.getElementById("answer").style.display = "block";
+    document.getElementById("answer3").style.display = "block";
   } else {
     alert("Wrong password");
   }
@@ -247,7 +247,7 @@ function check() {
 >
 
 <button onclick="check()">Show answer</button>
-<div id="answer" style="display:none;">
+<div id="answer4" style="display:none;">
 mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/reads/; cp *R2.fq analysis/reads2/
 </div>
 
@@ -255,7 +255,7 @@ mkdir -p analysis/reads; mkdir analysis/reads2; cp sample[13]_R*.fastq analysis/
 function check() {
   const pwd = prompt("Password:");
   if (pwd === "radagast") {
-    document.getElementById("answer").style.display = "block";
+    document.getElementById("answer4").style.display = "block";
   } else {
     alert("Wrong password");
   }
@@ -329,7 +329,7 @@ vi                     # advanced text editor
 > There are dozens of sequences, so counting or manipulating them manually is too laborious. Which commands should we use to (1) list only the FASTA headers, (2) count how many sequences are in the file, and (3) count how many sequences contain the word Homo, ignoring case. 
 
 <button onclick="check()">Show answer</button>
-<div id="answer" style="display:none;">
+<div id="answer5" style="display:none;">
 (1) grep "^>" genes.fasta
 (2) grep "^>" genes.fasta | wc -l
 (3) grep -i "homo" genes.fasta | wc -l
@@ -339,7 +339,7 @@ vi                     # advanced text editor
 function check() {
   const pwd = prompt("Password:");
   if (pwd === "radagast") {
-    document.getElementById("answer").style.display = "block";
+    document.getElementById("answer5").style.display = "block";
   } else {
     alert("Wrong password");
   }
@@ -370,7 +370,7 @@ function check() {
 >
 
 <button onclick="check()">Show answer</button>
-<div id="answer" style="display:none;">
+<div id="answer6" style="display:none;">
 (1) cat reads.fq | paste - - - - | grep -v "LOWQUAL"
 (2) cat reads.fq | paste - - - - | sort -u
 (3a) cat reads.fq | tr actg ACTG 
@@ -384,7 +384,7 @@ This solution only works in GNU/Linux, not macOS.
 function check() {
   const pwd = prompt("Password:");
   if (pwd === "radagast") {
-    document.getElementById("answer").style.display = "block";
+    document.getElementById("answer6").style.display = "block";
   } else {
     alert("Wrong password");
   }
@@ -457,26 +457,44 @@ mv phyg-linux-x86 /usr/local/bin/
 
 In addition to binaries, most programs in bioinformatics are available in Conda, which is an environment manager widely used in scientific computing to install software and manage dependencies in isolated environments. This is useful to avoid dependency conflicts. 
 
-```bash
-conda create -n museomics python 3.11 # create an environment called museomics
-conda activate museomics # activate the environment 
-```
-
 Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 3 Gb containing hundreds of packages for data science) and Miniconda (a cleaner Conda distribution of ca. 70 Mb containing only Python and a few libraries). Bioconda is not a Conda distribution, but a repository hosting most bioinformatics software.
 
-TNT and PhyG are not available in Bioconda. In contrast, Gargammel v.1.1.4, FASTQC v.0.12.1, Cutadapt v.2.6, Tally (from Reaper v.16.098), FastqScreen v.0.15.3, BWA v.0.7.17, MITObim v.1.9.1, samtools v.1.23, and bamtools v.2.5.3 are available.
+TNT and PhyG are not available in Bioconda. In contrast, FASTQC v.0.12.1, Cutadapt v.2.6, Tally (from Reaper v.16.098), samtools v.1.23, and bamtools v.2.5.3 are available. These packages will be installed in the conda environment called `museomics`. 
 
 ```bash
-conda install bioconda::gargammel=1.1.4
-conda install bioconda::fastqc=0.12.1
+conda create -n museomics # create an environment called museomics
+conda env list # check the list of environments
+conda activate museomics # activate the environment 
+conda install bioconda::fastqc
 conda install bioconda::cutadapt=2.6
-conda install bioconda::reaper=16.098
-conda install bioconda::fastq-screen=0.15.3
-conda install bioconda::bwa=0.7.17
-conda install bioconda::mitobim=1.9.1
+conda install bioconda::reaper
+conda deactivate
+```
+
+In a second environment called `museomics2`, we will install FastqScreen v.0.15.3. This software may not work in macOS. Recent versions can also perform poorly in Linux.
+
+```bash
+conda create -n museomics2 bioconda::fastq-screen=0.15.3
+```
+
+Finally, in a third environment called `museomics3`, we will install BWA v.0.7.17, MITObim v.1.9.1.
+
+```bash
+conda create -n museomics3 
+conda activate museomics3
+conda install bioconda::bwa
+conda deactivate
+```
+
+```bash
+conda create -n museomics4 
+conda activate museomics4
+conda install bioconda::mitobim
 conda install bioconda::samtools=1.23
 conda install bioconda::bamtools=2.5.3
+conda deactivate
 ```
+
 
 ### Other methods
 
