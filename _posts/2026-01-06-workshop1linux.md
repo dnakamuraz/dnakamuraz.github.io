@@ -111,6 +111,7 @@ Tip: The current directory is indicated by a single dot `.`, whereas the parent 
 
 </div>
 
+>
 > **Exercise 1**
 >
 > In a single line, which command sequentially (1) list files with sizes in the current directory, (2) list all files in the parent directory, (3) go to the parent directory, and (4) show the path to the current directory?
@@ -131,6 +132,7 @@ A
 
 </details>
 
+>
 > **Exercise 2**
 > Consider that you are in museomics/part1/ex2:
 >
@@ -181,6 +183,7 @@ Tip: Wildcards are used to match groups of files or text efficiently. The asteri
 
 </div>
 
+>
 > **Exercise 3**
 > You are in museomics/part1/ex3, a directory containing:
 >
@@ -201,6 +204,7 @@ mkdir raw; mv *.fq raw/
 
 </details>
 
+>
 > **Exercise 4**
 > You are working in the directory museomics/part1/ex4, which contains the following files: 
 > 
@@ -281,6 +285,7 @@ nano                   # beginner-friendly text editor
 vi                     # advanced text editor
 ```
 
+>
 > **Exercise 5**
 > You are working in the directory museomics/part1/ex5, which contains the FASTA file called `genes.fasta`. The first three sequences are:
 >```text
@@ -302,7 +307,7 @@ vi                     # advanced text editor
 
 </details>
 
-
+>
 > **Exercise 6**
 > You are working in the directory museomics/part1/ex6, which contains the FASTQ file called `reads.fq.zip`. The first four reads are:
 > ```text
