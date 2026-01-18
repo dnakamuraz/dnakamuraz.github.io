@@ -428,6 +428,8 @@ sudo apt install -y libxtst libxrender1 libxi6 libxrandr2 libxinerama1 libxcurso
 conda create -n fastqc bioconda::fastqc
 conda activate fastqc
 conda deactivate
+# if you wanna delete an environment
+conda remove --name NAME -all
 ```
 
 ```bash
