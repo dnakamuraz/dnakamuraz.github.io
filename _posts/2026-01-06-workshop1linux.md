@@ -399,7 +399,7 @@ Tip: Each read comprises four lines. To merge the four lines into a single line 
 
 ## Installing software
 
-Installing tools efficiently is key to running analyses reproducibly. This tutorial covers the main ways to install and manage software in Linux. The examples are the programs required in the Part 2 of the Museomics Workshop: FASTQC, Cutadapt, Tally, FastqScreen, BWA, MITObim, samtools, bamtools, TNT, and PhyG.
+Installing tools efficiently is key to running analyses reproducibly. This tutorial covers the main ways to install and manage software in Linux. The examples are the programs required in the Part 2 of the Museomics Workshop: gargamel, FASTQC, Cutadapt, Tally, FastqScreen, BWA, MITObim, samtools, bamtools, TNT, and PhyG.
 
 ### Binaries
 
@@ -464,13 +464,18 @@ conda activate museomics # activate the environment
 
 Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 3 Gb containing hundreds of packages for data science) and Miniconda (a cleaner Conda distribution of ca. 70 Mb containing only Python and a few libraries). Bioconda is not a Conda distribution, but a repository hosting most bioinformatics software.
 
-TNT and PhyG are not available in Bioconda. FASTQC, Cutadapt, Tally (from Reaper), FastqScreen, BWA, MITObim, samtools, and bamtools are available, though.
+TNT and PhyG are not available in Bioconda. In contrast, Gargammel v.1.1.4, FASTQC v.0.12.1, Cutadapt v.2.6, Tally (from Reaper v.16.098), FastqScreen v.0.15.3, BWA v.0.7.17, MITObim v.1.9.1, samtools v.1.23, and bamtools v.2.5.3 are available.
 
 ```bash
-conda install bioconda::fastqc
-conda install bioconda::cutadapt
-conda install bioconda::reaper
-
+conda install bioconda::gargammel=1.1.4
+conda install bioconda::fastqc=0.12.1
+conda install bioconda::cutadapt=2.6
+conda install bioconda::reaper=16.098
+conda install bioconda::fastq-screen=0.15.3
+conda install bioconda::bwa=0.7.17
+conda install bioconda::mitobim=1.9.1
+conda install bioconda::samtools=1.23
+conda install bioconda::bamtools=2.5.3
 ```
 
 ### Other methods
