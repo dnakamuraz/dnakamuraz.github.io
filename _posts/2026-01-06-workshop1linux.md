@@ -71,6 +71,8 @@ sudo apt update
 sudo apt upgrade
 ```
 
+The Windows files are usually located at `/mnt/c/`.
+
 ## Basic commands
 
 To run Linux from the command line, the user must open a **shell**, a program that sends the commands from the user to the operating system. In GNU/Linux, the most common shell is called **Bash** (Bourne Again Shell). 
@@ -298,9 +300,9 @@ vi                     # advanced text editor
 ><details>
 ><summary>Show answer</summary>
 >
->grep "^>" genes.fasta <br>
->grep "^>" genes.fasta | wc -l <br>
->grep -i "homo" genes.fasta | wc -l
+>(1) grep "^>" genes.fasta <br>
+>(2) grep "^>" genes.fasta | wc -l <br>
+>(3) grep -i "homo" genes.fasta | wc -l
 >
 ></details>
 
@@ -332,7 +334,7 @@ vi                     # advanced text editor
 >
 >(1) cat reads.fq | paste - - - - | grep -v "LOWQUAL" <br>
 >(2) cat reads.fq | paste - - - - | sort -u <br>
->(3) cat reads.fq | tr actgn ACTGN 
+>(3) cat reads.fq | tr actgn ACTGN <br>
 >
 >Given that solution for the third task also replaces actg in the headers, a better solution (only works in Linux) is: <br>
 >
@@ -409,7 +411,10 @@ In addition to binaries, most programs in bioinformatics are available in Conda,
 Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 3 Gb containing hundreds of packages for data science) and Miniconda (a cleaner Conda distribution of ca. 70 Mb containing only Python and a few libraries). Bioconda is not a Conda distribution, but a repository hosting most bioinformatics software.
 
 ```bash
-# install conda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh # install conda
+bash ~/Miniconda3-latest-Linux-x86_64.sh # run the installer
+source ~/.bashrc # re-start shell
+conda --version
 ```
 
 TNT and PhyG are not available in Bioconda. In contrast, FASTQC v.0.12.1, Cutadapt v.2.6, Tally (from Reaper v.16.098), samtools v.1.23, and bamtools v.2.5.3 are available. These packages will be installed in the conda environment called `museomics`. 
@@ -447,7 +452,6 @@ conda install bioconda::samtools=1.23
 conda install bioconda::bamtools=2.5.3
 conda deactivate
 ```
-
 
 ### Other methods
 
