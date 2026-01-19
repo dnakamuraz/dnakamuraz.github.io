@@ -22,9 +22,17 @@ toc:
     subsections:
       - name: Binaries
         subsections:
-        - name: TNT
-        - name: PhyG
+          - name: TNT
+          - name: PhyG
       - name: Environments
+        subsections:
+          - name: FastQC
+          - name: Cutadapt
+          - name: Tally
+          - name: FastqScreen
+          - name: BWA
+          - name: MITObim
+          - name: Samtools and Bamtools
       - name: Other methods
 ---
 
@@ -422,7 +430,7 @@ source ~/.bashrc
 conda --version
 ```
 
-#### FASTQC 
+#### FastQC 
 
 TNT and PhyG are not available in Bioconda. In contrast, FASTQC v.0.12.1 is available and will be installed in the conda environment called `fastqc`. 
 
@@ -479,29 +487,37 @@ BWA v.0.7.17 will be installed in the environment `bwa`.
 ```bash
 conda create -n bwa bioconda::bwa
 conda activate bwa
-bwa -h
+bwa
 conda deactivate
 ```
 
 #### MITObim
 
-MITObim v.1.9.1. will be installed in the environment `mitobim`.
+MITObim v.1.9.1. will be installed in the environment `mitobim`. In addition to MITObim, Mira, and MiraConvert will be automatically installed. For macOS and Windows, use Docker (instructions [here](https://github.com/chrishah/MITObim); conda does not work in my experience). For Linux (including Windows WSL), the following commands are currently working:
 
 ```bash
 conda create -n mitobim bioconda::mitobim
 conda activate mitobim
-mitobim -h
+MITObim.pl -h
 conda deactivate
 ```
 
-conda install bioconda::samtools=1.23
-conda install bioconda::bamtools=2.5.3
+#### Samtools and Bamtools
 
+Samtools and bamtools wil be installed in the environment `samtools`.
 
+```bash
+conda create -n samtools bioconda::samtools
+conda activate samtools
+conda install bioconda::bamtools
+samtools
+bamtools
+conda deactivate samtools
+```
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
-Tip: If you wanna delete an environment, type `conda remove --name NAME --all`. If you wanna list all environments, type `conda env list`. 
+Tip: If you want to delete an environment, type `conda remove --name NAME --all`. If you are inside an environment and want to uninstall a specific package, type `conda remove NAME`. If you want to list all environments, type `conda env list`. 
 
 </div>
 
