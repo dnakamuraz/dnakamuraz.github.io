@@ -1,8 +1,8 @@
 ---
 layout: distill
-title: Introduction to Linux for bioinformatics
-date: 2026-01-06
-description: Part 1 of the Museomics Workshop
+title: Ancient DNA assembly
+date: 2026-01-18
+description: Part 2 of the Museomics Workshop
 tags: workshop museomics tutorial
 
 authors:
@@ -18,22 +18,18 @@ toc:
       - name: Navigating the filesystem
       - name: Managing files and using wildcards
       - name: Reading, writing, and selecting text
-  - name: Installing software
-    subsections:
-      - name: Binaries
-      - name: Environments
       - name: Other methods
 ---
 
-This tutorial is Part 1 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). Because most programs used to assemble historical DNA sequences in museomics and to perform downstream phylogenetic analyses do not provide a graphical user interface (GUI), the goal of this tutorial is to introduce students to the Linux command line.
+This tutorial is Part 2 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). Check Part 1 [here](https://dnakamuraz.github.io/blog/2026/workshop1linux).
 
 Before starting the tutorial, download the resources [here](https://github.com/dnakamuraz/dnakamuraz.github.io/tree/master/assets/museomics).
 
 ## What is Linux? 
 
-Linux was created in 1991 by Linus Torvalds (1969, Finland) as a free and open-source kernel that controls CPU, manages memory, handles files, and communicates with hardware. However, kernels are not operating systems (i.e. Linux is not like Windows and macOS). In parallel with Linux, the GNU Project was initiated by Richard Stallman (1953, USA) in 1983 to include command-line tools, compilers, libraries, and shells. As such, most systems commonly referred to as "Linux" should more properly be called "GNU/Linux".
+Linux was created in 1991 by Linus Torvalds (1969, Finland) as a free and open-source kernel that controls CPU, manages memory, handles files, and communicates with hardware. However, kernels are not operating systems (i.e. Linux is not like Windows and macOS). In parallel with Linux, the GNU Project was iniciated by Richard Stallman (1953, USA) in 1983 to include command-line tools, compilers, libraries, and shells. As such, most systems commonly referred to as "Linux" should be better called as "GNU/Linux".
 
-Linux systems can be distributed in different packages (distros). Some popular distros are:
+The Linux systems can be distributed in different packages (distros). Some popular distros are:
 
 | Distribution | Pros | Cons |
 |-------------|------|------|
@@ -48,7 +44,7 @@ When mobile distributions are taken into account, Android is the most popular Li
 
 ## Using Linux on Windows
 
-Windows is the most popular operating system. However, most programs used in bioinformatics are only available for Linux and macOS, because both are UNIX-based (a family of operating systems designed for scientific computing in 1969-1971 at AT&T Bell Labs).
+Windows is the most popular operating system. However, most programs used in bioinformatics are only available to Linux and macOS, because both are UNIX-based (a family of operating systems designed for scientific computing in 1969-1971 at AT&T Bell Labs).
 
 To use Linux commands in Windows, there are four options:
 
@@ -57,7 +53,7 @@ To use Linux commands in Windows, there are four options:
 - Virtual machine: Emulating Linux inside Windows (cons: slow, requires more RAM and CPU than a native Linux).
 - Windows Subsystem for Linux (WSL): Using a compatibility layer (cons: a few tools may be incompatible).
 
-Given that servers are unavailable, Dual Boot requires splitting the disk, and virtual machines are slow in most cases, the best solution is WSL. Most software is compatible with WSL. The first version of WSL was released in 2016 by Microsoft, but most tools were incompatible. Recently, WSL 2 was released in 2019, with native support for Docker, Conda, and modern Linux tools. Microsoft created WSL because Linux dominates servers, cloud, high-performance, and scientific computing. Using WSL, beginner scientists can continue using Windows but also using Linux tools (although I recommend that all scientists migrate to Linux).
+Given that servers are unavailable, Dual Boot requires splitting the disk, and virtual machines are slow in most cases, the best solution is WSL. Most softwares are compatible with WSL. The first version of WSL was released in 2016 by Microsoft, but most tools were incompatible. Recently, WSL 2 was released in 2019, with native support for Docker, Conda, and modern Linux tools. Microsoft created WSL because Linux dominates servers, cloud, high-performance, and scientific computing. Using WSL, begginer scientists can continue using Windows but also using Linux tools (albeit I recommend all scientists to migrate to Linux).
 
 To install WSL 2, Windows 10 or 11 are required:
 1. Open PowerShell as Administrator.
@@ -85,7 +81,7 @@ Tip: If the Bash prompt starts with `alan@turing:~\$`, `alan` is the user name, 
 
 In Bash, a standard input (*stdin* e.g. hDNA reads or cladistic matrix) is given to a command, which produces the standard output (*stdout* e.g. assembled contigs or phylogenetic trees). In addition to standard input and output, programs also produce a standard error (*stderr*), which is typically used for warnings and error messages.
 
-In Bash, the commands are case-sensitive (e.g. `echo` is a valid command, whereas `Echo` or `ECHO` are not). Moreover, pressing the "Tab" key attempts to autocomplete commands and file names (helpful for lazy users). The semicolon `;` executes commands sequentially and independently, whereas the pipe `|` connects the output of one command directly to the input of the next.
+In Bash, the commands are case sensitive (e.g. `echo` is a valid command, whereas `Echo` or `ECHO` are not). Moreover, pressing the "Tab" key attempts to auto-complete commands and file names (helpful for lazy users). The semicolon `;` executes commands sequentially and independently, whereas the pipe `|` connects the output of one command directly to the input of the next.
 
 ### Navigating the filesystem
 
@@ -260,19 +256,19 @@ Tip: Avoid using `cat` and `zcat` for large files due to memory limitation. Inst
 
 </div>
 
-In addition to text visualization, Linux provides commands to manipulate files.
+In addition to text visualization, Linux presents commands to manipulate files.
 
 ```bash
 grep                   # search for patterns
 grep -i                # search for patterns ignoring case
 grep -v                # inverted search (excluding patterns)
-grep "ˆ"               # match beginning of line 
+grep "ˆ"               # match beggining of line 
 grep "$"               # match end of line
 cut                    # extract specific columns from tables
 cut -d                 # specify delimiter (default: TAB)
 sed 's//g'             # substitute 's/pattern/new_pattern/g'
 sed -i 's//g'          # substitute within the file (irreversible)
-sed '1~3 y/actg/ACTG/' # substitute actg with ACTG in lines 1 + every 3 lines (only works in GNU/Linux, not macOS)
+sed '1~3 y/actg/ACTG/' # substitute actg by ACTG in lines 1 + every 3 lines (only works in GNU/Linux, not macOS)
 sort                   # sort lines alphabetically or numerically
 sort -r                # sort using reverse order
 sort -k                # sort by column
@@ -373,7 +369,7 @@ When you type `ls -l` in Bash, the first string in each line indicates the permi
 -rwxr-xr-- 1 alice bioinfo 2345 Jan 18 12:00 analysis.sh
 ``` 
 
-The user `alice` owns the file `analysis.sh` of 2345 bytes, last modified on January 18th. The permissions of this file for the owner, group, and others are `rwx` (reading, writing and executing), `r-x` (only reading and executing), and `r--` (only reading), respectively. That is, users in the same group can only read and execute the file, whereas users that are not part of the group can only read it. If Alice wants to make this file executable to all users, she can use the command `chmod +x analysis.sh`. However, the program `analysis.sh` can only be used if the user is in the same directory where it is located (e.g. typing `./analysis.sh`) or if the user specifies the path to it. This is not convenient, so moving the file `analysis.sh` to the PATH (a list of directories that Linux searches when you type a command) will allow Linux to easily execute `analysis.sh`. 
+The user `alice` owns the file `analysis.sh` of 2345 bytes, last modified on January 18th. The permissions of this file for the owner, group, and others are `rwx` (reading, writing and executing), `r-x` (only reading and executing), and `r--` (only reading), respectively. That is, users in the same group can only read and execute the file, whereas users that are not part of the group can only read it. If Alice wants to make this file executable to all users, she can use the command `chmod +x analysis.sh`. However, the program `analysis.sh` can only be used if the user is in the same directory where it is located (e.g. typing `./analysis.sh`) or if the user specify the path to it. This is not convenient, so moving the file `analysis.sh` to the PATH (a list of directories that Linux searches when you type a command) will allow Linux to easily execute `analysis.sh`. 
 
 ```bash
 > echo $PATH # list PATH directories
@@ -381,7 +377,7 @@ The user `alice` owns the file `analysis.sh` of 2345 bytes, last modified on Jan
 > mv analysis.sh /usr/local/bin/ # move the program to one of the PATH directories
 ```
 
-TNT is the most popular program in phylogenetic analyses under parsimony and static homology (nucleotides aligned via a similarity function from MSA, assumes homologies a priori, based on phenetics). In contrast, PhyG performs phylogenetic analyses using dynamic homology (nucleotides aligned via tree-alignment, assumes that the best homology schemes are implied from the optimal tree). Both programs can be installed via binaries. 
+TNT is the most popular program in phylogenetic analyses under parsimony and static homology (nucleotides aligned via a similarity function from MSA, assumes homologies a priori based on phenetics). In contrast, PhyG performs phylogenetic analyses using dynamic homology (nucleotides aligned via tree-alignment, assumes that the best homologies schemes are implied from the optimal tree). Both programs can be installed via binaries. 
 
 #### TNT
 
@@ -408,7 +404,7 @@ mv phyg-linux-x86 /usr/local/bin/
 
 In addition to binaries, most programs in bioinformatics are available in Conda, which is an environment manager widely used in scientific computing to install software and manage dependencies in isolated environments. This is useful to avoid dependency conflicts. 
 
-Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 3 GB containing hundreds of packages for data science) and Miniconda (a cleaner Conda distribution of ca. 70 Mb containing only Python and a few libraries). Bioconda is not a Conda distribution, but a repository hosting most bioinformatics software.
+Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 3 Gb containing hundreds of packages for data science) and Miniconda (a cleaner Conda distribution of ca. 70 Mb containing only Python and a few libraries). Bioconda is not a Conda distribution, but a repository hosting most bioinformatics software.
 
 ```bash
 # install conda
@@ -421,7 +417,7 @@ conda --version
 
 #### FastQC 
 
-TNT and PhyG are not available in Bioconda. In contrast, FastQC v.0.12.1 is available and will be installed in the conda environment called `fastqc`. 
+TNT and PhyG are not available in Bioconda. In contrast, FASTQC v.0.12.1 is available and will be installed in the conda environment called `fastqc`. 
 
 ```bash
 # install possible dependencies of java for fastqc
@@ -482,7 +478,7 @@ conda deactivate
 
 #### MITObim
 
-MITObim v.1.9.1. will be installed in the environment `mitobim`. In addition to MITObim, Mira, and MiraConvert will be automatically installed. For macOS and Windows, use Docker (instructions [here](https://github.com/chrishah/MITObim); conda does not work, in my experience). For Linux (including Windows WSL), the following commands are currently working:
+MITObim v.1.9.1. will be installed in the environment `mitobim`. In addition to MITObim, Mira, and MiraConvert will be automatically installed. For macOS and Windows, use Docker (instructions [here](https://github.com/chrishah/MITObim); conda does not work in my experience). For Linux (including Windows WSL), the following commands are currently working:
 
 ```bash
 conda create -n mitobim bioconda::mitobim
@@ -493,7 +489,7 @@ conda deactivate
 
 #### Samtools and Bamtools
 
-Samtools and bamtools will be installed in the environment `samtools`.
+Samtools and bamtools wil be installed in the environment `samtools`.
 
 ```bash
 conda create -n samtools bioconda::samtools
