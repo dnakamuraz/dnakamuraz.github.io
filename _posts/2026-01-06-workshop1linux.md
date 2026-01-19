@@ -27,7 +27,7 @@ toc:
 
 This tutorial is Part 1 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). Because most programs used to assemble historical DNA sequences in museomics and to perform downstream phylogenetic analyses do not provide a graphical user interface (GUI), the goal of this tutorial is to introduce students to the Linux command line.
 
-Before starting the tutorial, download the resources [here](https://github.com/dnakamuraz/dnakamuraz.github.io/tree/master/assets/museomics).
+Before starting the tutorial, download the resources [here](https://github.com/dnakamuraz/dnakamuraz.github.io/tree/master/assets/museomics). Check Part 2 of the Museomics Workshop [here](https://dnakamuraz.github.io/blog/2026/workshop2assembly/).
 
 ## What is Linux? 
 
@@ -419,6 +419,8 @@ source ~/.bashrc
 conda --version
 ```
 
+Below, we will install all programs necessary for [Part 2 of the Museomics Workshop](https://dnakamuraz.github.io/blog/2026/workshop2assembly/).
+
 #### FastQC 
 
 TNT and PhyG are not available in Bioconda. In contrast, FastQC v.0.12.1 is available and will be installed in the conda environment called `fastqc`. 
@@ -506,7 +508,7 @@ conda deactivate samtools
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
-Tip: If you want to delete an environment, type `conda remove --name NAME --all`. If you are inside an environment and want to uninstall a specific package, type `conda remove NAME`. If you want to list all environments, type `conda env list`. 
+Tip: If you want to delete an environment, type `conda remove --name NAME --all`. If you are inside an environment and want to uninstall a specific package, type `conda remove NAME`. If you want to list all available environments, type `conda env list`. 
 
 </div>
 
@@ -519,3 +521,5 @@ Tip: If you want to delete an environment, type `conda remove --name NAME --all`
 | Compilation | Latest version, HPC optimization | System optimized | Error-prone, requires build tools |
 | Docker | Reproducibility, pipelines | Isolated, cross-platform | Requires Docker, may be slow |
 | Modules | HPC / cluster | Easy switching, no installation | Only on supported systems |
+
+Check the Part 2 of the Museomics Workshop [here](https://dnakamuraz.github.io/blog/2026/workshop2assembly/).

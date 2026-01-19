@@ -27,7 +27,7 @@ toc:
       - name: Reference bias
   - name: Postprocessing
     subsections:
-      - name: BLAST
+      - name: Blast
       - name: Phylogenetic analysis
 ---
 
@@ -35,3 +35,38 @@ This tutorial is Part 2 of the Museomics Workshop (CVZoo XIV 2025, University of
 
 Before starting the tutorial, download the resources [here](https://github.com/dnakamuraz/dnakamuraz.github.io/tree/master/assets/museomics).
 
+## What is museomics?
+
+**Museomics** is the application of genomic and bioinformatic methods to museum specimens, such as skins, bones, teeth, feathers, shells, pinned insects, and herbarium samples. These specimens are typically from extinct or historically collected organisms and were not preserved with DNA analysis in mind. **Paleogenomics** is the study of very old biological material preserved under natural conditions, such as subfossils from caves (e.g., Neanderthals and Denisovans) and permafrost-preserved tissues (e.g., Ice Age megafauna). Archival DNA refers to DNA recovered from any archived biological material, including DNA from museum specimens (historical DNA; hDNA), typically ranging from ~50 to 200 years old, as well as much older biological material (ancient DNA; aDNA), which can range from thousands to, in exceptional cases, hundreds of thousands of years old. However, in the literature, these terms are sometimes used interchangeably.
+
+## Challanges and solutions
+
+## Preprocessing
+
+### Quality assessment
+
+### Trimming
+
+### Deduplicating
+
+### Decontaminating
+
+### Damage profile
+
+## Assembly
+
+### Indexing and linear mapping
+
+### Iterative mapping
+
+### Reference bias
+
+https://gtpb.github.io/CPANG22/
+
+https://pangenome-hackathon-genotoul-bioinfo-11d6d4f47ac33734abfa2a1377.pages-forge.inrae.fr/pages/tutorial_pangenome_graph/
+
+## Postprocessing
+
+### Blast
+
+### Phylogenetic analysis
