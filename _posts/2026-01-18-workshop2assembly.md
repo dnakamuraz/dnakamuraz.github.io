@@ -252,14 +252,17 @@ bwa index -p Dmicrocephalus_rag1 ../../../reference/Dmicrocephalus_rag1.fas
 
 # For each gene, run BWA ALN using replicable seed 1024, missing prob of 0.01 under 0.02 error rate
 cd ../..
+
 # 28S
 mkdir 28s; cd 28s
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_28s.sai
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s ../../5_fastqscreen/Dtriaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_28s.sai
+
 # 12S
 mkdir ../12s; cd ../12s
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_12s.sai
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_12s.sai
+
 # RAG1
 mkdir ../rag1; cd ../rag1
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_rag1.sai
