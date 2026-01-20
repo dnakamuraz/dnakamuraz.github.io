@@ -27,7 +27,7 @@ toc:
 
 This tutorial is Part 1 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). Because most programs used to assemble historical DNA sequences in museomics and to perform downstream phylogenetic analyses do not provide a graphical user interface (GUI), the goal of this tutorial is to introduce students to the Linux command line.
 
-Before starting the tutorial, download the resources [here](https://github.com/dnakamuraz/dnakamuraz.github.io/tree/master/assets/museomics). Check Part 2 of the Museomics Workshop [here](https://dnakamuraz.github.io/blog/2026/workshop2assembly/).
+Before starting the tutorial, download the resources [here](https://drive.google.com/drive/folders/1FBC4-8E0TquQqtSvxvlzb8qbxzKSuuGg?usp=sharing). Check Part 2 of the Museomics Workshop [here](https://dnakamuraz.github.io/blog/2026/workshop2assembly/).
 
 ## What is Linux? 
 

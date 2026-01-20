@@ -32,7 +32,7 @@ toc:
 
 This tutorial is Part 2 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). All software used in this tutorial were previously installed during Part 1 of the Museomics Workshop: [check it here](https://dnakamuraz.github.io/blog/2026/workshop1linux)!
 
-Before starting the tutorial, download the resources [here](https://github.com/dnakamuraz/dnakamuraz.github.io/tree/master/assets/museomics).
+Before starting the tutorial, download the resources [here](https://drive.google.com/drive/folders/1FBC4-8E0TquQqtSvxvlzb8qbxzKSuuGg?usp=sharing).
 
 ## What is museomics?
 
@@ -48,15 +48,19 @@ Below, you will learn how to preprocess, assemble, and post-process hDNA reads.
 
 ## Preprocessing
 
-There are four files in `museomics/part2/1_raw_reads`. Two of them corresponding to *Dendropsophus rhea* MZUSP 14458 and two of them to *Dendropsophus tritaeniatus* MZUSP 73973. As such, there are only two samples of lost treefrogs. We must merge these single-end fastq files that represent the same sample.
+There are four FastQ files in `museomics/part2/1_raw_reads`. Two of them corresponding to *Dendropsophus rhea* MZUSP 14458 and two of them to *Dendropsophus tritaeniatus* MZUSP 73973. Both were subsampled from the original files.
+
+Initially, we merge these single-end FastQ files that represent the same sample.
 
 ```bash
+mkdir 2_merged
+cd 2_merged
 # Merge reads from multiple lanes but same sample
-cat *fastq.gz > merged.fastq.gz
+cat ../1_raw_reads/Drhea* > Drhea_merged.fastq
+cat ../1_raw_reads/Dtritaeniatus* > Dtritaeniatus_merged.fastq
 # Rename headers to avoid redundancy
 conda activate seqkit
-seqkit rename merged.fastq.gz > merged_renamed.fastq
-gzip merged_renamed.fastq
+seqkit rename merged.fastq > merged_renamed.fastq
 conda deactivate seqkit
 ```
 
