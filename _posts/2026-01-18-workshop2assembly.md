@@ -250,18 +250,25 @@ bwa index -p Dmicrocephalus_12s ../../../reference/Dmicrocephalus_12s.fas
 mkdir ../Dmicrocephalus_rag1; cd ../Dmicrocephalus_rag1
 bwa index -p Dmicrocephalus_rag1 ../../../reference/Dmicrocephalus_rag1.fas
 
-# For each gene, run BWA ALN using replicable seed 1024, missing prob of 0.01 under 0.02 error rate
 cd ../..
 
 # 28S
 mkdir 28s; cd 28s
+# Align reads
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_28s.sai
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s ../../5_fastqscreen/Dtriaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_28s.sai
+# Convert .sai to .sam (bwa samse -f sam index sai fastq.gz)
+bwa samse -f Drhea_28s.sam ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s Drhea_28s.sai ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq
+bwa samse -f Dtritaeniatus_28s.sam ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s Dtritaeniatus_28s.sai ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq
 
 # 12S
 mkdir ../12s; cd ../12s
+# Align reads
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_12s.sai
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_12s.sai
+# Convert .sai to .sam (bwa samse -f sam index sai fastq.gz)
+bwa samse -f Drhea_12s.sam ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s Drhea_12s.sai ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq
+bwa samse -f Dtritaeniatus_12s.sam ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s Dtritaeniatus_12s.sai ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq
 
 # RAG1
 mkdir ../rag1; cd ../rag1
