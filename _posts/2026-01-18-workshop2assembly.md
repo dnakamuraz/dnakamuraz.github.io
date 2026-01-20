@@ -105,6 +105,8 @@ The output HTML files `Drhea_renamed_fastqc.html` and `Dtritaeniatus_renamed_fas
 
 Illumina libraries present adapters that must be trimmed before downstream analyses. Furthermore, hDNA fragments are often naturally very short (sometimes <50 bp). As such, finding unusually long reads (e.g., >200–300 bp in a highly degraded sample) is actually a major red flag. Conversely, while museomics depends on short fragments, there is a limit to how short a read can be while still being useful. Very short fragments (< 20 bp) can introduces massive noise into your data, making it impossible to accurately map reads (assemble hDNA) in next steps.
 
+Assuming you are in `museomics/part2/2_merged`, run:
+
 ```bash
 # Create a new directory
 mkdir ../3_cutadapt
@@ -123,7 +125,7 @@ conda deactivate
 
 >
 > **Exercise 2**
-> Check the files `Drhea_cutadapt_fastqc.html` and `Dtritaeniatus_cutadapt_fastqc.html`. Compare both reports with those before trimming. Described what happened with the per base sequence quality, sequence distribution, overrepresented sequences, and adapter content.
+> Check the files `Drhea_cutadapt_fastqc.html` and `Dtritaeniatus_cutadapt_fastqc.html`. Compare both reports with those before trimming. Describe what happened with the per base sequence quality, sequence distribution, overrepresented sequences, and adapter content.
 >
 ><details>
 ><summary>Show answer</summary>
@@ -135,6 +137,8 @@ conda deactivate
 ### Deduplicating
 
 Deleting PCR duplicates is necessary because hDNA libraries originate from a very small number of unique, degraded template molecules that require extensive PCR amplification to reach detectable levels. Consequently, many PCR duplicates are present, which, if not removed, falsely inflate sequencing coverage. Leaving these duplicates in your analysis can lead to significant errors such as false-positive SNP calls, compromising the accuracy of population genetic and phylogenetic inferences.
+
+Assuming you are in `museomics/part2/3_cutadapt`, run:
 
 ```bash
 # Create a new directory
@@ -154,7 +158,7 @@ conda deactivate
 
 >
 > **Exercise 3**
-> Check the files `Drhea_tally_fastqc.html` and `Dtritaeniatus_tally_fastqc.html`. Compare both reports with those before deduplicating. Described what happened with the total number of sequences (available in Basic Statistics) and the sequence duplication levels.
+> Check the files `Drhea_tally_fastqc.html` and `Dtritaeniatus_tally_fastqc.html`. Compare both reports with those before deduplicating. Describe what happened with the total number of sequences (available in Basic Statistics) and the sequence duplication levels.
 >
 ><details>
 ><summary>Show answer</summary>
@@ -165,7 +169,27 @@ conda deactivate
 
 ### Decontaminating
 
+In museomics, deleting contaminants using FastQ Screen is a critical step for validating the authenticity of historical DNA and preventing the analysis of modern biological noise. Because DNA from museum specimens is often highly degraded, non-target DNA—originating from the museum environment, laboratory handling (human DNA), or even the reagents themselves—can easily outnumber the endogenous DNA of interest. FastQ Screen allows researchers to map their sequencing reads against a panel of diverse reference genomes (e.g., human, common bacteria, or potential contaminants like PhiX) to quantify and then filter out sequences that do not belong to the target species.
 
+Assuming you are in `museomics/part2/4_tally`, run:
+
+```bash
+# Create a new directory
+mkdir ../5_fastqscreen
+cd ../5_fastqscreen
+conda activate fastqscreen
+
+# Define the configuration file
+config="/home/daniel/hDNA/FastqScreenGenomes/fastq_screen.conf"
+# New contaminants might be indexed with the following command: bowtie2-build contaminant_name.fasta name_index
+fastq-screen --nohits --aligner bowtie2 --conf $config ../4_tally/Drhea_tally.fastq
+fastq-screen --nohits --aligner bowtie2 --conf $config ../4_tally/Dtritaeniatus_tally.fastq
+
+# Assess quality of reads
+conda activate fastqc
+fastqc *fastq
+conda deactivate
+```
 
 ## Assembly
 
