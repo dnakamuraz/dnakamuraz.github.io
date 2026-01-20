@@ -95,7 +95,7 @@ The output HTML files `Drhea_renamed_fastqc.html` and `Dtritaeniatus_renamed_fas
 ><details>
 ><summary>Show answer</summary>
 >
-> (1) The distribution of per base sequence content presents a high proportion of G relative to A, C and T at the ends of reads. A explanation is the high level of PolyG at the ends of reads.<br>
+> (1) The distribution of per base sequence content presents a high proportion of G relative to A, C and T at the ends of reads. A explanation is the high level of PolyG at the ends of reads. PolyG commonly indicate signal decay during the end of sequencing (and not a real G) because G is represented by no color in some platforms.<br>
 > (2) The sequence length distribution reveals a bicaudal distribution. The first peak around 20-30 bp likely represents fragmented hDNA reads, whereas the the second peak around 98-100 bp likely represents modern DNA contaminants.<br>
 > (3) The sequence duplication levels reveals that some sequences are duplicated. Possible explanations include PCR duplicates not removed and fragments from different regions of the genome randomly sharing the same sequence.
 > 
@@ -117,9 +117,20 @@ cutadapt -O 4 -a AGATCGGAAGAGCACACGTC -m 21 -M 90 -o Dtritaeniatus_cutadapt.fast
 
 # Assess quality of reads
 conda activate fastqc
-fastqc *fastqc
+fastqc *fastq
 conda deactivate
 ```
+
+>
+> **Exercise 2**
+> Check the files `Drhea_cutadapt_fastqc.html` and `Dtritaeniatus_cutadapt_fastqc.html`. Compare both reports with those before trimming. Described what happened with the per base sequence quality, sequence distribution, overrepresented sequences, and adapter content.
+>
+><details>
+><summary>Show answer</summary>
+>
+> The per base sequence quality improved, the sequence distribution is right-skewed with one peak between 20-30 bp, and adapters and other artifacts like PolyG were deleted.
+> 
+></details>
 
 ### Deduplicating
 
