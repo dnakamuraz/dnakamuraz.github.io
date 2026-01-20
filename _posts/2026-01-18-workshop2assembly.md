@@ -188,9 +188,9 @@ In this tutorial, indexing genomes or editing the configuration file are not nec
 
 Tip: Indexing refers to two different processes in molecular biology. <br>
 
-First, in library preparation (wet lab), indexing is the process of adding a unique "ID tag" to your DNA fragments in multiplex libraries (i.e. containing multiple samples to be sequenced together). Without these tags, you would have millions of sequences but no way to know which read came from which specimen. After sequencing, the sample of each read is identified during a computational step called demultiplexing. <br>
+First, in library preparation (wet lab), indexing is the process of adding a unique "ID tag" to your DNA fragments in **multiplex libraries** (i.e. containing multiple samples to be sequenced together). Without these tags, you would have millions of sequences but no way to know which read came from which specimen. After sequencing, the sample of each read is identified during a computational step called demultiplexing. <br>
 
-Second, in read mapping (bioinformatics), you need to "index" your reference genome. This is very similar to the index at the back of a textbook. One possibility is creating a separate set of files (e.g. hash table) that split the reference genome into k-mers and inform their correspondent positions in the genome. Another tool for indexing is the Burrows-Wheeler Transform (BWT), in which it reorders the genome millions of times (so that similar characters are grouped together) and keep the last column. If you tried to align a read by searching the 3-billion-base human genome from start to finish for every single read, it would take years. With an index, the software can "jump" directly to the potential matching locations in milliseconds.
+Second, in read mapping (bioinformatics), you need to "index" your reference genome. This is very similar to the index at the back of a textbook. One possibility is creating a separate set of files (e.g. **hash table**) that split the reference genome into k-mers and inform their correspondent positions in the genome. Another tool for indexing is the **Burrows-Wheeler Transform (BWT)**, in which it reorders the genome millions of times (so that similar characters are grouped together) and keep the last column. If you tried to align a read by searching the 3-billion-base human genome from start to finish for every single read, it would take years. With an index, the software can "jump" directly to the potential matching locations in milliseconds.
 
 </div>
 
@@ -225,25 +225,38 @@ conda deactivate
 
 ## Assembly
 
-Sanger assembly is a small-scale, manual process where you stitch together a few long, high-quality reads (up to 900 bp) to confirm a single gene or plasmid, typically visualized through chromatogram peaks. In contrast, next-generation sequencing (NGS) handle millions of shorter reads (usually 50–150 bp) simultaneously (in second-generation) or a few long reads (10k-1M bp) with high error rates. NGS read mapping (alignment) acts like a "shortcut" by using an existing reference genome as a blueprint to organize these tiny fragments. NGS de novo assembly is the most complex approach, building a entirely new genome from scratch by finding overlaps between reads without any external guide—a task that is often impossible for degraded museum samples due to the lack of sufficient overlap between highly fragmented DNA pieces.
+Sanger sequencing generates few contigs (up to 900 bp) based on chromatogram peaks. In contrast, next-generation sequencing (NGS) handle millions of short reads (usually 50–150 bp) with low error rates (in second-generation) or a few long reads (10k-1M bp) with high error rates (in third-generation). NGS read mapping (alignment) acts like a "shortcut" by using an existing reference genome as a blueprint to organize these tiny fragments. NGS de novo assembly is the most complex approach, building a entirely new genome from scratch by finding overlaps between reads without any external guide—a task that is often impossible for hDNA due to the lack of sufficient overlap between highly fragmented, short reads.
 
 As such, in museomics, we use second-generation sequencing and short read mapping.
 
 ### Indexing and linear mapping
 
+You will run BWA using two samples (*D. rhea* and *D. tritaeniatus*) and three references (the mitochondrial 12S and the nuclear 28S and RAG1 of *D. microcephalus*)
+
 ```bash
+# Create a new directory
+mkdir ../6_bwa
+cd ../6_bwa
+
+conda activate bwa
+mkdir bwa_index; cd bwa_index
+# Index reference of 28S
+mkdir Dmicrocephalus_28s; cd Dmicrocephalus_28s
+bwa index -p Dmicrocephalus_28s ../../../reference/Dmicrocephalus_28s.fas
+# Index reference of 12S
+mkdir ../Dmicrocephalus_12s; cd ../Dmicrocephalus_12s
+bwa index -p Dmicrocephalus_12s ../../../reference/Dmicrocephalus_12s.fas
+# Index reference of RAG1
+mkdir ../Dmicrocephalus_rag1; cd ../Dmicrocephalus_rag1
+bwa index -p Dmicrocephalus_rag1 ../../../reference/Dmicrocephalus_rag1.fas
+
+
+
+
 # Index each reference seed 
 mkdir 4a_seeds; cp -r /home/daniel/hDNA/4a_seeds/fasta 4a_seeds/
 cd 4a_seeds; mkdir bwa_index
-CONDA_ENV_NAME="bwa"
-conda activate "$CONDA_ENV_NAME"
-for s in ${seeds[@]}; do
 bwa index -p "$s" /home/daniel/hDNA/Hylodidae_2/4a_seeds/fasta/"$s".fasta
-mkdir "$s"
-cp "$s"* "$s"/
-mv "$s" bwa_index/
-done
-cd ..
 
 # For each species...
 mkdir 4b_BWA_21-90bp; cd 4b_BWA_21-90bp
