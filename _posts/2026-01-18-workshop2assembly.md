@@ -107,8 +107,8 @@ Illumina libraries present adapters that must be trimmed before downstream analy
 
 ```bash
 # Create a new directory
-mkdir 3_cutadapt
-cd 3_cutadapt
+mkdir ../3_cutadapt
+cd ../3_cutadapt
 
 # Trim adapters and reads out of size range
 conda activate cutadapt
@@ -138,8 +138,8 @@ Deleting PCR duplicates is necessary because hDNA libraries originate from a ver
 
 ```bash
 # Create a new directory
-mkdir 4_tally
-cd 4_tally
+mkdir ../4_tally
+cd ../4_tally
 
 # Delete PCR duplicates
 conda activate tally
@@ -152,7 +152,20 @@ fastqc *fastq
 conda deactivate
 ```
 
+>
+> **Exercise 3**
+> Check the files `Drhea_tally_fastqc.html` and `Dtritaeniatus_tally_fastqc.html`. Compare both reports with those before deduplicating. Described what happened with the total number of sequences (available in Basic Statistics) and the sequence duplication levels.
+>
+><details>
+><summary>Show answer</summary>
+>
+> The total number of sequences slighly reduced because duplicates were deleted.
+> 
+></details>
+
 ### Decontaminating
+
+
 
 ## Assembly
 
