@@ -265,15 +265,13 @@ bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s
 
 # RAG1
 mkdir ../rag1; cd ../rag1
+# Align reads
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_rag1.sai
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_rag1.sai
-
-
-
 # Convert .sai to .sam (bwa samse -f sam index sai fastq.gz)
-bwa samse -f "$x"_"$i".sam /home/daniel/hDNA/Hylodidae_2/4a_seeds/bwa_index/"$i"/"$i" \
-"$x"_"$i".sai \
-/home/daniel/hDNA/Hylodidae_2/3_fastqscreen/"$x"*.tagged_filter.fastq.gz
+bwa samse -f Drhea_rag1.sam ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 Drhea_rag1.sai ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq
+bwa samse -f Dtritaeniatus_rag1.sam ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 Dtritaeniatus_rag1.sai ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq
+
 
 CONDA_ENV_NAME="samtools"
 conda activate "$CONDA_ENV_NAME"
