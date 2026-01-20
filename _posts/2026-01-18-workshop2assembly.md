@@ -261,6 +261,21 @@ rm "$x"_"$i".sam
 ### Iterative mapping
 
 ```bash
+MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample "$x"_"$i" -ref ref \
+  -readpool /home/daniel/hDNA/Hylodidae_2/3_fastqscreen/"$x"*tagged_filter.fastq.gz \
+  --quick /home/daniel/hDNA/Hylodidae_2/4a_seeds/fasta/"$i".fasta --clean &> log
+
+        # Convert .maf to .sam
+        CONDA_ENV_NAME="mitobim"
+        conda activate "$CONDA_ENV_NAME"
+        export LC_ALL=C
+        miraconvert "$i" "$i".sam
+        # Convert .sam to .bam
+        CONDA_ENV_NAME="samtools"
+        conda activate "$CONDA_ENV_NAME"
+        samtools view -S -bh "$i".sam > "$i"_mapANDunmap.bam
+        # Remove unmapped reads
+        samtools view -F 4 -h "$i"_mapANDunmap.bam > "$i"_map.bam
 ```
 
 ### Reference bias
@@ -279,8 +294,14 @@ Although out of the scope of this short workshop, possible solutions for referen
 ### Consensus calling
 
 ```bash
-miraconvert
-samtools
+    samtools consensus  \
+        --mode simple \
+        -q -d 3 \
+        --call-fract 0.95 \
+        --min-MQ 80 \
+        "$bam" > "${name}_consensus.fasta"
 ```
 
 ### Blast
+
+In museomics, BLAST (Basic Local Alignment Search Tool) serves as a vital diagnostic "sanity check" to verify the biological identity of sequences when the source of DNA is uncertain or highly contaminated.
