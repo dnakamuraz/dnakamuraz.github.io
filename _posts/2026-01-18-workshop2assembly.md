@@ -180,7 +180,7 @@ cd ../5_fastqscreen
 conda activate fastqscreen
 ```
 
-FastqScreen is a script to map reads against a database of potential contaminant genomes and delete the mapped reads. The first step is creating the database of contaminants. It is located in `museomics/part2/FastqScreenGenomes.zip`. Unzip this directory and check the subdirectories containing indexed contaminant genomes. The file `fastq_screen.conf` should be edited in each analysis to specify the path for Bowtie2 aligner (L12), number of threads (cores) for parallel analyses (line 21), and contaminant databases (human in line 42, *E. coli* in line 49, vector in line 56, adapters in line 63, and *Paraburkholderia* in line 70). 
+FastqScreen is a script to map reads against a database of potential contaminant genomes and delete the mapped reads. The first step is creating the database of contaminants. It is located in `museomics/part2/FastqScreenGenomes.zip`. Unzip this directory and check the subdirectories containing indexed contaminant genomes. The file `fastq_screen.conf` should be edited in each analysis to specify the path for Bowtie2 aligner (L12), number of threads (cores) for parallel analyses (line 21), and contaminant databases (human in line 42, *E. coli* in line 49, vector in line 56, adapters in line 63, and *Paraburkholderia* in line 70). In this tutorial, indexing genomes or editing the configuration file are not necessary. 
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
