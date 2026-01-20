@@ -96,7 +96,7 @@ conda deactivate
 conda activate tally
 tally -i 1_cutadapt_21-90bp/"$x"*.fastq.gz -o 2_tally_21-90bp/"$x"_tally_21-90bp.fastq --nozip --with-quality
 gzip 2_tally_21-90bp/"$x"_tally_21-90bp.fastq
-conda deactivate tally
+conda deactivate tally 
 ```
 
 ### Decontaminating
