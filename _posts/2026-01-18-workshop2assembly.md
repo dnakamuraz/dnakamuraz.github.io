@@ -53,20 +53,24 @@ There are four FastQ files in `museomics/part2/1_raw_reads`. Two of them corresp
 Initially, we merge these single-end FastQ files that represent the same sample.
 
 ```bash
+# Create a new directory
 mkdir 2_merged
 cd 2_merged
+
 # Merge reads from multiple lanes but same sample
 cat ../1_raw_reads/Drhea* > Drhea_merged.fastq
 cat ../1_raw_reads/Dtritaeniatus* > Dtritaeniatus_merged.fastq
+
 # Rename headers to avoid redundancy
 conda activate seqkit
-seqkit rename merged.fastq > merged_renamed.fastq
+seqkit rename Drhea_merged.fastq > Drhea_renamed.fastq
+seqkit rename Dtritaeniatus_merged.fastq > Dtritaeniatus_renamed.fastq
 conda deactivate seqkit
 ```
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
-Tip: FastQ files might contain single-end or paired-end reads. Single-end reads are sequenced from only one end per fragment and usually generate a single file per sample (except in cases where multiple lanes of sequencing are performed for the same sample). Paired-end reads are sequenced from both ends (one strand is the read 1 and its complementary strand is the read 2) and usually generate two files per sample (R1 and R2). The choice between these two approaches depends on the research question. If a high-volume of data and lower costs are necessary, single-end reads suffice. Otherwise, identifying structural variants and alternative splicing likely require paired-end reads. 
+Tip: FastQ files are classified into single-end or paired-end reads. Single-end reads are sequenced from only one end per fragment and usually generate a single file per sample (except in cases where multiple lanes of sequencing are performed for the same sample). Paired-end reads are sequenced from both ends (one strand is the read 1 and its complementary strand is the read 2) and usually generate two files per sample (R1 and R2). The choice between these two approaches depends on the research question. If a high-volume of data and lower costs are necessary, single-end reads suffice. Otherwise, identifying structural variants and alternative splicing likely require paired-end reads. 
 
 </div>
 

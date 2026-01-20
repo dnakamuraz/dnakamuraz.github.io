@@ -411,10 +411,11 @@ In addition to binaries, most programs in bioinformatics are available in Conda,
 Two popular Conda distributions are Anaconda (a large Conda distribution of ca. 3 GB containing hundreds of packages for data science) and Miniconda (a cleaner Conda distribution of ca. 70 Mb containing only Python and a few libraries). Bioconda is not a Conda distribution, but a repository hosting most bioinformatics software.
 
 ```bash
-# install conda
+# Install conda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh 
-# re-start shell
+
+# Re-start shell
 source ~/.bashrc 
 conda --version
 ```
@@ -437,10 +438,11 @@ conda deactivate
 TNT and PhyG are not available in Bioconda. In contrast, FastQC v.0.12.1 is available and will be installed in the conda environment called `fastqc`. 
 
 ```bash
-# install possible dependencies of java for fastqc
+# Install possible dependencies of java for fastqc
 sudo apt update
 sudo apt install -y libxtst libxrender1 libxi6 libxrandr2 libxinerama1 libxcursor1
-# create an environment
+
+# Create an environment
 conda create -n fastqc bioconda::fastqc
 conda activate fastqc
 fastqc -h
