@@ -32,7 +32,7 @@ toc:
 
 This tutorial is Part 2 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). All software used in this tutorial were previously installed during Part 1 of the Museomics Workshop: [check it here](https://dnakamuraz.github.io/blog/2026/workshop1linux)!
 
-Before starting the tutorial, download the resources [here](https://drive.google.com/drive/folders/1FBC4-8E0TquQqtSvxvlzb8qbxzKSuuGg?usp=sharing).
+Before starting the tutorial, download the resources [here](https://drive.google.com/drive/folders/1FBC4-8E0TquQqtSvxvlzb8qbxzKSuuGg?usp=sharing). If you completed Part 1, the resources were previously downloaded (no need to download them again).
 
 ## What is museomics?
 
@@ -50,12 +50,12 @@ Below, you will learn how to preprocess, assemble, and post-process hDNA reads.
 
 There are four FastQ files in `museomics/part2/1_raw_reads`. Two of them corresponding to *Dendropsophus rhea* MZUSP 14458 and two of them to *Dendropsophus tritaeniatus* MZUSP 73973. Both were subsampled from the original files.
 
-Initially, we merge these single-end FastQ files that represent the same sample.
+Initially, we merge these single-end FastQ files that represent the same sample. Assuming you are in `museomics/part2/1_raw_reads`, run:
 
 ```bash
 # Create a new directory
-mkdir 2_merged
-cd 2_merged
+mkdir ../2_merged
+cd ../2_merged
 
 # Merge reads from multiple lanes but same sample
 cat ../1_raw_reads/Drhea* > Drhea_merged.fastq
@@ -82,7 +82,7 @@ Assuming you are in `museomics/part2/2_merged`, run:
 
 ```bash
 conda activate fastqc
-fastqc *fastq
+fastqc *renamed.fastq
 conda deactivate
 ```
 
@@ -90,7 +90,7 @@ The output HTML files `Drhea_renamed_fastqc.html` and `Dtritaeniatus_renamed_fas
 
 >
 > **Exercise 1**
-> Check the file `Drhea_renamed_fastqc.html`. Create hypotheses to explain the distributions of (1) per base sequence content, (2) sequence length, and (3) sequence duplication levels.
+> Check the file `Drhea_renamed_fastqc.html`. Describe and create hypotheses to explain the distributions of (1) per base sequence content, (2) sequence length, and (3) sequence duplication levels.
 >
 ><details>
 ><summary>Show answer</summary>
@@ -103,7 +103,7 @@ The output HTML files `Drhea_renamed_fastqc.html` and `Dtritaeniatus_renamed_fas
 
 ### Trimming
 
-Illumina libraries present adapters that must be trimmed before downstream analyses. Furthermore, hDNA fragments are often naturally very short (sometimes <50 bp). As such, finding unusually long reads (e.g., >200–300 bp in a highly degraded sample) is actually a major red flag. Conversely, while museomics depends on short fragments, there is a limit to how short a read can be while still being useful. Very short fragments (< 20 bp) can introduces massive noise into your data, making it impossible to accurately map reads (assemble hDNA) in next steps.
+Illumina libraries present adapters that must be trimmed before downstream analyses. Furthermore, hDNA fragments are often very short (sometimes <50 bp). As such, finding unusually long reads (e.g., >200–300 bp in a highly degraded sample) is actually a major red flag. Conversely, while museomics depends on short fragments, there is a limit to how short a read can be while still being useful. Very short fragments (< 20 bp) can introduces massive noise into your data, making it impossible to accurately map reads (assemble hDNA) in next steps.
 
 Assuming you are in `museomics/part2/2_merged`, run:
 
@@ -196,7 +196,7 @@ Second, in read mapping (bioinformatics), you need to "index" your reference gen
 
 ```bash
 # Define the configuration file
-config="/home/daniel/hDNA/FastqScreenGenomes/fastq_screen.conf"
+config="/mnt/c/Users/Aluno/Downloads/CVZoo*/CVZoo/FastqScreenGenomes/fastq_screen.conf"
 
 # New contaminants might be indexed with the following command: bowtie2-build contaminant_name.fasta name_index
 fastq_screen --nohits --aligner bowtie2 --conf $config ../4_tally/Drhea_tally.fastq
