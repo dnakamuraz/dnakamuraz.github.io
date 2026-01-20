@@ -250,24 +250,22 @@ bwa index -p Dmicrocephalus_12s ../../../reference/Dmicrocephalus_12s.fas
 mkdir ../Dmicrocephalus_rag1; cd ../Dmicrocephalus_rag1
 bwa index -p Dmicrocephalus_rag1 ../../../reference/Dmicrocephalus_rag1.fas
 
-
-
-
-# Index each reference seed 
-mkdir 4a_seeds; cp -r /home/daniel/hDNA/4a_seeds/fasta 4a_seeds/
-cd 4a_seeds; mkdir bwa_index
-bwa index -p "$s" /home/daniel/hDNA/Hylodidae_2/4a_seeds/fasta/"$s".fasta
-
-# For each species...
-mkdir 4b_BWA_21-90bp; cd 4b_BWA_21-90bp
-for x in ${roots[@]}; do
 # For each gene, run BWA ALN using replicable seed 1024, missing prob of 0.01 under 0.02 error rate
-for i in ${seeds[@]}; do
-# Align reads (bwa aln index fastq.gz > sai)
-CONDA_ENV_NAME="bwa"
-conda activate "$CONDA_ENV_NAME"
-bwa aln -l 1024 -n 0.01 -t 20 /home/daniel/hDNA/Hylodidae_2/4a_seeds/bwa_index/"$i"/"$i" \
-/home/daniel/hDNA/Hylodidae_2/3_fastqscreen/"$x"*.tagged_filter.fastq.gz > "$x"_"$i".sai
+cd ../..
+# 28S
+mkdir 28s; cd 28s
+bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_28s.sai
+bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s ../../5_fastqscreen/Dtriaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_28s.sai
+# 12S
+mkdir ../12s; cd ../12s
+bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_12s.sai
+bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_12s.sai
+# RAG1
+mkdir ../rag1; cd ../rag1
+bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_rag1.sai
+bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_rag1.sai
+
+
 
 # Convert .sai to .sam (bwa samse -f sam index sai fastq.gz)
 bwa samse -f "$x"_"$i".sam /home/daniel/hDNA/Hylodidae_2/4a_seeds/bwa_index/"$i"/"$i" \
