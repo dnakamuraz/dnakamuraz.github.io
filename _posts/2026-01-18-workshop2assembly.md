@@ -134,11 +134,22 @@ conda deactivate
 
 ### Deduplicating
 
+Deleting PCR duplicates is necessary because hDNA libraries originate from a very small number of unique, degraded template molecules that require extensive PCR amplification to reach detectable levels. Consequently, many PCR duplicates are present, which, if not removed, falsely inflate sequencing coverage. Leaving these duplicates in your analysis can lead to significant errors such as false-positive SNP calls, compromising the accuracy of population genetic and phylogenetic inferences.
+
 ```bash
+# Create a new directory
+mkdir 4_tally
+cd 4_tally
+
+# Delete PCR duplicates
 conda activate tally
-tally -i 1_cutadapt_21-90bp/"$x"*.fastq.gz -o 2_tally_21-90bp/"$x"_tally_21-90bp.fastq --nozip --with-quality
-gzip 2_tally_21-90bp/"$x"_tally_21-90bp.fastq
-conda deactivate tally 
+tally -i ../3_cutadapt/Drhea_cutadapt.fastq -o Drhea_tally.fastq --nozip --with-quality
+tally -i ../3_cutadapt/Dtritaeniatus_cutadapt.fastq -o Dtritaeniatus_tally.fastq --nozip --with-quality
+
+# Assess quality of reads
+conda activate fastqc
+fastqc *fastq
+conda deactivate
 ```
 
 ### Decontaminating
