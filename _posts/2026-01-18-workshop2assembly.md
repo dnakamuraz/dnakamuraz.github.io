@@ -98,13 +98,26 @@ The output HTML files `Drhea_renamed_fastqc.html` and `Dtritaeniatus_renamed_fas
 > (1) The distribution of per base sequence content presents a high proportion of G relative to A, C and T at the ends of reads. A explanation is the high level of PolyG at the ends of reads.<br>
 > (2) The sequence length distribution reveals a bicaudal distribution. The first peak around 20-30 bp likely represents fragmented hDNA reads, whereas the the second peak around 98-100 bp likely represents modern DNA contaminants.<br>
 > (3) The sequence duplication levels reveals that some sequences are duplicated. Possible explanations include PCR duplicates not removed and fragments from different regions of the genome randomly sharing the same sequence.
+> 
 ></details>
 
 ### Trimming
 
+Illumina libraries present adapters that must be trimmed before downstream analyses. Furthermore, hDNA fragments are often naturally very short (sometimes <50 bp). As such, finding unusually long reads (e.g., >200–300 bp in a highly degraded sample) is actually a major red flag. Conversely, while museomics depends on short fragments, there is a limit to how short a read can be while still being useful. Very short fragments (< 20 bp) can introduces massive noise into your data, making it impossible to accurately map reads (assemble hDNA) in next steps.
+
 ```bash
+# Create a new directory
+mkdir 3_cutadapt
+cd 3_cutadapt
+
+# Trim adapters and reads out of size range
 conda activate cutadapt
-cutadapt -O 4 -a AGATCGGAAGAGCACACGTC -m 21 -M 90 -o ./1_cutadapt_21-90bp/"$x"_cutadapt_21-90bp.fastq.gz ./0_merging/"$x"*.fastq.gz
+cutadapt -O 4 -a AGATCGGAAGAGCACACGTC -m 21 -M 90 -o Drhea_cutadapt.fastq ../2_merged/Drhea_renamed.fastq
+cutadapt -O 4 -a AGATCGGAAGAGCACACGTC -m 21 -M 90 -o Dtritaeniatus_cutadapt.fastq ../2_merged/Dtritaeniatus_renamed.fastq
+
+# Assess quality of reads
+conda activate fastqc
+fastqc *fastqc
 conda deactivate
 ```
 
