@@ -421,6 +421,17 @@ conda --version
 
 Below, we will install all programs necessary for [Part 2 of the Museomics Workshop](https://dnakamuraz.github.io/blog/2026/workshop2assembly/).
 
+#### seqkit
+
+seqkit will be installed in the conda environment called `seqkit`.
+
+```bash
+conda create -n seqkit bioconda::seqkit
+conda activate seqkit
+seqkit
+conda deactivate
+```
+
 #### FastQC 
 
 TNT and PhyG are not available in Bioconda. In contrast, FastQC v.0.12.1 is available and will be installed in the conda environment called `fastqc`. 
