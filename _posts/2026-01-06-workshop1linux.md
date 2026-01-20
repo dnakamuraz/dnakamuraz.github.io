@@ -478,11 +478,11 @@ FastqScreen v.0.15.3 will be installed in the environment `fastqscreen`. In my e
 ```bash
 conda create -n fastqscreen bioconda::fastq-screen=0.15.3
 conda activate fastqscreen
-fastq-screen -h
+fastq_screen -h
 conda deactivate
 ```
 
-Note that the environment is called `fastqscreen`, whereas the command is `fastq-screen`.
+Note that the environment is called `fastqscreen`, whereas the command is `fastq_screen`.
 
 #### BWA
 
@@ -516,7 +516,7 @@ conda activate samtools
 conda install bioconda::bamtools
 samtools
 bamtools
-conda deactivate samtools
+conda deactivate
 ```
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">

@@ -199,8 +199,8 @@ Second, in read mapping (bioinformatics), you need to "index" your reference gen
 config="/home/daniel/hDNA/FastqScreenGenomes/fastq_screen.conf"
 
 # New contaminants might be indexed with the following command: bowtie2-build contaminant_name.fasta name_index
-fastq-screen --nohits --aligner bowtie2 --conf $config ../4_tally/Drhea_tally.fastq
-fastq-screen --nohits --aligner bowtie2 --conf $config ../4_tally/Dtritaeniatus_tally.fastq
+fastq_screen --nohits --aligner bowtie2 --conf $config ../4_tally/Drhea_tally.fastq
+fastq_screen --nohits --aligner bowtie2 --conf $config ../4_tally/Dtritaeniatus_tally.fastq
 
 # Assess quality of reads
 conda activate fastqc
@@ -284,7 +284,7 @@ Reference bias is an error where the mapped reads are reference-dependent. In mu
 
 Although out of the scope of this short workshop, possible solutions for reference bias include:
 
-- (1) running multiple linear mappings against different references, aligning output consensus sequences, and masking ambiguities with IUPAC (less conservative) or N (more conservative); 
+- (1) running multiple linear mappings against different references, aligning output consensus sequences, and masking ambiguities with IUPAC N; 
 - (2) running a multiple sequence alignment (MSA) of potential references, calling the consensus of the MSA and coding SNPs with IUPAC ambiguities, and mapping reads against this synthetic reference (suggested in [Oliva et al. 2021](https://academic.oup.com/bib/article/22/5/bbab076/6217726));
 - (3) running multiple linear mappings against different references, selecting best mappings using mapping quality indexes, merging mappings via lift over procedure (developed by [Chen et al. 2021](https://link.springer.com/article/10.1186/s13059-020-02229-3))
 - (4) building variation graph from different references and mapping reads against the graph (see tutorials [here](https://pangenome-hackathon-genotoul-bioinfo-11d6d4f47ac33734abfa2a1377.pages-forge.inrae.fr/pages/tutorial_pangenome_graph/) and [here](https://gtpb.github.io/CPANG22/)). 
