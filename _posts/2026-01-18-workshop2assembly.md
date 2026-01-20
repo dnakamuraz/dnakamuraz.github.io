@@ -178,7 +178,21 @@ Assuming you are in `museomics/part2/4_tally`, run:
 mkdir ../5_fastqscreen
 cd ../5_fastqscreen
 conda activate fastqscreen
+```
 
+FastqScreen is a script to map reads against a database of potential contaminant genomes and delete the mapped reads. The first step is creating the database of contaminants. It is located in `museomics/part2/FastqScreenGenomes.zip`. Unzip this directory and check the subdirectories containing indexed contaminant genomes. The file `fastq_screen.conf` should be edited in each analysis to specify the path for Bowtie2 aligner (L12), number of threads (cores) for parallel analyses (line 21), and contaminant databases (human in line 42, *E. coli* in line 49, vector in line 56, adapters in line 63, and *Paraburkholderia* in line 70). 
+
+<div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
+
+Tip: Indexing refers to two different processes in molecular biology. <br>
+
+First, in library preparation (wet lab), indexing is the process of adding a unique "ID tag" to your DNA fragments in multiplex libraries (i.e. containing multiple samples to be sequenced together). Without these tags, you would have millions of sequences but no way to know which read came from which specimen. After sequencing, the sample of each read is identified during a computational step called demultiplexing. <br>
+
+Second, in read mapping (bioinformatics), you need to "index" your reference genome. This is very similar to the index at the back of a textbook. Tools like BWA, Bowtie2, or Samtools create a separate set of files (e.g. hash table) that split the reference genome into k-mers and their correspondent positions in the genome. Another tools for indexing is the Burrows-Wheeler Transform (BWT) that reorder the genome millions of times (so that similar characters are grouped together) and keep the last column. If you tried to align a read by searching the 3-billion-base human genome from start to finish for every single read, it would take years. With an index, the software can "jump" directly to the potential matching locations in milliseconds.
+
+</div>
+
+```bash
 # Define the configuration file
 config="/home/daniel/hDNA/FastqScreenGenomes/fastq_screen.conf"
 # New contaminants might be indexed with the following command: bowtie2-build contaminant_name.fasta name_index
