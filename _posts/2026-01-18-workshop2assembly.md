@@ -26,8 +26,8 @@ toc:
       - name: Reference bias
   - name: Post-processing
     subsections:
+      - name: Consensus calling
       - name: Blast
-      - name: Phylogenetic analysis
 ---
 
 This tutorial is Part 2 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). All software used in this tutorial were previously installed during Part 1 of the Museomics Workshop: [check it here](https://dnakamuraz.github.io/blog/2026/workshop1linux)!
@@ -180,7 +180,9 @@ cd ../5_fastqscreen
 conda activate fastqscreen
 ```
 
-FastqScreen is a script to map reads against a database of potential contaminant genomes and delete the mapped reads. The first step is creating the database of contaminants. It is located in `museomics/part2/FastqScreenGenomes.zip`. Unzip this directory and check the subdirectories containing indexed contaminant genomes. The file `fastq_screen.conf` should be edited in each analysis to specify the path for Bowtie2 aligner (L12), number of threads (cores) for parallel analyses (line 21), and contaminant databases (human in line 42, *E. coli* in line 49, vector in line 56, adapters in line 63, and *Paraburkholderia* in line 70). In this tutorial, indexing genomes or editing the configuration file are not necessary. 
+FastqScreen is a script to map reads against a database of potential contaminant genomes and delete the mapped reads. The first step is creating the database of contaminants. It is located in `museomics/part2/FastqScreenGenomes.zip`. Unzip this directory and check the subdirectories containing indexed contaminant genomes. The file `fastq_screen.conf` should be edited in each analysis to specify the path for Bowtie2 aligner (L12), number of threads (cores) for parallel analyses (line 21), and contaminant databases (human in line 42, *E. coli* in line 49, vector in line 56, adapters in line 63, and *Paraburkholderia* in line 70). 
+
+In this tutorial, indexing genomes or editing the configuration file are not necessary for FastqScreen analyses. 
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
 
@@ -195,6 +197,7 @@ Second, in read mapping (bioinformatics), you need to "index" your reference gen
 ```bash
 # Define the configuration file
 config="/home/daniel/hDNA/FastqScreenGenomes/fastq_screen.conf"
+
 # New contaminants might be indexed with the following command: bowtie2-build contaminant_name.fasta name_index
 fastq-screen --nohits --aligner bowtie2 --conf $config ../4_tally/Drhea_tally.fastq
 fastq-screen --nohits --aligner bowtie2 --conf $config ../4_tally/Dtritaeniatus_tally.fastq
@@ -207,18 +210,77 @@ conda deactivate
 
 ## Assembly
 
+Sanger assembly is a small-scale, manual process where you stitch together a few long, high-quality reads (up to 900 bp) to confirm a single gene or plasmid, typically visualized through chromatogram peaks. In contrast, next-generation sequencing (NGS) handle millions of shorter reads (usually 50–150 bp) simultaneously (in second-generation) or a few long reads (10k-1M bp) with high error rates. NGS read mapping (alignment) acts like a "shortcut" by using an existing reference genome as a blueprint to organize these tiny fragments. NGS de novo assembly is the most complex approach, building a entirely new genome from scratch by finding overlaps between reads without any external guide—a task that is often impossible for degraded museum samples due to the lack of sufficient overlap between highly fragmented DNA pieces.
+
+As such, in museomics, we use second-generation sequencing and short read mapping.
+
 ### Indexing and linear mapping
+
+```bash
+# Index each reference seed 
+mkdir 4a_seeds; cp -r /home/daniel/hDNA/4a_seeds/fasta 4a_seeds/
+cd 4a_seeds; mkdir bwa_index
+CONDA_ENV_NAME="bwa"
+conda activate "$CONDA_ENV_NAME"
+for s in ${seeds[@]}; do
+bwa index -p "$s" /home/daniel/hDNA/Hylodidae_2/4a_seeds/fasta/"$s".fasta
+mkdir "$s"
+cp "$s"* "$s"/
+mv "$s" bwa_index/
+done
+cd ..
+
+# For each species...
+mkdir 4b_BWA_21-90bp; cd 4b_BWA_21-90bp
+for x in ${roots[@]}; do
+# For each gene, run BWA ALN using replicable seed 1024, missing prob of 0.01 under 0.02 error rate
+for i in ${seeds[@]}; do
+# Align reads (bwa aln index fastq.gz > sai)
+CONDA_ENV_NAME="bwa"
+conda activate "$CONDA_ENV_NAME"
+bwa aln -l 1024 -n 0.01 -t 20 /home/daniel/hDNA/Hylodidae_2/4a_seeds/bwa_index/"$i"/"$i" \
+/home/daniel/hDNA/Hylodidae_2/3_fastqscreen/"$x"*.tagged_filter.fastq.gz > "$x"_"$i".sai
+
+# Convert .sai to .sam (bwa samse -f sam index sai fastq.gz)
+bwa samse -f "$x"_"$i".sam /home/daniel/hDNA/Hylodidae_2/4a_seeds/bwa_index/"$i"/"$i" \
+"$x"_"$i".sai \
+/home/daniel/hDNA/Hylodidae_2/3_fastqscreen/"$x"*.tagged_filter.fastq.gz
+
+CONDA_ENV_NAME="samtools"
+conda activate "$CONDA_ENV_NAME"
+# Convert .sam to .bam
+samtools view --threads 20 -S -b "$x"_"$i".sam > "$x"_"$i"_mapANDunmap.bam
+# Remove unmapped reads
+samtools view --threads 20 -F 4 "$x"_"$i"_mapANDunmap.bam > "$x"_"$i"_map.bam
+
+rm "$x"_"$i".sai
+rm "$x"_"$i"_mapANDunmap.bam
+rm "$x"_"$i".sam
+```
 
 ### Iterative mapping
 
+```bash
+```
+
 ### Reference bias
 
-https://gtpb.github.io/CPANG22/
+Reference bias is an error where the mapped reads are reference-dependent. In museomics, this is particularly dangerous because hDNA is very short. If a read has too many differences from the reference, the aligner decides it’s "too messy" and throws it away or assigns it a low Mapping Quality (MapQ). As such, the final results will look "more like the reference" than the actual sequenced organism.
 
-https://pangenome-hackathon-genotoul-bioinfo-11d6d4f47ac33734abfa2a1377.pages-forge.inrae.fr/pages/tutorial_pangenome_graph/
+Although out of the scope of this short workshop, possible solutions for reference bias include:
+
+- (1) running multiple linear mappings against different references, aligning output consensus sequences, and masking ambiguities with IUPAC (less conservative) or N (more conservative); 
+- (2) running a multiple sequence alignment (MSA) of potential references, calling the consensus of the MSA and coding SNPs with IUPAC ambiguities, and mapping reads against this synthetic reference (suggested in [Oliva et al. 2021](https://academic.oup.com/bib/article/22/5/bbab076/6217726));
+- (3) running multiple linear mappings against different references, selecting best mappings using mapping quality indexes, merging mappings via lift over procedure (developed by [Chen et al. 2021](https://link.springer.com/article/10.1186/s13059-020-02229-3))
+- (4) building variation graph from different references and mapping reads against the graph (see tutorials [here](https://pangenome-hackathon-genotoul-bioinfo-11d6d4f47ac33734abfa2a1377.pages-forge.inrae.fr/pages/tutorial_pangenome_graph/) and [here](https://gtpb.github.io/CPANG22/)). 
 
 ## Post-processing
 
-### Blast
+### Consensus calling
 
-### Phylogenetic analysis
+```bash
+miraconvert
+samtools
+```
+
+### Blast
