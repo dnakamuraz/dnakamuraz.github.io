@@ -27,7 +27,6 @@ toc:
   - name: Post-processing
     subsections:
       - name: Consensus calling
-      - name: Blast
 ---
 
 This tutorial is Part 2 of the Museomics Workshop (CVZoo XIV 2025, University of São Paulo, Brazil). All software used in this tutorial were previously installed during Part 1 of the Museomics Workshop: [check it here](https://dnakamuraz.github.io/blog/2026/workshop1linux)!
@@ -237,18 +236,19 @@ You will run BWA using two samples (*D. rhea* and *D. tritaeniatus*) and three r
 Assuming you are in the directory `museomics/part2/5_fastqscreen`, let's index the reference sequences.
 
 ```bash
-# Create a new directory
 mkdir ../6_bwa
 cd ../6_bwa
-
 conda activate bwa
 mkdir bwa_index; cd bwa_index
+
 # Index reference of 28S
 mkdir Dmicrocephalus_28s; cd Dmicrocephalus_28s
 bwa index -p Dmicrocephalus_28s ../../../reference/Dmicrocephalus_28s.fas
+
 # Index reference of 12S
 mkdir ../Dmicrocephalus_12s; cd ../Dmicrocephalus_12s
 bwa index -p Dmicrocephalus_12s ../../../reference/Dmicrocephalus_12s.fas
+
 # Index reference of RAG1
 mkdir ../Dmicrocephalus_rag1; cd ../Dmicrocephalus_rag1
 bwa index -p Dmicrocephalus_rag1 ../../../reference/Dmicrocephalus_rag1.fas
@@ -256,7 +256,7 @@ bwa index -p Dmicrocephalus_rag1 ../../../reference/Dmicrocephalus_rag1.fas
 cd ../..
 ```
 
-Now, we can map reads to the indexed references. We can also convert the output SAI files to SAM files.
+Now, we can map reads to the indexed references. We can also convert the output SAI files to SAM files. Assuming you are in the directory `museomics/part2/6_bwa`, run
 
 ```bash
 # 28S
@@ -321,7 +321,13 @@ samtools view --threads 4 -F 4 Dtritaeniatus_rag1_mapANDunmap.bam > Dtritaeniatu
 
 ### Iterative mapping
 
+Baiting and iterative mapping is a bioinformatic strategy used to reconstruct a target sequence (like a mitochondrial genome) by using a closely related "seed" as a starting point. Reads are aligned with the reference, generating contigs. These contigs are used to a new round of alignment. This process continues up to X iterations or until improvement is not found.
+
 ```bash
+# Create a new directory
+mkdir ../7_mitobim
+cd ../7_mitobim
+
 MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample "$x"_"$i" -ref ref \
   -readpool /home/daniel/hDNA/Hylodidae_2/3_fastqscreen/"$x"*tagged_filter.fastq.gz \
   --quick /home/daniel/hDNA/Hylodidae_2/4a_seeds/fasta/"$i".fasta --clean &> log
@@ -338,6 +344,17 @@ MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample "$x"_"$i" -ref ref \
         # Remove unmapped reads
         samtools view -F 4 -h "$i"_mapANDunmap.bam > "$i"_map.bam
 ```
+
+>
+> **Exercise 5**
+> Open the files `xx` and `XX` in your browser. Which analysis mapped more reads: BWA or MITObim? Why?
+>
+><details>
+><summary>Show answer</summary>
+>
+> MITObim due to its baiting and iterative mapping strategy.
+> 
+></details>
 
 ### Reference bias
 
@@ -362,7 +379,3 @@ Although out of the scope of this short workshop, possible solutions for referen
         --min-MQ 80 \
         "$bam" > "${name}_consensus.fasta"
 ```
-
-### Blast
-
-In museomics, BLAST (Basic Local Alignment Search Tool) serves as a vital diagnostic "sanity check" to verify the biological identity of sequences when the source of DNA is uncertain or highly contaminated.
