@@ -47,7 +47,9 @@ Below, you will learn how to preprocess, assemble, and post-process hDNA reads.
 
 ## Preprocessing
 
-There are two FastQ files in `museomics/part2/1_raw_reads`, both of them corresponding to *Dendropsophus rhea* MZUSP 14458. Initially, we merge these single-end FastQ files that represent the same sample. Assuming you are in `museomics/part2/1_raw_reads`, run:
+There are four FastQ files in `museomics/part2/1_raw_reads`. Two of them corresponding to *Dendropsophus rhea* MZUSP 14458 and two of them to *Dendropsophus tritaeniatus* MZUSP 73973. Both were subsampled from the original files.
+
+Initially, we merge these single-end FastQ files that represent the same sample. Assuming you are in `museomics/part2/1_raw_reads`, run:
 
 ```bash
 # Create a new directory
@@ -56,10 +58,12 @@ cd ../2_merged
 
 # Merge reads from multiple lanes but same sample
 cat ../1_raw_reads/Drhea* > Drhea_merged.fastq
+cat ../1_raw_reads/Dtritaeniatus* > Dtritaeniatus_merged.fastq
 
 # Rename headers to avoid redundancy
 conda activate seqkit
 seqkit rename Drhea_merged.fastq > Drhea_renamed.fastq
+seqkit rename Dtritaeniatus_merged.fastq > Dtritaeniatus_renamed.fastq
 conda deactivate
 ```
 
