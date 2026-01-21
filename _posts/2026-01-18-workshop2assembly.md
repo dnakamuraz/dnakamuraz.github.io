@@ -333,7 +333,7 @@ conda activate mitobim
 export LC_ALL=C
 
 # Run MITObim: D. rhea against the 12S of D. microcephalus
-mkdir -p Drhea/12s
+mkdir -p Drhea/12s; cd Drhea/12s
 MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample Drhea_12s -ref Dmicrocephalus \
   -readpool ../../../5_fastqscreen/Drhea_tally.tagged_filter.fastq \
   --quick ../../../reference/Dmicrocephalus_12s.fas --clean &> log
