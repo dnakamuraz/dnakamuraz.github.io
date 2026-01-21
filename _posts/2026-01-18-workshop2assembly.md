@@ -323,31 +323,43 @@ samtools view --threads 4 -F 4 Dtritaeniatus_rag1_mapANDunmap.bam > Dtritaeniatu
 
 Baiting and iterative mapping is a bioinformatic strategy used to reconstruct a target sequence (like a mitochondrial genome) by using a closely related "seed" as a starting point. Reads are aligned with the reference, generating contigs. These contigs are used to a new round of alignment. This process continues up to X iterations or until improvement is not found.
 
+Assuming you are in the directory `museomics/part2/6_bwa`, run:
+
 ```bash
 # Create a new directory
 mkdir ../7_mitobim
 cd ../7_mitobim
+conda activate mitobim
+export LC_ALL=C
 
-MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample "$x"_"$i" -ref ref \
-  -readpool /home/daniel/hDNA/Hylodidae_2/3_fastqscreen/"$x"*tagged_filter.fastq.gz \
-  --quick /home/daniel/hDNA/Hylodidae_2/4a_seeds/fasta/"$i".fasta --clean &> log
+# Run MITObim: D. rhea against the 28S of D. microcephalus
+MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample Drhea_28s -ref Dmicroccephalus \
+  -readpool ../5_fastqscreen/Drhea_tally.tagged_filter.fastq \
+  --quick ../reference/Dmicrocephalus_28s.fas --clean &> log
 
-        # Convert .maf to .sam
-        CONDA_ENV_NAME="mitobim"
-        conda activate "$CONDA_ENV_NAME"
-        export LC_ALL=C
-        miraconvert "$i" "$i".sam
-        # Convert .sam to .bam
-        CONDA_ENV_NAME="samtools"
-        conda activate "$CONDA_ENV_NAME"
-        samtools view -S -bh "$i".sam > "$i"_mapANDunmap.bam
-        # Remove unmapped reads
-        samtools view -F 4 -h "$i"_mapANDunmap.bam > "$i"_map.bam
+# Convert caf to sam
+miraconvert "$i" "$i".sam
+# Convert .sam to .bam
+conda activate samtools
+samtools view -S -bh "$i".sam > "$i"_mapANDunmap.bam
+# Remove unmapped reads
+samtools view -F 4 -h "$i"_mapANDunmap.bam > "$i"_map.bam
 ```
 
 >
 > **Exercise 5**
-> Open the files `xx` and `XX` in your browser. Which analysis mapped more reads: BWA or MITObim? Why?
+> Write the commands to iteratively map reads of D. rhea and D. tritaeniatus to all reference sequences in the directory `museomics/part2/reference`.
+>
+><details>
+><summary>Show answer</summary>
+>
+> 
+> 
+></details>
+
+>
+> **Exercise 6**
+> The command `samtools stats FILE.bam > FILE.txt` provides basic statics about a BAM file (read alignment). Compare the BAM files generated with BWA and MITObim. Which approach mapped more reads? Why?
 >
 ><details>
 ><summary>Show answer</summary>
