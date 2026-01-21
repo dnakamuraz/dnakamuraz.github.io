@@ -513,7 +513,7 @@ conda deactivate
 Samtools and bamtools will be installed in the environment `samtools`.
 
 ```bash
-conda create -n samtools bioconda::samtools
+conda create -n samtools -c conda-forge -c bioconda samtools=1.23
 conda activate samtools
 conda install bioconda::bamtools
 samtools

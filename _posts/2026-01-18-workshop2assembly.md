@@ -333,7 +333,8 @@ conda activate mitobim
 export LC_ALL=C
 
 # Run MITObim: D. rhea against the 12S of D. microcephalus
-mkdir -p Drhea/12s; cd Drhea/12s
+mkdir -p Drhea/12s
+cd Drhea/12s
 MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample Drhea_12s -ref Dmicrocephalus \
   -readpool ../../../5_fastqscreen/Drhea_tally.tagged_filter.fastq \
   --quick ../../../reference/Dmicrocephalus_12s.fas --clean &> log
@@ -385,10 +386,15 @@ Although out of the scope of this short workshop, possible solutions for referen
 ### Consensus calling
 
 ```bash
-    samtools consensus  \
-        --mode simple \
-        -q -d 3 \
-        --call-fract 0.95 \
-        --min-MQ 80 \
-        "$bam" > "${name}_consensus.fasta"
+# Create a new directory
+mkdir ../8_consensus
+cd ../8_consensus
+conda activate samtools
+
+samtools consensus  \
+  --mode simple \
+  -q -d 3 \
+  --call-fract 0.95 \
+  --min-MQ 80 \
+  "$bam" > "${name}_consensus.fasta"
 ```
