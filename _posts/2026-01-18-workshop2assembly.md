@@ -55,11 +55,12 @@ mkdir ../2_merged
 cd ../2_merged
 
 # Merge reads from multiple lanes but same sample
-cat ../1_raw_reads/Drhea* > Drhea_merged.fastq
+cat ../1_raw_reads/Drhea* > Drhea_merged.fastq.gz
 
 # Rename headers to avoid redundancy
 conda activate seqkit
-seqkit rename Drhea_merged.fastq > Drhea_renamed.fastq
+seqkit rename Drhea_merged.fastq.gz > Drhea_renamed.fastq
+gzip Drhea_renamed.fastq
 conda deactivate
 ```
 
@@ -77,7 +78,7 @@ Assuming you are in `museomics/part2/2_merged`, run:
 
 ```bash
 conda activate fastqc
-fastqc *renamed.fastq
+fastqc *renamed.fastq.gz
 conda deactivate
 ```
 
