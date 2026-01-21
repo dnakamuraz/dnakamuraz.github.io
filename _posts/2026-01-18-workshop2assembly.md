@@ -256,7 +256,7 @@ bwa index -p Dmicrocephalus_rag1 ../../../reference/Dmicrocephalus_rag1.fas
 cd ../..
 ```
 
-Now, we can map reads to the indexed references. We can also convert the output SAI files to SAM files. Assuming you are in the directory `museomics/part2/6_bwa`, run
+Now, we can map reads to the indexed references. We can also convert the output SAI files to SAM files. Assuming you are in the directory `museomics/part2/6_bwa`, run:
 
 ```bash
 # 28S
