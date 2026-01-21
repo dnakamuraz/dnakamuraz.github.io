@@ -234,7 +234,7 @@ As such, in museomics, we use second-generation sequencing and short read mappin
 
 You will run BWA using two samples (*D. rhea* and *D. tritaeniatus*) and three references (the mitochondrial 12S and the nuclear 28S and RAG1 of *D. microcephalus*).
 
-First, let's index the reference sequences.
+Assuming you are in the directory `museomics/part2/5_fastqscreen`, let's index the reference sequences.
 
 ```bash
 # Create a new directory
@@ -263,8 +263,8 @@ Now, we can map reads to the indexed references. We can also convert the output 
 mkdir 28s; cd 28s
 # Align reads
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_28s.sai
-bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s ../../5_fastqscreen/Dtriaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_28s.sai
-# Convert .sai to .sam (bwa samse -f sam index sai fastq.gz)
+bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_28s.sai
+# Convert .sai to .sam (bwa samse -f sam index sai fastq)
 bwa samse -f Drhea_28s.sam ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s Drhea_28s.sai ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq
 bwa samse -f Dtritaeniatus_28s.sam ../bwa_index/Dmicrocephalus_28s/Dmicrocephalus_28s Dtritaeniatus_28s.sai ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq
 
@@ -273,7 +273,7 @@ mkdir ../12s; cd ../12s
 # Align reads
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_12s.sai
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_12s.sai
-# Convert .sai to .sam (bwa samse -f sam index sai fastq.gz)
+# Convert .sai to .sam (bwa samse -f sam index sai fastq)
 bwa samse -f Drhea_12s.sam ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s Drhea_12s.sai ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq
 bwa samse -f Dtritaeniatus_12s.sam ../bwa_index/Dmicrocephalus_12s/Dmicrocephalus_12s Dtritaeniatus_12s.sai ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq
 
@@ -282,21 +282,41 @@ mkdir ../rag1; cd ../rag1
 # Align reads
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq > Drhea_rag1.sai
 bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq > Dtritaeniatus_rag1.sai
-# Convert .sai to .sam (bwa samse -f sam index sai fastq.gz)
+# Convert .sai to .sam (bwa samse -f sam index sai fastq)
 bwa samse -f Drhea_rag1.sam ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 Drhea_rag1.sai ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq
 bwa samse -f Dtritaeniatus_rag1.sam ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 Dtritaeniatus_rag1.sai ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq
 
-cd ../..
+cd ..
 ```
 
-Finally, we will compress SAM files to BAM and remove unmapped reads.
+Finally, assuming you are in the directory `museomics/part2/6_bwa`, we will compress SAM files to BAM and remove unmapped reads.
 
 ```bash
 conda activate samtools
+
+cd 28s
 # Convert .sam to .bam
-samtools view --threads 4 -S -b "$x"_"$i".sam > "$x"_"$i"_mapANDunmap.bam
+samtools view --threads 4 -S -b Drhea_28s.sam > Drhea_28s_mapANDunmap.bam
+samtools view --threads 4 -S -b Dtritaeniatus_28s.sam > Dtritaeniatus_28s_mapANDunmap.bam
 # Remove unmapped reads
-samtools view --threads 4 -F 4 "$x"_"$i"_mapANDunmap.bam > "$x"_"$i"_map.bam
+samtools view --threads 4 -F 4 Drhea_28s_mapANDunmap.bam > Drhea_28s_map.bam
+samtools view --threads 4 -F 4 Dtritaeniatus_28s_mapANDunmap.bam > Dtritaeniatus_28s_map.bam
+
+cd ../12s
+# Convert .sam to .bam
+samtools view --threads 4 -S -b Drhea_12s.sam > Drhea_12s_mapANDunmap.bam
+samtools view --threads 4 -S -b Dtritaeniatus_12s.sam > Dtritaeniatus_12s_mapANDunmap.bam
+# Remove unmapped reads
+samtools view --threads 4 -F 4 Drhea_12s_mapANDunmap.bam > Drhea_12s_map.bam
+samtools view --threads 4 -F 4 Dtritaeniatus_12s_mapANDunmap.bam > Dtritaeniatus_12s_map.bam
+
+cd ../rag1
+# Convert .sam to .bam
+samtools view --threads 4 -S -b Drhea_rag1.sam > Drhea_rag1_mapANDunmap.bam
+samtools view --threads 4 -S -b Dtritaeniatus_rag1.sam > Dtritaeniatus_rag1_mapANDunmap.bam
+# Remove unmapped reads
+samtools view --threads 4 -F 4 Drhea_rag1_mapANDunmap.bam > Drhea_rag1_map.bam
+samtools view --threads 4 -F 4 Dtritaeniatus_rag1_mapANDunmap.bam > Dtritaeniatus_rag1_map.bam
 ```
 
 ### Iterative mapping
