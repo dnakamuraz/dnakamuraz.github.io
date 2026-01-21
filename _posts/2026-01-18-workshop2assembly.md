@@ -65,7 +65,7 @@ cat ../1_raw_reads/Dtritaeniatus* > Dtritaeniatus_merged.fastq
 conda activate seqkit
 seqkit rename Drhea_merged.fastq > Drhea_renamed.fastq
 seqkit rename Dtritaeniatus_merged.fastq > Dtritaeniatus_renamed.fastq
-conda deactivate seqkit
+conda deactivate
 ```
 
 <div style="border:2px solid rgba(76, 117, 175, 0.87); padding:12px; margin-bottom: 16px; border-radius:8px; background:#E7F0FE">
