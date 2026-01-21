@@ -296,24 +296,24 @@ conda activate samtools
 
 cd 28s
 # Convert .sam to .bam
-samtools view --threads 4 -S -b Drhea_28s.sam > Drhea_28s_mapANDunmap.bam
-samtools view --threads 4 -S -b Dtritaeniatus_28s.sam > Dtritaeniatus_28s_mapANDunmap.bam
+samtools view --threads 4 -S -bh Drhea_28s.sam > Drhea_28s_mapANDunmap.bam
+samtools view --threads 4 -S -bh Dtritaeniatus_28s.sam > Dtritaeniatus_28s_mapANDunmap.bam
 # Remove unmapped reads
 samtools view --threads 4 -F 4 Drhea_28s_mapANDunmap.bam > Drhea_28s_map.bam
 samtools view --threads 4 -F 4 Dtritaeniatus_28s_mapANDunmap.bam > Dtritaeniatus_28s_map.bam
 
 cd ../12s
 # Convert .sam to .bam
-samtools view --threads 4 -S -b Drhea_12s.sam > Drhea_12s_mapANDunmap.bam
-samtools view --threads 4 -S -b Dtritaeniatus_12s.sam > Dtritaeniatus_12s_mapANDunmap.bam
+samtools view --threads 4 -S -bh Drhea_12s.sam > Drhea_12s_mapANDunmap.bam
+samtools view --threads 4 -S -bh Dtritaeniatus_12s.sam > Dtritaeniatus_12s_mapANDunmap.bam
 # Remove unmapped reads
 samtools view --threads 4 -F 4 Drhea_12s_mapANDunmap.bam > Drhea_12s_map.bam
 samtools view --threads 4 -F 4 Dtritaeniatus_12s_mapANDunmap.bam > Dtritaeniatus_12s_map.bam
 
 cd ../rag1
 # Convert .sam to .bam
-samtools view --threads 4 -S -b Drhea_rag1.sam > Drhea_rag1_mapANDunmap.bam
-samtools view --threads 4 -S -b Dtritaeniatus_rag1.sam > Dtritaeniatus_rag1_mapANDunmap.bam
+samtools view --threads 4 -S -bh Drhea_rag1.sam > Drhea_rag1_mapANDunmap.bam
+samtools view --threads 4 -S -bh Dtritaeniatus_rag1.sam > Dtritaeniatus_rag1_mapANDunmap.bam
 # Remove unmapped reads
 samtools view --threads 4 -F 4 Drhea_rag1_mapANDunmap.bam > Drhea_rag1_map.bam
 samtools view --threads 4 -F 4 Dtritaeniatus_rag1_mapANDunmap.bam > Dtritaeniatus_rag1_map.bam
