@@ -231,7 +231,9 @@ As such, in museomics, we use second-generation sequencing and short read mappin
 
 ### Indexing and linear mapping
 
-You will run BWA using two samples (*D. rhea* and *D. tritaeniatus*) and three references (the mitochondrial 12S and the nuclear 28S and RAG1 of *D. microcephalus*)
+You will run BWA using two samples (*D. rhea* and *D. tritaeniatus*) and three references (the mitochondrial 12S and the nuclear 28S and RAG1 of *D. microcephalus*).
+
+First, let's index the reference sequences.
 
 ```bash
 # Create a new directory
@@ -251,7 +253,11 @@ mkdir ../Dmicrocephalus_rag1; cd ../Dmicrocephalus_rag1
 bwa index -p Dmicrocephalus_rag1 ../../../reference/Dmicrocephalus_rag1.fas
 
 cd ../..
+```
 
+Now, we can map reads to the indexed references. We can also convert the output SAI files to SAM files.
+
+```bash
 # 28S
 mkdir 28s; cd 28s
 # Align reads
@@ -279,17 +285,17 @@ bwa aln -l 1024 -n 0.01 -t 20 ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_ra
 bwa samse -f Drhea_rag1.sam ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 Drhea_rag1.sai ../../5_fastqscreen/Drhea_tally.tagged_filter.fastq
 bwa samse -f Dtritaeniatus_rag1.sam ../bwa_index/Dmicrocephalus_rag1/Dmicrocephalus_rag1 Dtritaeniatus_rag1.sai ../../5_fastqscreen/Dtritaeniatus_tally.tagged_filter.fastq
 
+cd ../..
+```
 
-CONDA_ENV_NAME="samtools"
-conda activate "$CONDA_ENV_NAME"
+Finally, we will compress SAM files to BAM and remove unmapped reads.
+
+```bash
+conda activate samtools
 # Convert .sam to .bam
-samtools view --threads 20 -S -b "$x"_"$i".sam > "$x"_"$i"_mapANDunmap.bam
+samtools view --threads 4 -S -b "$x"_"$i".sam > "$x"_"$i"_mapANDunmap.bam
 # Remove unmapped reads
-samtools view --threads 20 -F 4 "$x"_"$i"_mapANDunmap.bam > "$x"_"$i"_map.bam
-
-rm "$x"_"$i".sai
-rm "$x"_"$i"_mapANDunmap.bam
-rm "$x"_"$i".sam
+samtools view --threads 4 -F 4 "$x"_"$i"_mapANDunmap.bam > "$x"_"$i"_map.bam
 ```
 
 ### Iterative mapping
