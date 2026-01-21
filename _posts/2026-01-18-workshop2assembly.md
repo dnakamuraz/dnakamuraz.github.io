@@ -332,10 +332,11 @@ cd ../7_mitobim
 conda activate mitobim
 export LC_ALL=C
 
-# Run MITObim: D. rhea against the 28S of D. microcephalus
-MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample Drhea_28s -ref Dmicroccephalus \
-  -readpool ../5_fastqscreen/Drhea_tally.tagged_filter.fastq \
-  --quick ../reference/Dmicrocephalus_28s.fas --clean &> log
+# Run MITObim: D. rhea against the 12S of D. microcephalus
+mkdir -p Drhea/12s
+MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample Drhea_12s -ref Dmicrocephalus \
+  -readpool ../../../5_fastqscreen/Drhea_tally.tagged_filter.fastq \
+  --quick ../../../reference/Dmicrocephalus_12s.fas --clean &> log
 
 # Convert caf to sam
 miraconvert "$i" "$i".sam
