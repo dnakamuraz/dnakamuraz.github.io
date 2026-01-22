@@ -318,6 +318,6 @@ samtools sort ../6_bwa/rag1/Drhea_rag1_map.bam | samtools consensus -f FASTA - -
 
 BLAST (Basic Local Alignment Search Tool) is one of the most fundamental algorithms in bioinformatics. It is used to compare a "query" sequence (DNA, RNA, or protein) against a massive database of known sequences to find regions of similarity. That is, Blast is a quick method to identify sequences.
 
-1. Visit https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome
+1. Visit [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome)
 2. Copy the consensus sequences generated in this tutorial in "Enter query sequence" and clicl on BLAST.
 3. Check the identity of each sequence
