@@ -296,45 +296,16 @@ samtools view --threads 4 -S -bh Drhea_rag1.sam > Drhea_rag1_mapANDunmap.bam
 samtools view --threads 4 -bh -F 4 Drhea_rag1_mapANDunmap.bam > Drhea_rag1_map.bam
 ```
 
-<p align="center">
-  <img src="/assets/img/museomics_part2_1.png" alt="BWA mapping of Dendropsophus rhea (mitochondrial small rRNA 12S)" width="500">
-</p>
-
-### Iterative mapping
-
-Baiting and iterative mapping is a bioinformatic strategy used to reconstruct a target sequence (like a mitochondrial genome) by using a closely related "seed" as a starting point. Reads are aligned with the reference, generating contigs. These contigs are used to a new round of alignment. This process continues up to X iterations or until improvement is not found.
-
-Assuming you are in the directory `museomics/part2/6_bwa`, run:
-
-```bash
-# Create a new directory
-mkdir ../7_mitobim; cd ../7_mitobim
-conda activate mitobim
-export LC_ALL=C
-
-# MITObim: D. rhea against the 12S of D. microcephalus
-mkdir -p Drhea/12s; cd Drhea/12s
-MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample Drhea_12s -ref Dmicrocephalus \
-  -readpool ../../../5_fastqscreen/Drhea_tally.tagged_filter.fastq \
-  --quick ../../../reference/Dmicrocephalus_12s.fas --clean &> log
-
-# Convert caf to sam
-miraconvert "$i" "$i".sam
-# Convert .sam to .bam
-conda activate samtools
-samtools view -S -bh "$i".sam > "$i"_mapANDunmap.bam
-# Remove unmapped reads
-samtools view -F 4 -bh "$i"_mapANDunmap.bam > "$i"_map.bam
-```
+![BWA mapping of 12S]({{ site.baseurl }}/assets/img/museomics_part2_1.png)
 
 >
 > **Exercise 5**
-> The command `samtools stats FILE.bam > FILE.txt` provides basic statics about a BAM file (read alignment). Compare the BAM files generated for 12S, 28S, and RAG1. Create a hypothesis to explain the differences in number of mapped reads.
+> The command `samtools stats FILE.bam > FILE.txt` provides basic statics about a BAM file (read alignment). Compare the BAM files generated for 12S, 28S, and RAG1. Create a hypothesis to explain the differences in number of mapped reads between nuclear and mitochondrial genes.
 >
 ><details>
 ><summary>Show answer</summary>
 >
-> MITObim due to its baiting and iterative mapping strategy.
+> 
 > 
 ></details>
 
@@ -355,7 +326,7 @@ Although out of the scope of this short workshop, possible solutions for referen
 
 ```bash
 # Create a new directory
-mkdir ../8_consensus; cd ../8_consensus
+mkdir ../7_consensus; cd ../7_consensus
 conda activate samtools
 
 # BWA: 12S
@@ -370,12 +341,12 @@ samtools sort ../6_bwa/rag1/Drhea_rag1_map.bam | samtools consensus -f FASTA - -
 
 >
 > **Exercise 6**
-> There are strings of contiguous IUPAC N in the consensus sequences. Create a hypothesis to explain differences in the number of N between mitochondrial and nuclear genes. Explain the differences between 28S and RAG1 results.
+> There are strings of contiguous IUPAC N in the consensus sequences. Is IUPAC N the same as missing data? Why is IUPAC N common in museomics?
 >
 ><details>
 ><summary>Show answer</summary>
 >
-> IUPAC N is common in museomics due to low coverage.IUPAC N (or ? if you code low depth positions as such) in mitochondrial genes is less common than in nuclear genes. The reason is the multiple copies of mitogenomes inside a cell. 28S has more mapped reads than RAG1 because 28S is present in multiple copies in tandem in the nucleolus.
+> IUPAC N is common in museomics due to low coverage.IUPAC N and question marks ? (missing data) are not the same. IUPAC N represents any nucleotide, whereas a question mark represents any nucleotide or a gap. The user can specify whether low coverage will be coded as N or ?, but the common approach is coding it with N. However, coding it with N is less coservative (more assumptions) than coding it with question marks.
 > 
 ></details>
 
