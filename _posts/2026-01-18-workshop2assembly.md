@@ -47,7 +47,7 @@ Below, you will learn how to preprocess, assemble, and post-process hDNA reads.
 
 ## Preprocessing
 
-There are two FastQ files in `museomics/part2/1_raw_reads`, both of them corresponding to *Dendropsophus rhea* MZUSP 14458. Initially, we merge these single-end FastQ files that represent the same sample. Assuming you are in `museomics/part2/1_raw_reads`, run:
+There are three FastQ files in `museomics/part2/1_raw_reads`, all sequenced from *Dendropsophus rhea* MZUSP 14458. Initially, we merge these single-end FastQ files that represent the same sample. Assuming you are in `museomics/part2/1_raw_reads`, run:
 
 ```bash
 # Create a new directory
@@ -55,12 +55,11 @@ mkdir ../2_merged
 cd ../2_merged
 
 # Merge reads from multiple lanes but same sample
-cat ../1_raw_reads/Drhea* > Drhea_merged.fastq.gz
+cat ../1_raw_reads/Drhea* > Drhea_merged.fastq
 
 # Rename headers to avoid redundancy
 conda activate seqkit
-seqkit rename Drhea_merged.fastq.gz > Drhea_renamed.fastq
-gzip Drhea_renamed.fastq
+seqkit rename Drhea_merged.fastq > Drhea_renamed.fastq
 conda deactivate
 ```
 
@@ -78,11 +77,11 @@ Assuming you are in `museomics/part2/2_merged`, run:
 
 ```bash
 conda activate fastqc
-fastqc *renamed.fastq.gz
+fastqc *renamed.fastq
 conda deactivate
 ```
 
-The output HTML files `Drhea_renamed_fastqc.html` and `Dtritaeniatus_renamed_fastqc.html`present plots that can be visualized in the browser.
+The output HTML file `Drhea_renamed_fastqc.html` presents plots that can be visualized in the browser.
 
 >
 > **Exercise 1**
@@ -111,7 +110,6 @@ cd ../3_cutadapt
 # Trim adapters and reads out of size range
 conda activate cutadapt
 cutadapt -O 4 -a AGATCGGAAGAGCACACGTC -m 21 -M 90 -o Drhea_cutadapt.fastq ../2_merged/Drhea_renamed.fastq
-cutadapt -O 4 -a AGATCGGAAGAGCACACGTC -m 21 -M 90 -o Dtritaeniatus_cutadapt.fastq ../2_merged/Dtritaeniatus_renamed.fastq
 
 # Assess quality of reads
 conda activate fastqc
@@ -144,7 +142,6 @@ cd ../4_tally
 # Delete PCR duplicates
 conda activate tally
 tally -i ../3_cutadapt/Drhea_cutadapt.fastq -o Drhea_tally.fastq --nozip --with-quality
-tally -i ../3_cutadapt/Dtritaeniatus_cutadapt.fastq -o Dtritaeniatus_tally.fastq --nozip --with-quality
 
 # Assess quality of reads
 conda activate fastqc
@@ -197,7 +194,6 @@ config="/mnt/c/Users/Aluno/Downloads/CVZoo-20260120T180729Z-3-001/CVZoo/FastqScr
 
 # New contaminants might be indexed with the following command: bowtie2-build contaminant_name.fasta name_index
 fastq_screen --nohits --aligner bowtie2 --conf $config ../4_tally/Drhea_tally.fastq
-fastq_screen --nohits --aligner bowtie2 --conf $config ../4_tally/Dtritaeniatus_tally.fastq
 
 # If it fails, edit the path of each database and the commands above again
 nano $config
@@ -342,7 +338,7 @@ miraconvert "$i" "$i".sam
 conda activate samtools
 samtools view -S -bh "$i".sam > "$i"_mapANDunmap.bam
 # Remove unmapped reads
-samtools view -F 4 -h "$i"_mapANDunmap.bam > "$i"_map.bam
+samtools view -F 4 -bh "$i"_mapANDunmap.bam > "$i"_map.bam
 ```
 
 >
