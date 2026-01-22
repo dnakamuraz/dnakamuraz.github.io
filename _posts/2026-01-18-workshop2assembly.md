@@ -315,10 +315,11 @@ Reference bias is an error where the mapped reads are reference-dependent. In mu
 
 Although out of the scope of this short workshop, possible solutions for reference bias include:
 
-- (1) running multiple linear mappings against different references, aligning output consensus sequences, and masking ambiguities with IUPAC N; 
-- (2) running a multiple sequence alignment (MSA) of potential references, calling the consensus of the MSA and coding SNPs with IUPAC ambiguities, and mapping reads against this synthetic reference (suggested in [Oliva et al. 2021](https://academic.oup.com/bib/article/22/5/bbab076/6217726));
-- (3) running multiple linear mappings against different references, selecting best mappings using mapping quality indexes, merging mappings via lift over procedure (developed by [Chen et al. 2021](https://link.springer.com/article/10.1186/s13059-020-02229-3))
-- (4) building variation graph from different references and mapping reads against the graph (see tutorials [here](https://pangenome-hackathon-genotoul-bioinfo-11d6d4f47ac33734abfa2a1377.pages-forge.inrae.fr/pages/tutorial_pangenome_graph/) and [here](https://gtpb.github.io/CPANG22/)). 
+- (1) running baiting and iterative mapping (e.g. MITObim), so that reference bias can emerge in the first iteration, but new references are created iteratively based on the contigs of previous iteration. 
+- (2) running multiple linear mappings against different references, aligning output consensus sequences, and masking ambiguities with IUPAC N; 
+- (3) running a multiple sequence alignment (MSA) of potential references, calling the consensus of the MSA and coding SNPs with IUPAC ambiguities, and mapping reads against this synthetic reference (suggested in [Oliva et al. 2021](https://academic.oup.com/bib/article/22/5/bbab076/6217726));
+- (4) running multiple linear mappings against different references, selecting best mappings using mapping quality indexes, merging mappings via lift over procedure (developed by [Chen et al. 2021](https://link.springer.com/article/10.1186/s13059-020-02229-3))
+- (5) building variation graph from different references and mapping reads against the graph (see tutorials [here](https://pangenome-hackathon-genotoul-bioinfo-11d6d4f47ac33734abfa2a1377.pages-forge.inrae.fr/pages/tutorial_pangenome_graph/) and [here](https://gtpb.github.io/CPANG22/)). 
 
 ## Post-processing
 
@@ -352,3 +353,8 @@ samtools sort ../6_bwa/rag1/Drhea_rag1_map.bam | samtools consensus -f FASTA - -
 
 ### Blast
 
+BLAST (Basic Local Alignment Search Tool) is one of the most fundamental algorithms in bioinformatics. It is used to compare a "query" sequence (DNA, RNA, or protein) against a massive database of known sequences to find regions of similarity. That is, Blast is a quick method to identify sequences.
+
+1. Visit https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome
+2. Copy the consensus sequences generated in this tutorial in "Enter query sequence" and clicl on BLAST.
+3. Check the identity of each sequence
