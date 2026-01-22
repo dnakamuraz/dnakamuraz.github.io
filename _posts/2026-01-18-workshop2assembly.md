@@ -296,6 +296,10 @@ samtools view --threads 4 -S -bh Drhea_rag1.sam > Drhea_rag1_mapANDunmap.bam
 samtools view --threads 4 -bh -F 4 Drhea_rag1_mapANDunmap.bam > Drhea_rag1_map.bam
 ```
 
+<p align="center">
+  <img src="assets/img/museomics_part2_1.png" alt="BWA mapping of Dendropsophus rhea (mitochondrial small rRNA 12S)" width="500">
+</p>
+
 ### Iterative mapping
 
 Baiting and iterative mapping is a bioinformatic strategy used to reconstruct a target sequence (like a mitochondrial genome) by using a closely related "seed" as a starting point. Reads are aligned with the reference, generating contigs. These contigs are used to a new round of alignment. This process continues up to X iterations or until improvement is not found.
@@ -308,9 +312,8 @@ mkdir ../7_mitobim; cd ../7_mitobim
 conda activate mitobim
 export LC_ALL=C
 
-# Run MITObim: D. rhea against the 12S of D. microcephalus
-mkdir -p Drhea/12s
-cd Drhea/12s
+# MITObim: D. rhea against the 12S of D. microcephalus
+mkdir -p Drhea/12s; cd Drhea/12s
 MITObim.pl -start 1 -end 25 -kbait 15 -mismatch 3 -sample Drhea_12s -ref Dmicrocephalus \
   -readpool ../../../5_fastqscreen/Drhea_tally.tagged_filter.fastq \
   --quick ../../../reference/Dmicrocephalus_12s.fas --clean &> log
@@ -326,18 +329,7 @@ samtools view -F 4 -bh "$i"_mapANDunmap.bam > "$i"_map.bam
 
 >
 > **Exercise 5**
-> Write the commands to iteratively map reads of D. rhea and D. tritaeniatus to all reference sequences in the directory `museomics/part2/reference`.
->
-><details>
-><summary>Show answer</summary>
->
-> 
-> 
-></details>
-
->
-> **Exercise 6**
-> The command `samtools stats FILE.bam > FILE.txt` provides basic statics about a BAM file (read alignment). Compare the BAM files generated with BWA and MITObim. Which approach mapped more reads? Why?
+> The command `samtools stats FILE.bam > FILE.txt` provides basic statics about a BAM file (read alignment). Compare the BAM files generated for 12S, 28S, and RAG1. Create a hypothesis to explain the differences in number of mapped reads.
 >
 ><details>
 ><summary>Show answer</summary>
@@ -367,9 +359,25 @@ mkdir ../8_consensus; cd ../8_consensus
 conda activate samtools
 
 # BWA: 12S
-samtools consensus --mode simple \
-  -q -d 3 \
-  --call-fract 0.95 \
-  --min-MQ 80 \
-  "$bam" > "${name}_consensus.fasta"
+samtools sort ../6_bwa/12s/Drhea_12s_map.bam | samtools consensus -f FASTA - -o Drhea_12s_consensus.fas
+
+# BWA: 28S
+samtools sort ../6_bwa/28s/Drhea_28s_map.bam | samtools consensus -f FASTA - -o Drhea_28s_consensus.fas
+
+# BWA: RAG1
+samtools sort ../6_bwa/rag1/Drhea_rag1_map.bam | samtools consensus -f FASTA - -o Drhea_rag1_consensus.fas
 ```
+
+>
+> **Exercise 6**
+> There are strings of contiguous IUPAC N in the consensus sequences. Create a hypothesis to explain this pattern.
+>
+><details>
+><summary>Show answer</summary>
+>
+> IUPAC N is common in museomics due to low coverage.
+> 
+></details>
+
+### Blast
+
