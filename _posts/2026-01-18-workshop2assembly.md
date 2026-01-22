@@ -297,7 +297,7 @@ samtools view --threads 4 -bh -F 4 Drhea_rag1_mapANDunmap.bam > Drhea_rag1_map.b
 ```
 
 <p align="center">
-  <img src="assets/img/museomics_part2_1.png" alt="BWA mapping of Dendropsophus rhea (mitochondrial small rRNA 12S)" width="500">
+  <img src="/assets/img/museomics_part2_1.png" alt="BWA mapping of Dendropsophus rhea (mitochondrial small rRNA 12S)" width="500">
 </p>
 
 ### Iterative mapping
@@ -370,12 +370,12 @@ samtools sort ../6_bwa/rag1/Drhea_rag1_map.bam | samtools consensus -f FASTA - -
 
 >
 > **Exercise 6**
-> There are strings of contiguous IUPAC N in the consensus sequences. Create a hypothesis to explain this pattern.
+> There are strings of contiguous IUPAC N in the consensus sequences. Create a hypothesis to explain differences in the number of N between mitochondrial and nuclear genes. Explain the differences between 28S and RAG1 results.
 >
 ><details>
 ><summary>Show answer</summary>
 >
-> IUPAC N is common in museomics due to low coverage.
+> IUPAC N is common in museomics due to low coverage.IUPAC N (or ? if you code low depth positions as such) in mitochondrial genes is less common than in nuclear genes. The reason is the multiple copies of mitogenomes inside a cell. 28S has more mapped reads than RAG1 because 28S is present in multiple copies in tandem in the nucleolus.
 > 
 ></details>
 
