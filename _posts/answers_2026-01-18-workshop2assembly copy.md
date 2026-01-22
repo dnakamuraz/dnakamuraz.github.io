@@ -86,6 +86,14 @@ The output HTML file `Drhea_renamed_fastqc.html` presents plots that can be visu
 > **Exercise 1**
 > Check the file `Drhea_renamed_fastqc.html`. Describe and create hypotheses to explain the distributions of (1) per base sequence content, (2) sequence length, and (3) sequence duplication levels.
 >
+><details>
+><summary>Show answer</summary>
+>
+> (1) The distribution of per base sequence content presents a high proportion of G relative to A, C and T at the ends of reads. A explanation is the high level of PolyG at the ends of reads. PolyG commonly indicate signal decay during the end of sequencing (and not a real G) because G is represented by no color in some platforms.<br><br>
+> (2) The sequence length distribution reveals a bicaudal distribution. The first peak around 20-30 bp likely represents fragmented hDNA reads, whereas the the second peak around 98-100 bp likely represents modern DNA contaminants.<br><br>
+> (3) The sequence duplication levels reveals that some sequences are duplicated. Possible explanations include PCR duplicates not removed and fragments from different regions of the genome randomly sharing the same sequence.
+> 
+></details>
 
 ### Trimming
 
@@ -111,6 +119,12 @@ conda deactivate
 > **Exercise 2**
 > Check the files `Drhea_cutadapt_fastqc.html` and `Dtritaeniatus_cutadapt_fastqc.html`. Compare both reports with those before trimming. Describe what happened with the per base sequence quality, sequence distribution, overrepresented sequences, and adapter content.
 >
+><details>
+><summary>Show answer</summary>
+>
+> The per base sequence quality improved, the sequence distribution is right-skewed with one peak between 20-30 bp, and adapters and other artifacts like PolyG were deleted.
+> 
+></details>
 
 ### Deduplicating
 
@@ -136,6 +150,12 @@ conda deactivate
 > **Exercise 3**
 > Check the files `Drhea_tally_fastqc.html` and `Dtritaeniatus_tally_fastqc.html`. Compare both reports with those before deduplicating. Describe what happened with the total number of sequences (available in Basic Statistics) and the sequence duplication levels.
 >
+><details>
+><summary>Show answer</summary>
+>
+> The total number of sequences slighly reduced because duplicates were deleted.
+> 
+></details>
 
 ### Decontaminating
 
@@ -184,6 +204,12 @@ conda deactivate
 > **Exercise 4**
 > Open the files `Drhea_tally_screen.html` and `Dtritaeniatus_tally_screen.html` in your browser. Which contaminant presents more hits?
 >
+><details>
+><summary>Show answer</summary>
+>
+> Paraburkholderia.
+> 
+></details>
 
 
 ## Assembly
@@ -276,6 +302,12 @@ samtools view --threads 4 -bh -F 4 Drhea_rag1_mapANDunmap.bam > Drhea_rag1_map.b
 > **Exercise 5**
 > The command `samtools stats FILE.bam > FILE.txt` provides basic statics about a BAM file (read alignment). Compare the BAM files generated for 12S, 28S, and RAG1. Create a hypothesis to explain the differences in number of mapped reads between nuclear and mitochondrial genes.
 >
+><details>
+><summary>Show answer</summary>
+>
+> 
+> 
+></details>
 
 ### Reference bias
 
@@ -312,7 +344,12 @@ samtools sort ../6_bwa/rag1/Drhea_rag1_map.bam | samtools consensus -f FASTA - -
 > **Exercise 6**
 > There are strings of contiguous IUPAC N in the consensus sequences. Is IUPAC N the same as missing data? Why is IUPAC N common in museomics?
 >
-
+><details>
+><summary>Show answer</summary>
+>
+> IUPAC N is common in museomics due to low coverage.IUPAC N and question marks ? (missing data) are not the same. IUPAC N represents any nucleotide, whereas a question mark represents any nucleotide or a gap. The user can specify whether low coverage will be coded as N or ?, but the common approach is coding it with N. However, coding it with N is less coservative (more assumptions) than coding it with question marks.
+> 
+></details>
 
 ### Blast
 
