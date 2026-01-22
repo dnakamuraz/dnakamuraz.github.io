@@ -51,8 +51,7 @@ There are three FastQ files in `museomics/part2/1_raw_reads`, all sequenced from
 
 ```bash
 # Create a new directory
-mkdir ../2_merged
-cd ../2_merged
+mkdir ../2_merged; cd ../2_merged
 
 # Merge reads from multiple lanes but same sample
 cat ../1_raw_reads/Drhea* > Drhea_merged.fastq
@@ -90,8 +89,8 @@ The output HTML file `Drhea_renamed_fastqc.html` presents plots that can be visu
 ><details>
 ><summary>Show answer</summary>
 >
-> (1) The distribution of per base sequence content presents a high proportion of G relative to A, C and T at the ends of reads. A explanation is the high level of PolyG at the ends of reads. PolyG commonly indicate signal decay during the end of sequencing (and not a real G) because G is represented by no color in some platforms.<br>
-> (2) The sequence length distribution reveals a bicaudal distribution. The first peak around 20-30 bp likely represents fragmented hDNA reads, whereas the the second peak around 98-100 bp likely represents modern DNA contaminants.<br>
+> (1) The distribution of per base sequence content presents a high proportion of G relative to A, C and T at the ends of reads. A explanation is the high level of PolyG at the ends of reads. PolyG commonly indicate signal decay during the end of sequencing (and not a real G) because G is represented by no color in some platforms.<br><br>
+> (2) The sequence length distribution reveals a bicaudal distribution. The first peak around 20-30 bp likely represents fragmented hDNA reads, whereas the the second peak around 98-100 bp likely represents modern DNA contaminants.<br><br>
 > (3) The sequence duplication levels reveals that some sequences are duplicated. Possible explanations include PCR duplicates not removed and fragments from different regions of the genome randomly sharing the same sequence.
 > 
 ></details>
@@ -104,8 +103,7 @@ Assuming you are in `museomics/part2/2_merged`, run:
 
 ```bash
 # Create a new directory
-mkdir ../3_cutadapt
-cd ../3_cutadapt
+mkdir ../3_cutadapt; cd ../3_cutadapt
 
 # Trim adapters and reads out of size range
 conda activate cutadapt
@@ -136,8 +134,7 @@ Assuming you are in `museomics/part2/3_cutadapt`, run:
 
 ```bash
 # Create a new directory
-mkdir ../4_tally
-cd ../4_tally
+mkdir ../4_tally; cd ../4_tally
 
 # Delete PCR duplicates
 conda activate tally
@@ -168,8 +165,7 @@ Assuming you are in `museomics/part2/4_tally`, run:
 
 ```bash
 # Create a new directory
-mkdir ../5_fastqscreen
-cd ../5_fastqscreen
+mkdir ../5_fastqscreen; cd ../5_fastqscreen
 ```
 
 FastqScreen is a script to map reads against a database of potential contaminant genomes and delete the mapped reads. The first step is creating the database of contaminants. It is located in `museomics/part2/FastqScreenGenomes.zip`. Unzip this directory and check the subdirectories containing indexed contaminant genomes. The file `fastq_screen.conf` should be edited in each analysis to specify the path for Bowtie2 aligner (L12; check it using the command `which bowtie2`), number of threads (cores) for parallel analyses (line 21), and contaminant databases (*E. coli*, vector, adapters, and *Paraburkholderia*). 
@@ -229,8 +225,8 @@ You will run BWA using two samples (*D. rhea* and *D. tritaeniatus*) and three r
 Assuming you are in the directory `museomics/part2/5_fastqscreen`, let's index the reference sequences.
 
 ```bash
-mkdir ../6_bwa
-cd ../6_bwa
+# Create a new directory
+mkdir ../6_bwa; cd ../6_bwa
 conda activate bwa
 mkdir bwa_index; cd bwa_index
 
