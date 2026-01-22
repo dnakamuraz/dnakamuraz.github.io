@@ -280,26 +280,20 @@ conda activate samtools
 cd 28s
 # Convert .sam to .bam
 samtools view --threads 4 -S -bh Drhea_28s.sam > Drhea_28s_mapANDunmap.bam
-samtools view --threads 4 -S -bh Dtritaeniatus_28s.sam > Dtritaeniatus_28s_mapANDunmap.bam
 # Remove unmapped reads
 samtools view --threads 4 -bh -F 4 Drhea_28s_mapANDunmap.bam > Drhea_28s_map.bam
-samtools view --threads 4 -bh -F 4 Dtritaeniatus_28s_mapANDunmap.bam > Dtritaeniatus_28s_map.bam
 
 cd ../12s
 # Convert .sam to .bam
 samtools view --threads 4 -S -bh Drhea_12s.sam > Drhea_12s_mapANDunmap.bam
-samtools view --threads 4 -S -bh Dtritaeniatus_12s.sam > Dtritaeniatus_12s_mapANDunmap.bam
 # Remove unmapped reads
 samtools view --threads 4 -bh -F 4 Drhea_12s_mapANDunmap.bam > Drhea_12s_map.bam
-samtools view --threads 4 -bh -F 4 Dtritaeniatus_12s_mapANDunmap.bam > Dtritaeniatus_12s_map.bam
 
 cd ../rag1
 # Convert .sam to .bam
 samtools view --threads 4 -S -bh Drhea_rag1.sam > Drhea_rag1_mapANDunmap.bam
-samtools view --threads 4 -S -bh Dtritaeniatus_rag1.sam > Dtritaeniatus_rag1_mapANDunmap.bam
 # Remove unmapped reads
 samtools view --threads 4 -bh -F 4 Drhea_rag1_mapANDunmap.bam > Drhea_rag1_map.bam
-samtools view --threads 4 -bh -F 4 Dtritaeniatus_rag1_mapANDunmap.bam > Dtritaeniatus_rag1_map.bam
 ```
 
 ### Iterative mapping
@@ -310,8 +304,7 @@ Assuming you are in the directory `museomics/part2/6_bwa`, run:
 
 ```bash
 # Create a new directory
-mkdir ../7_mitobim
-cd ../7_mitobim
+mkdir ../7_mitobim; cd ../7_mitobim
 conda activate mitobim
 export LC_ALL=C
 
@@ -370,12 +363,11 @@ Although out of the scope of this short workshop, possible solutions for referen
 
 ```bash
 # Create a new directory
-mkdir ../8_consensus
-cd ../8_consensus
+mkdir ../8_consensus; cd ../8_consensus
 conda activate samtools
 
-samtools consensus  \
-  --mode simple \
+# BWA: 12S
+samtools consensus --mode simple \
   -q -d 3 \
   --call-fract 0.95 \
   --min-MQ 80 \
