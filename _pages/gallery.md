@@ -62,6 +62,18 @@ nav_order: 5
       </a>
     </div>
 
+    <!-- image novafriburgo1 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2023-Brachycephalus_garbeanus.JPG"
+               alt="Brachycephalus garbeanus">
+          <div class="caption">Brachycephalus garbeanus (BR: SP: Nova Friburgo, 2023)</div>
+        </div>
+      </a>
+    </div>
+
     <!-- image petropolis1 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
