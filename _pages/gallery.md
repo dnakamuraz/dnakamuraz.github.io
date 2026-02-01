@@ -240,7 +240,19 @@ nav_order: 5
           <div class="caption">Adenomera sp. (BR: SP: São Sebastião, 2022)</div>
         </div>
       </a>
-    </div>    
+    </div>   
+
+    <!-- image cebimar2 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2022-Anolis.jpeg"
+               alt="Anolis punctatus">
+          <div class="caption">Anolis punctatus "Papa-vento-verde" (BR: SP: São Sebastião, 2022)</div>
+        </div>
+      </a>
+    </div>     
 
   </div>
 </div>
