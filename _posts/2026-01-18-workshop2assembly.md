@@ -305,7 +305,7 @@ samtools view --threads 4 -bh -F 4 Drhea_rag1_mapANDunmap.bam > Drhea_rag1_map.b
 ><details>
 ><summary>Show answer</summary>
 >
-> 
+> In terms of the number of mapped reads, the observed pattern was 12S > 28S > RAG1. This can be explained primarily by differences in gene copy numbers rather than reference length. Although 28S is physically longer than 12S, the latter exhibited much higher sequencing depth. This is due to the presence of multiple mitochondria per cell, which significantly increases the likelihood of capturing mitochondrial DNA (mtDNA) fragments. Similarly, 28S yielded more reads than the nuclear RAG1 gene because the 28S rRNA gene exists in multiple tandem copies within the nucleolus, whereas RAG1 is typically present as a single-copy gene.
 > 
 ></details>
 
