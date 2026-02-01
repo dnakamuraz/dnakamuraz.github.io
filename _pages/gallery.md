@@ -254,6 +254,18 @@ nav_order: 5
       </a>
     </div>     
 
+    <!-- image cebimar3 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2022-Boana_albomarginata.jpeg"
+               alt="Boana albomarginata">
+          <div class="caption">Boana albomarginata (BR: SP: São Sebastião, 2022)</div>
+        </div>
+      </a>
+    </div>   
+
   </div>
 </div>
 
