@@ -74,6 +74,30 @@ nav_order: 5
       </a>
     </div>
 
+    <!-- image 3 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2023-aplastodiscus_arildae.JPG"
+               alt="Aplastodiscus arildae">
+          <div class="caption">Aplastodiscus arildae (BR: RJ: Itatiaia, 2023)</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- image 4 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2023-Bothrops_jararaca.JPG"
+               alt="Bothrops jararaca">
+          <div class="caption">Bothrops jararaca (BR: RJ: Itatiaia, 2023)</div>
+        </div>
+      </a>
+    </div>
+
   </div>
 </div>
 
