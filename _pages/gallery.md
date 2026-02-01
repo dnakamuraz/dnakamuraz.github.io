@@ -134,6 +134,17 @@ nav_order: 5
       </a>
     </div>
 
+    <!-- image 8 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2023-Penelope_obscura.JPG"
+               alt="Penelope obscura">
+          <div class="caption">Penelope obscura "Jacuguaçu" (BR: RJ: Itatiaia, 2023)</div>
+        </div>
+      </a>
+    </div>
 
   </div>
 </div>
