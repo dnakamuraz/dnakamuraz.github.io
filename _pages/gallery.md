@@ -98,6 +98,18 @@ nav_order: 5
       </a>
     </div>
 
+    <!-- image tijuca3 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2023-Scinax.JPG"
+               alt="Ololygon perpusilla">
+          <div class="caption">Ololygon perpusilla (BR: RJ: Tijuca, 2023)</div>
+        </div>
+      </a>
+    </div>
+
     <!-- image itatiaia1 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
