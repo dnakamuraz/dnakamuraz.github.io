@@ -98,6 +98,31 @@ nav_order: 5
       </a>
     </div>
 
+    <!-- image 5 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2023-Brachycephalus_rotenbergae.JPG"
+               alt="Brachycephalus rotenbergae">
+          <div class="caption">Brachycephalus rotenbergae (BR: RJ: Itatiaia, 2023)</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- image 6 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2023_friends_itatiaia.JPG"
+               alt="Brachycephalus rotenbergae">
+          <div class="caption">Me, João, and Max (BR: RJ: Itatiaia, 2023)</div>
+        </div>
+      </a>
+    </div>
+
+
   </div>
 </div>
 
