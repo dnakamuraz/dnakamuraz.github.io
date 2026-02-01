@@ -50,7 +50,7 @@ nav_order: 5
 <div class="container">
   <div class="row">
 
-    <!-- image 1 -->
+    <!-- image boraceia1 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
@@ -62,7 +62,7 @@ nav_order: 5
       </a>
     </div>
 
-    <!-- image 2 -->
+    <!-- image petropolis1 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
@@ -74,7 +74,19 @@ nav_order: 5
       </a>
     </div>
 
-    <!-- image 3 -->
+    <!-- image tijuca1 -->
+    <div class="col-md-4 col-sm-6 mb-4">
+      <a data-toggle="modal" data-target="#imgModal">
+        <div class="gallery-item">
+          <img class="img-fluid rounded"
+               src="/assets/img/2023-Chelonoidis_carbonarius.JPG"
+               alt="Chelonoidis carbonarius">
+          <div class="caption">Chelonoidis carbonarius "Jabuti-piranga" (BR: RJ: Tijuca, 2023)</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- image itatiaia1 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
@@ -86,7 +98,7 @@ nav_order: 5
       </a>
     </div>
 
-    <!-- image 4 -->
+    <!-- image itatiaia2 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
@@ -98,7 +110,7 @@ nav_order: 5
       </a>
     </div>
 
-    <!-- image 5 -->
+    <!-- image itatiaia3 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
@@ -110,7 +122,7 @@ nav_order: 5
       </a>
     </div>
 
-    <!-- image 6 -->
+    <!-- image itatiaia4 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
@@ -122,7 +134,7 @@ nav_order: 5
       </a>
     </div>
 
-    <!-- image 7 -->
+    <!-- image itatiaia5 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
@@ -134,7 +146,7 @@ nav_order: 5
       </a>
     </div>
 
-    <!-- image 8 -->
+    <!-- image itatiaia6 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
@@ -146,7 +158,7 @@ nav_order: 5
       </a>
     </div>
 
-    <!-- image 9 -->
+    <!-- image itatiaia7 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
@@ -158,7 +170,7 @@ nav_order: 5
       </a>
     </div>
     
-    <!-- image 10 -->
+    <!-- image itatiaia8 -->
     <div class="col-md-4 col-sm-6 mb-4">
       <a data-toggle="modal" data-target="#imgModal">
         <div class="gallery-item">
