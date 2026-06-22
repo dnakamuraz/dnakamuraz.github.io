@@ -1,8 +1,18 @@
 ---
 ---
 
+@article{nakamura_prepdyn,
+  title={Preprocessing missing data and partitions for phylogenetic analysis under dynamic homology, with application to museomics and phylogenomics},
+  author={Nakamura, DYM and Wheeler, WC and Grant, T},
+  journal={Under review in Cladistics},
+  year={2026},
+  code = {https://github.com/dnakamuraz/prepDyn},
+  publisher={Wiley},
+    abstract = {In dynamic homology, data are typically preprocessed to distinguish sequencing artifacts (missing data) from insertion-deletion events, but empirical studies using POY/PhyG have employed manual preprocessing. Here, we compare different procedures for handling missing data for dynamic homology, present Python scripts to automate these procedures, and evaluate their performance using 60 simulated and 4 empirical datasets (including Sanger, phylogenomic, and historical DNA sequences). We clarify that coding missing data as gaps or unknown nucleotides/amino acids is biologically inappropriate. In contrast, isolating missing data via partitioning or coding it as any observed state or no state (“?”, the maximally polymorphic state; N + gap for nucleotides, X + gap for amino acids) is defensible but involves trade-offs. Partitioning can decrease time complexity but weakens homology testing by isolating potentially homologous nucleotides in different partitions. Conversely, question marks enable unconstrained homology testing but increase time complexity. To balance these trade-offs, we propose heuristic strategies to select optimal partitioning. Our methods reduced time complexity in large simulated datasets and improved tree costs in all empirical datasets, highlighting the importance of properly handling missing data in dynamic homology analysis.}
+}
+
 @article{nakamura_DNAvsTE,
-  title={Does morphology still matter in phylogenetics? The impact of phenomic evidence on total evidence analyses in the age of genomics},
+  title={Data swamping inphylogenetics: Does morphology still matter in total-evidence analyses?},
   author={Nakamura, DYM and Wheeler, WC and Grant, T},
   journal={Under review in Cladistics},
   year={2026},
