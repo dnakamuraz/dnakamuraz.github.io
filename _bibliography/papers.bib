@@ -1,16 +1,6 @@
 ---
 ---
 
-@article{nakamura_prepdyn,
-  title={Preprocessing missing data and partitions for phylogenetic analysis under dynamic homology, with application to museomics and phylogenomics},
-  author={Nakamura, DYM and Grant, T and Wheeler, WC},
-  journal={Under review in Cladistics},
-  year={2026},
-  code = {https://github.com/dnakamuraz/prepDyn},
-  publisher={Wiley},
-    abstract = {In dynamic homology, data are typically preprocessed to distinguish sequencing artifacts (missing data) from insertion-deletion events, but empirical studies using POY/PhyG have employed manual preprocessing. Here, we compare different procedures for handling missing data for dynamic homology, present Python scripts to automate these procedures, and evaluate their performance using 60 simulated and 4 empirical datasets (including Sanger, phylogenomic, and historical DNA sequences). We clarify that coding missing data as gaps or unknown nucleotides/amino acids is biologically inappropriate. In contrast, isolating missing data via partitioning or coding it as any observed state or no state (“?”, the maximally polymorphic state; N + gap for nucleotides, X + gap for amino acids) is defensible but involves trade-offs. Partitioning can decrease time complexity but weakens homology testing by isolating potentially homologous nucleotides in different partitions. Conversely, question marks enable unconstrained homology testing but increase time complexity. To balance these trade-offs, we propose heuristic strategies to select optimal partitioning. Our methods reduced time complexity in large simulated datasets and improved tree costs in all empirical datasets, highlighting the importance of properly handling missing data in dynamic homology analysis.}
-}
-
 @article{nakamura_DNAvsTE,
   title={Data swamping in phylogenetics: Does morphology still matter in total-evidence analyses?},
   author={Nakamura, DYM and Wheeler, WC and Grant, T},
@@ -18,6 +8,7 @@
   year={2026},
   code = {https://github.com/dnakamuraz/MOLvsTE},
   publisher={Wiley},
+  under_review={true},
     abstract = {The predominance of genomic data has led to the frequent exclusion of phenomic evidence from analyses, often justified by the assumption of data swamping. We evaluate this assumption using 57 empirical datasets. We compared DNA-only (DNA) and total-evidence (TE) analyses under maximum parsimony (MP) and maximum likelihood (ML), examining topologies, support values, and optimality scores. The inclusion of phenomic evidence affected topologies in 74–88% datasets, even when phenomic characters comprised a small fraction of the TE dataset. Topological incongruences were positively associated with the proportion of phenomic characters and slightly greater under ML than MP. Inclusion of phenomic evidence tended to increase bootstrap values in analyses without phenomic-only terminals, but effects varied with phenomic-only terminals. Although bootstrap values in DNA trees were positively associated with clade recovery in TE analyses, exceptions were observed, including maximally supported DNA clades refuted in TE trees. The contribution of phenomic evidence to optimality scores did not differ consistently between MP and ML. Overall, concerns that small phenomic partitions will be swamped by larger genomic partitions are overblown. Phenomic characters usually have a meaningful impact on both tree topology and support values in TE analyses, particularly when they enable the inclusion of phenomic-only taxa.}
 }
 
@@ -26,6 +17,7 @@
   author={Pereira, JM and Nakamura, DYM and Homma, MHO},
   journal={Under review in South American Journal of Herpetology},
   year={2026},
+  under_review={true},
   abstract = {Acoustic communication plays an important role in anuran reproduction and social interactions, yet the vocal diversity of many species remains poorly documented. The genus Brachycephalus currently comprises 44 species of miniaturized frogs from the Brazilian Atlantic Forest, but advertisement calls have been described for fewer than half of them. Here, we describe the advertisement and aggressive calls of Brachycephalus nodoterga Miranda-Ribeiro, 1920 from two localities in southeastern Brazil and compare them with acoustic information available for congeners. Advertisement calls consist of single multipulsed notes emitted at a rate of 2.38–3.25 notes/s, with 8–14 pulses per note and dominant frequency of 4.5–6.0 kHz. Aggressive calls also consist of single multipulsed notes but differ from advertisement calls by their shorter note duration, fewer pulses per note, and substantially higher repetition rate (6–9 notes/s), while maintaining a similar dominant frequency. Comparisons with published data indicate that B. nodoterga can be diagnosed by a unique combination of temporal and spectral traits. We also compiled and summarized acoustic parameters available for all species of Brachycephalus with published call descriptions, highlighting substantial variation among species and some divergencies in how calls and notes have been delimited across studies. This study increases the number of species with described advertisement calls in Brachycephalus from 21 to 22 and the number with described aggressive calls from four to five, contributing to a more comprehensive understanding of acoustic diversity and species diagnosis within this genus.
 }
 }
@@ -35,6 +27,7 @@
   author={Moraes, LJCL and Carvalho, AN and Nakamura, DYM and Coelho, GNC and Guimarães-Ferreira, J and Santos, RO and Trusz, C and Rachid, LSF and Vasconcellos, MM and Homma, MHO and Pereira, JM and Serrano, FC and Recoder, RS and Fouquet, A and Prates, I and Nascimento, LRS and Gagliardi-Urrutia, G and Werneck, FP and de Carvalho, VT and Rodrigues, MT},
   journal={Under review in Systematics and Biodiversity},
   year={2026},
+  under_review={true},
   abstract = {Amazonia is widely recognized for its remarkable amphibian diversity, with many new species described each year. The Amazonian-endemic frog genus Synapturanus (Microhylidae: Otophryninae) exemplifies this pattern: seven new species have been described in the last five years, representing a threefold increase in its recognized diversity, now totalling 10 species. Despite this progress, several deeply divergent molecular lineages remain taxonomically unresolved and considered as candidate species. We investigate the taxonomic status of five such candidate species using an integrative framework that incorporates new data on morphometric traits, colour pattern, osteology, acoustic parameters, diet, and genetic evidence. All five focal lineages exhibit concordant genetic and phenotypic differentiation consistent with species-level divergence and are herein formally described as new species. Interspecific differences in external morphology, osteology, and diet further suggest distinct habitat use and varying degrees of fossorial specialization. Each species is currently known from one or a few populations, highlighting potential conservation concerns amid ongoing habitat loss and environmental change across Amazonia.}
 }
 
@@ -44,7 +37,21 @@
   journal={Under review in Ecography},
   year={2026},
   publisher={Wiley},
+  under_review={true},
     abstract = {Harlequin toads (Atelopus) are the most species-rich Neotropical bufonid genus. Their wide distribution across the tropical Andes, adjacent mountain systems, Chocoan and Amazonian lowlands makes them a promising model to study the historical assembly of northern South American biota, yet their phylogenetic relationships and their biogeographic history have remained poorly resolved. Here, we reconstruct a mitogenomic time-calibrated phylogeny of Atelopus covering 73 of the ~130 described and undescribed species. Our results support an ancient origin of the genus in northwestern South America during the late Eocene, followed by early divergences involving lineages associated with the Sierra Nevada de Santa Marta and the northeastern Andes. Extant diversity reflects a mixture of old, species-poor lineages and more extensive radiations from the late Miocene onwards. Biogeographic analyses indicate that the diversification of Andean lineages was shaped by progressive mountain building, regional isolation and repeated secondary range expansion, whereas the Amazonian clade likely originated in western Amazonia during Miocene wetland dynamics and drainage reorganization. The data further suggest that humid montane forests represented the ancestral environment for much of the genus, with repeated and more recent colonization of high- elevation habitats such as páramo and puna. Founder-event dispersal appears to have contributed to recent radiations into eastern Amazonia but also in the southern Andes. Together, these results identify Atelopus as an ancient radiation that preserves biogeographic signals of early diversification in northern South America and provide an evolutionary framework for conservation of one of the most threatened amphibian groups worldwide.}
+}
+
+@article{nakamura_prepdyn,
+  title={Preprocessing missing data and partitions for phylogenetic analysis under dynamic homology, with application to museomics and phylogenomics},
+  author={Nakamura, DYM and Grant, T and Wheeler, WC},
+  journal={Cladistics},
+  year={2026},
+  doi = {https://doi.org/10.1111/cla.70076},
+  html = {https://onlinelibrary.wiley.com/doi/10.1111/cla.70076},
+  code = {https://github.com/dnakamuraz/prepDyn},
+  pdf = {nakamura2026a.pdf},
+  publisher={Wiley},
+    abstract = {In dynamic homology, data are typically preprocessed to distinguish sequencing artifacts (missing data) from insertion-deletion events, but empirical studies using POY/PhyG have employed manual preprocessing. Here, we compare different procedures for handling missing data for dynamic homology, present Python scripts to automate these procedures, and evaluate their performance using 60 simulated and 4 empirical datasets (including Sanger, phylogenomic, and historical DNA sequences). We clarify that coding missing data as gaps or unknown nucleotides/amino acids is biologically inappropriate. In contrast, isolating missing data via partitioning or coding it as any observed state or no state (“?”, the maximally polymorphic state; N + gap for nucleotides, X + gap for amino acids) is defensible but involves trade-offs. Partitioning can decrease time complexity but weakens homology testing by isolating potentially homologous nucleotides in different partitions. Conversely, question marks enable unconstrained homology testing but increase time complexity. To balance these trade-offs, we propose heuristic strategies to select optimal partitioning. Our methods reduced time complexity in large simulated datasets and improved tree costs in all empirical datasets, highlighting the importance of properly handling missing data in dynamic homology analysis.}
 }
 
 @article{https://doi.org/10.1111/1749-4877.12920,

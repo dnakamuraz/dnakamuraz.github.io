@@ -13,6 +13,12 @@ Reprints may be downloaded for personal use by clicking on the icon beside each 
 
 <div style="margin-bottom: 2em;"></div>
 
-{% bibliography -f papers --group_by year --group_order descending %}
+{% capture under_review %}{% bibliography -f papers -q @*[under_review=true]* %}{% endcapture %}
+{% if under_review contains "<li" %}
+<h2 class="bibliography">under review</h2>
+{{ under_review }}
+{% endif %}
+
+{% bibliography -f papers -q @*[under_review!=true]* --group_by year --group_order descending %}
 
 </div>
